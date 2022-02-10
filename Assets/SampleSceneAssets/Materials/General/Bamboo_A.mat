@@ -23,6 +23,7 @@ Material:
   - TransparentDepthPrepass
   - TransparentDepthPostpass
   - TransparentBackface
+  - ForwardEmissiveForDeferred
   - RayTracingPrepass
   m_SavedProperties:
     serializedVersion: 3
@@ -185,6 +186,7 @@ Material:
     - _EnableSpecularOcclusion: 0
     - _EnableWind: 0
     - _EnergyConservingSpecularColor: 1
+    - _ForceForwardEmissive: 0
     - _HdrpVersion: 2
     - _HeightAmplitude: 0.0086
     - _HeightCenter: 1.1627907
