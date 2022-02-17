@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using TMPro;
 
 public class Optionsmenuscript : MonoBehaviour
 {
     Resolution[] resolutions;
     public GameObject OptionsMenu;
     public GameObject MainMenu;
-    public Dropdown Resolution;
     public Dropdown textureDropdown;
     public Dropdown qualityDropdown;
     public Dropdown aaDropdown;
     public Slider Audio;
     public AudioMixer MasterMix;
+    public TMP_Dropdown Resolution;
 
     private void Start()
     {
