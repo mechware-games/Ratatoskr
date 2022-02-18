@@ -10,9 +10,9 @@ public class Optionsmenuscript : MonoBehaviour
     Resolution[] resolutions;
     public GameObject OptionsMenu;
     public GameObject MainMenu;
-    public Dropdown textureDropdown;
-    public Dropdown qualityDropdown;
-    public Dropdown aaDropdown;
+    public TMP_Dropdown textureDropdown;
+    public TMP_Dropdown qualityDropdown;
+    public TMP_Dropdown aaDropdown;
     public Slider Audio;
     public AudioMixer MasterMix;
     public TMP_Dropdown Resolution;
