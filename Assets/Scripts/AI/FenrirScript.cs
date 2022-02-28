@@ -20,6 +20,30 @@ public class FenrirScript : MonoBehaviour
     private float _pauseLength;
     private float _pauseTimer;
 
+    [SerializeField]
+    [Range(5f, 15f)]
+    private float _xSpawnRange = 5f;
+
+    [SerializeField]
+    [Range(5f, 15f)]
+    private float _ySpawnRange = 5f;
+
+    [SerializeField]
+    [Range(5f, 15f)]
+    private float _zSpawnRange = 5f;
+
+
+    [SerializeField]
+    [Range(5f, 15f)]
+    private float _xSpawnMinDistance = 5f;
+
+    [SerializeField]
+    [Range(5f, 15f)]
+    private float _ySpawnMinDistance = 5f;
+
+    [SerializeField]
+    [Range(5f, 15f)]
+    private float _zSpawnMinDistance = 5f;
 
     private Vector3 _playerSpottedLocation;
 
@@ -60,7 +84,7 @@ public class FenrirScript : MonoBehaviour
                 break;
 			case State.Despawned:
                 _pauseTimer -= Time.deltaTime;
-                if (_pauseTimer < 0) { _pauseTimer = _pauseLength; _currentState = State.Chasing; ToggleChildrenActive(true); }
+                if (_pauseTimer < 0) { _pauseTimer = _pauseLength; _currentState = State.Chasing; Respawn(true); }
                 break;
 		}
 
@@ -84,4 +108,15 @@ public class FenrirScript : MonoBehaviour
 
         transform.position += movementDirection * _speed * Time.deltaTime;
     }
+
+    void Respawn(bool tf_switch)
+	{
+        float xOffset = Random.Range(-_xSpawnRange, _xSpawnRange) + _xSpawnMinDistance;
+        float yOffset = Random.Range(-_ySpawnRange, _xSpawnRange) + _ySpawnMinDistance;
+        float zOffset = Random.Range(-_zSpawnRange, _xSpawnRange) + _zSpawnMinDistance;
+        Vector3 RandomPositionModifier = new Vector3(xOffset, yOffset, zOffset);
+        transform.position = _player.position + RandomPositionModifier;
+        ToggleChildrenActive(tf_switch);
+	}
+
 }
