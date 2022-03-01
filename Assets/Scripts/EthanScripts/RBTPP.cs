@@ -12,17 +12,19 @@ public class RBTPP : MonoBehaviour
     [Header("Jumping")]
     public float jumpForce = 2f;
     public float groundDist = 0.4f;
-    public ForceMode appliedForceMode;
 
     [Header("Wall Running")]
     public float wallrunForce = 5f;
     public float maxWallRunTime = 2f;
-    public float maxWallSpeed = 25f;
+    public float wallrunSpeedMultiplier = 25f;
+    public float wallrunGravity = -1f;
+    private float wallrunBaseSpeed;
+    private float wallrunCounterGravity;
+    private float currentWallrunGravity;
 
     [Header("Gliding")]
-    public float glideFallOff = -1.5f;
-    public float maxGlideTime;
-    public float minlideTime;
+    public float glideGravity = -1.5f;
+    private float glideCounterGravity;
 
     [Header("Bools")]
     public bool debugMode;
@@ -51,37 +53,27 @@ public class RBTPP : MonoBehaviour
     private void Awake()
     {
         rb = gameObject.GetComponent<Rigidbody>();
+        wallrunCounterGravity = (-Physics.gravity.y + wallrunGravity);
+        glideCounterGravity = (-Physics.gravity.y + glideGravity);
+        wallrunBaseSpeed = wallrunSpeedMultiplier * baseSpeed;
     }
+
     private void Update()
     {
         DebugMode();
-        //Jump();
-        Glide();
-        CheckForWall();
-        WallRunInput(); 
-
+        if (isGrounded)
+        {
+            currentWallrunGravity = wallrunCounterGravity;
+        }
     }
 
     private void FixedUpdate()
     {
-        Move();
         Jump();
-        if (isWallRunning && rb.velocity.magnitude <= maxWallSpeed)
-        {
-            //rb.velocity += transform.forward * 50 * Time.deltaTime + transform.up * -0.1f;
-            //rb.AddForce(transform.forward * wallrunForce * Time.deltaTime);
-            rb.useGravity = false;
-            rb.AddForce(orientation.forward * wallrunForce * Time.deltaTime);
-            Vector3 veloc = new Vector3(baseSpeed, 0f, baseSpeed);
-            if (isWallRight)
-            {
-                rb.AddForce(orientation.right * wallrunForce / 5 * Time.deltaTime);
-            }
-            else
-            {
-                rb.AddForce(-orientation.right * wallrunForce / 5 * Time.deltaTime);
-            }
-        }
+        Move();
+        CheckForWall();
+        WallRunInput();
+        Glide();
     }
 
     private void DebugMode()
@@ -109,9 +101,9 @@ public class RBTPP : MonoBehaviour
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDist, groundMask);
 
-        if (Input.GetAxisRaw("Jump") > 0 && isGrounded && !isGliding)
+        if (Input.GetKey(KeyCode.Space) && isGrounded)
         {
-            rb.AddForce(Vector3.up * Mathf.Sqrt(jumpForce * -2 * Physics.gravity.y), ForceMode.VelocityChange);
+            rb.AddForce(Vector3.up * Mathf.Sqrt(jumpForce * -2 * Physics.gravity.y), ForceMode.Impulse);
             isJumping = true;
         }
         else isJumping = false;
@@ -119,16 +111,15 @@ public class RBTPP : MonoBehaviour
 
     private void Glide()
     {
-        if (!isWallRunning && rb.velocity.y < 0)
+        if (!isGrounded && !isWallRunning && Input.GetKey(KeyCode.Space))
         {
-            if (Input.GetAxis("Jump") > 0)
-            {
-                Vector3 glideVec = new Vector3(rb.velocity.x, glideFallOff, rb.velocity.z);
-                rb.useGravity = false;
-                rb.MovePosition(transform.position + glideVec.normalized * Time.deltaTime);
-            }
+            isGliding = true;
+            rb.AddForce(Vector3.up * glideCounterGravity, ForceMode.Acceleration);
         }
-        //else rb.useGravity = true;
+        else
+        {
+            isGliding = false;
+        }
     }
 
     void WallRunInput()
@@ -139,35 +130,34 @@ public class RBTPP : MonoBehaviour
 
     void StopWallRun()
     {
-        rb.useGravity = true;
         isWallRunning = false;
     }
 
     void StartWallRun()
     {
-        rb.useGravity = false;
         isWallRunning = true;
-        /*if (rb.velocity.magnitude <= maxWallSpeed)
+
+        if(isWallRunning)
         {
-            Debug.Log("in the first IF");
-            rb.AddForce(orientation.forward * wallrunForce * Time.deltaTime);
+            rb.AddForce(transform.forward * wallrunForce, ForceMode.Acceleration);
+
             if (isWallRight)
             {
-                Debug.Log("in the wall right if");
-                rb.AddForce(orientation.right * wallrunForce / 5 * Time.deltaTime);
+                rb.AddForce(-transform.right * wallrunForce);
+                rb.AddForce(Vector3.up * wallrunCounterGravity, ForceMode.Acceleration);
             }
             else
             {
-                Debug.Log("in the wall lfet if");
-                rb.AddForce(-orientation.right * wallrunForce / 5 * Time.deltaTime);
+                rb.AddForce(transform.right * wallrunForce);
+                rb.AddForce(Vector3.up * wallrunCounterGravity, ForceMode.Acceleration);
             }
-        }*/
+        }
     }
 
     private void CheckForWall()
     {
-        isWallRight = Physics.Raycast(transform.position, orientation.right, 5f, wallMask);
-        isWallLeft = Physics.Raycast(transform.position, -orientation.right, 5f, wallMask);
+        isWallRight = Physics.Raycast(transform.position, orientation.right, 1f, wallMask);
+        isWallLeft = Physics.Raycast(transform.position, -orientation.right, 1f, wallMask);
 
         if (!isWallLeft && !isWallRight) StopWallRun();
     }
