@@ -15,7 +15,7 @@ public class CheckPointManager : MonoBehaviour
 	{
         public Checkpoint (float timerLength)
 		{
-            activated = true;
+            activated = false;
             timer = timerLength;
 		}
 
@@ -38,9 +38,12 @@ public class CheckPointManager : MonoBehaviour
 
     private List<int> _order = new List<int>();
 
+    [SerializeField]
+    private bool _CompletedPuzzle;
     // Start is called before the first frame update
     void OnEnable()
     {
+        _CompletedPuzzle = false;
 
         for (int i = 0; i < _checkPoints.Count; i++)
 		{
@@ -59,7 +62,7 @@ public class CheckPointManager : MonoBehaviour
                 Debug.Log(randomNum);
             }
 
-           
+            _checkPoints[randomNum].GetComponent<CheckPoint>().SetIndex(randomNum);
             _order.Add(randomNum); // Adds the number to the order list after confirming it isn't already in the list
 
 		}
@@ -69,10 +72,25 @@ public class CheckPointManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        DecrementTimers();
+        if (!_CompletedPuzzle) 
+        { 
+            DecrementTimers();
+            if (CheckPuzzleCompletion())
+            {
+                for (int i = 0; i < _checkPoints.Count; i++)
+				{
+                    _checkPoints[i].GetComponent<CheckPoint>().CompletedColour();
+				}
+                _CompletedPuzzle = true;
+            }
+        }
     }
 
-
+    public void ActivateCheckPoint(int i)
+	{
+        _checkPointStatuses[i].activated = true;
+        _checkPointStatuses[i].timer = _checkpointResetTimerLength;
+	}
 
     void DecrementTimers()
 	{
@@ -85,11 +103,26 @@ public class CheckPointManager : MonoBehaviour
                 _checkPointStatuses[index].timer -= Time.deltaTime; 
                 if (_checkPointStatuses[index].CheckTimerCompleted()) // Checks if the activation timer has finished
 				{
-                    _checkPoints[index].GetComponent<CheckPoint>().UnChangeColour();
                     _checkPointStatuses[index].activated = false;
                     _checkPointStatuses[index].timer = _checkpointResetTimerLength;
                 }
-			}        
+			}
+			else
+			{
+                _checkPoints[index].GetComponent<CheckPoint>().UnChangeColour();
+            }
 		}
 	}
+
+    private bool CheckPuzzleCompletion()
+    {
+        for (int i = 0; i < _checkPoints.Count; i++)
+		{
+            if (!_checkPointStatuses[i].activated)
+			{
+                return false;
+			}      
+		}
+        return true;
+    }
 }
