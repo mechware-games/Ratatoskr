@@ -119,4 +119,11 @@ public class FenrirScript : MonoBehaviour
         ToggleChildrenActive(tf_switch);
 	}
 
+	private void OnTriggerEnter(Collider other)
+	{
+        if (other.tag == "Player")
+		{
+            // Insert code for killing the player
+		}
+	}
 }
