@@ -90,17 +90,20 @@ public class CheckPointManager : MonoBehaviour
 
     public void ActivateCheckPoint(int i)
 	{
-        if (i == _order[_puzzleProgress])
-		{
-            _checkPointStatuses[i].activated = true;
-            _checkPointStatuses[i].timer = _checkpointResetTimerLength;
-            _puzzleProgress++;
+        if (!_checkPointStatuses[i].activated)
+        {
+            if (i == _order[_puzzleProgress])
+            {
+                _checkPointStatuses[i].activated = true;
+                _checkPointStatuses[i].timer = _checkpointResetTimerLength;
+                _puzzleProgress++;
+            }
+            else
+            {
+                DeactivateAll();
+                _puzzleProgress = 0;
+            }
         }
-		else
-		{
-            DeactivateAll();
-            _puzzleProgress = 0;
-		}
 	}
 
     void DecrementTimers()
