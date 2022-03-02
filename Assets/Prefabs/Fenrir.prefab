@@ -385,6 +385,7 @@ MonoBehaviour:
   _xSpawnMinDistance: 15
   _ySpawnMinDistance: 15
   _zSpawnMinDistance: 15
+  _playerDistanceSpawnModifier: 50
 --- !u!135 &511321273480114904
 SphereCollider:
   m_ObjectHideFlags: 0
