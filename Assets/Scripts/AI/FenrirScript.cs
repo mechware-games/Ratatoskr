@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FenrirScript : MonoBehaviour
 {
@@ -52,7 +53,13 @@ public class FenrirScript : MonoBehaviour
 
     List<Transform> _children;
 
-    // Start is called before the first frame updatei'l
+    [SerializeField]
+    [Range(15f, 50f)]
+    private float _playerDistanceSpawnModifier = 20f;
+
+    private float _LastDistanceFromPlayer = 0;
+
+    // Start is called before the first frame update
     void Start()
     {
         _pauseTimer = _pauseLength;
@@ -80,7 +87,12 @@ public class FenrirScript : MonoBehaviour
             case State.Chasing:
                 MoveTowardsLastKnownPlayerLocation();
                 _chaseTimer -= Time.deltaTime;
-                if (_chaseTimer < 0) { _chaseTimer = _chaseLength; _currentState = State.Despawned; ToggleChildrenActive(false); };
+                if (_chaseTimer < 0) 
+                { 
+                    _chaseTimer = _chaseLength; _currentState = State.Despawned; 
+                    ToggleChildrenActive(false);
+                    _LastDistanceFromPlayer = (_player.position - transform.position).magnitude / _playerDistanceSpawnModifier;
+                };
                 break;
 			case State.Despawned:
                 _pauseTimer -= Time.deltaTime;
@@ -111,9 +123,9 @@ public class FenrirScript : MonoBehaviour
 
     void Respawn(bool tf_switch)
 	{
-        float xOffset = Random.Range(-_xSpawnRange, _xSpawnRange) + _xSpawnMinDistance;
-        float yOffset = Random.Range(-_ySpawnRange, _xSpawnRange) + _ySpawnMinDistance;
-        float zOffset = Random.Range(-_zSpawnRange, _xSpawnRange) + _zSpawnMinDistance;
+        float xOffset = Random.Range(-_xSpawnRange, _xSpawnRange) + _xSpawnMinDistance * _LastDistanceFromPlayer;
+        float yOffset = Random.Range(-_ySpawnRange, _xSpawnRange) +  _ySpawnMinDistance * _LastDistanceFromPlayer;
+        float zOffset = Random.Range(-_zSpawnRange, _xSpawnRange) + _zSpawnMinDistance * _LastDistanceFromPlayer;
         Vector3 RandomPositionModifier = new Vector3(xOffset, yOffset, zOffset);
         transform.position = _player.position + RandomPositionModifier;
         ToggleChildrenActive(tf_switch);
@@ -123,7 +135,7 @@ public class FenrirScript : MonoBehaviour
 	{
         if (other.tag == "Player")
 		{
-            // Insert code for killing the player
-		}
+            SceneManager.LoadScene("Main Scene");
+        }
 	}
 }
