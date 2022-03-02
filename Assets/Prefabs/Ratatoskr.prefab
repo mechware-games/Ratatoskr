@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 611385539080423593}
   m_Layer: 0
   m_Name: Squirrel_Main (3)
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -198,14 +198,11 @@ MonoBehaviour:
   maxSpeed: 25
   jumpForce: 2
   groundDist: 0.4
-  appliedForceMode: 0
   wallrunForce: 5
   maxWallRunTime: 2
-  maxWallSpeed: 25
+  wallrunSpeedMultiplier: 25
   wallrunGravity: -5
-  glideFallOff: -1.5
-  maxGlideTime: 0
-  minlideTime: 0
+  glideGravity: -1.5
   debugMode: 0
   cam: {fileID: 0}
   orientation: {fileID: 8110555185532266356}
