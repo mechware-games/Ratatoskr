@@ -47,11 +47,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6c81640109d544c868d7593a50ea4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _checkpointResetTimerLength: 10
+  _checkpointResetTimerLength: 20
   _checkPoints:
   - {fileID: 4701225089832347721}
   - {fileID: 7100937161310110934}
   - {fileID: 6243275647996948811}
+  _CompletedPuzzle: 0
 --- !u!1001 &1019123297772514487
 PrefabInstance:
   m_ObjectHideFlags: 0
