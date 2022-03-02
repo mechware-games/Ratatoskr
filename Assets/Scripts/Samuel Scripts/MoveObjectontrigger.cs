@@ -80,5 +80,21 @@ namespace movestuff
                 direction *= -1;
             }
         }
-    }
+
+		private void OnTriggerEnter(Collider other)
+		{
+			if (other.tag == "Player")
+			{
+                other.gameObject.transform.parent.parent = transform;
+			}
+		}
+
+		private void OnTriggerExit(Collider other)
+		{
+			if (other.tag == "Player")
+			{
+                other.gameObject.transform.parent.parent = null;
+			}
+		}
+	}
 }
