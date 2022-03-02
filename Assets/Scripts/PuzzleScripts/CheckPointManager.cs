@@ -11,6 +11,8 @@ public class CheckPointManager : MonoBehaviour
     [SerializeField]
     private List<Transform> _checkPoints;
 
+    [SerializeField]
+    private int _puzzleProgress = 0;
 	private class Checkpoint
 	{
         public Checkpoint (float timerLength)
@@ -88,8 +90,17 @@ public class CheckPointManager : MonoBehaviour
 
     public void ActivateCheckPoint(int i)
 	{
-        _checkPointStatuses[i].activated = true;
-        _checkPointStatuses[i].timer = _checkpointResetTimerLength;
+        if (i == _order[_puzzleProgress])
+		{
+            _checkPointStatuses[i].activated = true;
+            _checkPointStatuses[i].timer = _checkpointResetTimerLength;
+            _puzzleProgress++;
+        }
+		else
+		{
+            DeactivateAll();
+            _puzzleProgress = 0;
+		}
 	}
 
     void DecrementTimers()
@@ -125,4 +136,13 @@ public class CheckPointManager : MonoBehaviour
 		}
         return true;
     }
+
+    private void DeactivateAll()
+	{
+        for (int i = 0; i < _checkPoints.Count; i++)
+		{
+            _checkPointStatuses[i].timer = _checkpointResetTimerLength;
+            _checkPointStatuses[i].activated = false;
+        }
+	}
 }
