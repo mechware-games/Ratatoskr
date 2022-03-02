@@ -9,33 +9,43 @@ public class RBTPP : MonoBehaviour
     public float baseSpeed = 10f;
     public float maxSpeed = 25f;
 
+    private float currentSpeed;
+
     [Header("Jumping")]
-    public float jumpForce = 2f;
+    public float baseJumpForce = 2f;
     public float groundDist = 0.4f;
+    public float jumpForwardForce = 1.5f;
+
+    private float currentJumpForce;
+    private float currentJumpForwardForce;
+
+    private bool isJumping;
 
     [Header("Wall Running")]
     public float wallrunForce = 5f;
     public float maxWallRunTime = 2f;
     public float wallrunSpeedMultiplier = 25f;
     public float wallrunGravity = -1f;
+
     private float wallrunBaseSpeed;
     private float wallrunCounterGravity;
     private float currentWallrunGravity;
+
+    private bool isWallRunning;
+    private bool isWallRight;
+    private bool isWallLeft;
 
     [Header("Gliding")]
     public float glideGravity = -1.5f;
     private float glideCounterGravity;
 
+    private bool isGliding;
+
     [Header("Bools")]
     public bool debugMode;
-    private bool isJumping;
     private bool isGrounded;
-    private bool isGliding;
-    private bool isWallRunning;
-    private bool isWallRight;
-    private bool isWallLeft;
 
-    [Header("Transform Refs")]
+    [Header("Transform References")]
     public Transform cam;
     public Transform orientation;
     public Transform groundCheck;
@@ -43,6 +53,7 @@ public class RBTPP : MonoBehaviour
     [Header("Masks")]
     public LayerMask groundMask;
     public LayerMask wallMask;
+    public LayerMask vaultMask;
     
     [Header("Misc")]
     private Rigidbody rb;
@@ -55,7 +66,11 @@ public class RBTPP : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody>();
         wallrunCounterGravity = (-Physics.gravity.y + wallrunGravity);
         glideCounterGravity = (-Physics.gravity.y + glideGravity);
-        wallrunBaseSpeed = wallrunSpeedMultiplier * baseSpeed;
+        wallrunBaseSpeed = wallrunSpeedMultiplier * currentSpeed;
+
+        currentSpeed = baseSpeed;
+        currentJumpForce = baseJumpForce;
+        currentJumpForwardForce = baseForwardForce;
     }
 
     private void Update()
@@ -65,6 +80,10 @@ public class RBTPP : MonoBehaviour
         {
             currentWallrunGravity = wallrunCounterGravity;
         }
+        if (currentSpeed > maxSpeed && isGrounded)
+        {
+            //reduce current speed over time
+        }
     }
 
     private void FixedUpdate()
@@ -73,7 +92,7 @@ public class RBTPP : MonoBehaviour
         Move();
         CheckForWall();
         WallRunInput();
-        Glide();
+        //Glide();
     }
 
     private void DebugMode()
@@ -86,6 +105,18 @@ public class RBTPP : MonoBehaviour
         float hor = Input.GetAxisRaw("Horizontal");
         float ver = Input.GetAxisRaw("Vertical");
         Vector3 dir = new Vector3(hor, 0, ver).normalized;
+        if (currentSpeed > baseSpeed)
+        {
+            float diff = currentSpeed - baseSpeed;
+            if (diff > 1)
+            {
+                currentSpeed -= diff / 2 * time.deltaTime;
+            }
+            else
+            {
+                currentSpeed = baseSpeed;
+            }
+        }
         if (dir.magnitude >= 0.1f)
         {
             float targetAngle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
@@ -93,7 +124,7 @@ public class RBTPP : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
-            rb.MovePosition(transform.position + moveDir.normalized * baseSpeed * Time.deltaTime);
+            rb.MovePosition(transform.position + moveDir.normalized * currentSpeed * Time.deltaTime);
         }
     }
 
@@ -104,12 +135,16 @@ public class RBTPP : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) && isGrounded)
         {
             rb.AddForce(Vector3.up * Mathf.Sqrt(jumpForce * -2 * Physics.gravity.y), ForceMode.Impulse);
+            rb.AddForce(transform.forward + jumpForwardForce, ForceMode.Impulse)
             isJumping = true;
         }
-        else isJumping = false;
+        else 
+        {
+            isJumping = false;
+        } 
     }
 
-    private void Glide()
+    /* private void Glide()
     {
         if (!isGrounded && !isWallRunning && Input.GetKey(KeyCode.Space))
         {
@@ -120,7 +155,7 @@ public class RBTPP : MonoBehaviour
         {
             isGliding = false;
         }
-    }
+    }*/
 
     void WallRunInput()
     {
@@ -142,14 +177,16 @@ public class RBTPP : MonoBehaviour
             rb.AddForce(transform.forward * wallrunForce, ForceMode.Acceleration);
 
             if (isWallRight)
-            {
+            {  
                 rb.AddForce(-transform.right * wallrunForce);
                 rb.AddForce(Vector3.up * wallrunCounterGravity, ForceMode.Acceleration);
+                if (Input.GetKey(KeyCode.Space)) WallRunJump();
             }
             else
             {
                 rb.AddForce(transform.right * wallrunForce);
                 rb.AddForce(Vector3.up * wallrunCounterGravity, ForceMode.Acceleration);
+                if (Input.GetKey(KeyCode.Space)) WallRunJump();
             }
         }
     }
@@ -160,5 +197,33 @@ public class RBTPP : MonoBehaviour
         isWallLeft = Physics.Raycast(transform.position, -orientation.right, 1f, wallMask);
 
         if (!isWallLeft && !isWallRight) StopWallRun();
+    }
+
+    private void WallRunJump()
+    {
+        if (isWallRunning)
+        {
+            rb.AddForce(transform.forward * (jumpForwardForce * 0.5));
+            if (isWallRight)
+            {
+                rb.AddForce(transform.left * (jumpForwardForce * 0.5))
+            }
+            else
+            {
+                rb.AddForce(transform.right * (jumpForwardForce * 0.5))
+            }
+        } 
+    }
+
+    private void Roll()
+    {
+        if (Input.GetKey(KeyCode.LeftShift) && !isWallLeft && !isWallRight && isGrounded)
+        {
+            //Roll
+            if(currentSpeed > baseSpeed)
+            {
+
+            }
+        }
     }
 }
