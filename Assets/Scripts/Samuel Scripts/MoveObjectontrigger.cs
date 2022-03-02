@@ -19,8 +19,10 @@ namespace movestuff
         public bool activate = false;
         float position;
         public new Rigidbody rigidbody;
-        public Vector3 start = -Vector3.forward;
-        public Vector3 end = Vector3.forward;
+        //public Vector3 start = -Vector3.forward;
+        //public Vector3 end = Vector3.forward;
+        public Transform start;
+        public Transform end;
         public float duration = 1;
         public AnimationCurve accelCurve;
         float time = 0f;
@@ -28,8 +30,8 @@ namespace movestuff
 
         public void FixedUpdate()
         {
-            if (activate)
-            {
+            //if (activate)
+            //{
                 time = time + (direction * Time.deltaTime / duration);
                 switch (loopType)
                 {
@@ -44,14 +46,14 @@ namespace movestuff
                         break;
                 }
                 PerformTransform(position);
-            }
+            //}
         }
 
 
         public void PerformTransform(float position)
         {
             var curvePosition = accelCurve.Evaluate(position);
-            var pos = transform.TransformPoint(Vector3.Lerp(start, end, curvePosition));
+            var pos = transform.TransformPoint(Vector3.Lerp(start.position, end.position, curvePosition));
             Vector3 deltaPosition = pos - rigidbody.position;
             if (Application.isEditor && !Application.isPlaying)
                 rigidbody.transform.position = pos;
