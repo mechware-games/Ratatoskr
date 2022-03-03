@@ -28,8 +28,7 @@ public class MoveObjectontrigger : MonoBehaviour
 
     private void Start()
     {
-        position = 0;
-        PerformTransform(position);
+        start.position = rigidbody.position;
     }
 
 
@@ -54,8 +53,7 @@ public class MoveObjectontrigger : MonoBehaviour
         }
     }
 
-
-        public void PerformTransform(float position)
+    public void PerformTransform(float position)
         {
             var curvePosition = accelCurve.Evaluate(position);
             var pos = transform.TransformPoint(Vector3.Lerp(start.localPosition, end.localPosition, curvePosition));
