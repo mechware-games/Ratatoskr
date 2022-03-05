@@ -13,8 +13,8 @@ public class RBTPP : MonoBehaviour
 
     [Header("Jumping")]
     public float baseJumpForce = 2f;
+    public float baseForwardForce = 1.5f;
     public float groundDist = 0.4f;
-    public float jumpForwardForce = 1.5f;
 
     private float currentJumpForce;
     private float currentJumpForwardForce;
@@ -76,6 +76,7 @@ public class RBTPP : MonoBehaviour
     private void Update()
     {
         DebugMode();
+        Jump();
         if (isGrounded)
         {
             currentWallrunGravity = wallrunCounterGravity;
@@ -88,7 +89,7 @@ public class RBTPP : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Jump();
+        //Jump();
         Move();
         CheckForWall();
         WallRunInput();
@@ -110,7 +111,7 @@ public class RBTPP : MonoBehaviour
             float diff = currentSpeed - baseSpeed;
             if (diff > 1)
             {
-                currentSpeed -= diff / 2 * time.deltaTime;
+                currentSpeed -= diff / 2 * Time.deltaTime;
             }
             else
             {
@@ -132,16 +133,16 @@ public class RBTPP : MonoBehaviour
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDist, groundMask);
 
-        if (Input.GetKey(KeyCode.Space) && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            rb.AddForce(Vector3.up * Mathf.Sqrt(jumpForce * -2 * Physics.gravity.y), ForceMode.Impulse);
-            rb.AddForce(transform.forward + jumpForwardForce, ForceMode.Impulse)
+            rb.AddForce(Vector3.up * Mathf.Sqrt(currentJumpForce * -2 * Physics.gravity.y), ForceMode.Impulse);
+            rb.AddForce(transform.forward * currentJumpForwardForce, ForceMode.Impulse);
             isJumping = true;
         }
         else 
         {
             isJumping = false;
-        } 
+        }
     }
 
     /* private void Glide()
@@ -178,13 +179,13 @@ public class RBTPP : MonoBehaviour
 
             if (isWallRight)
             {  
-                rb.AddForce(-transform.right * wallrunForce);
+                rb.AddForce(transform.right * wallrunForce);
                 rb.AddForce(Vector3.up * wallrunCounterGravity, ForceMode.Acceleration);
                 if (Input.GetKey(KeyCode.Space)) WallRunJump();
             }
             else
             {
-                rb.AddForce(transform.right * wallrunForce);
+                rb.AddForce(-transform.right * wallrunForce);
                 rb.AddForce(Vector3.up * wallrunCounterGravity, ForceMode.Acceleration);
                 if (Input.GetKey(KeyCode.Space)) WallRunJump();
             }
@@ -203,14 +204,16 @@ public class RBTPP : MonoBehaviour
     {
         if (isWallRunning)
         {
-            rb.AddForce(transform.forward * (jumpForwardForce * 0.5));
+            //Forces the player away from the wall 
             if (isWallRight)
             {
-                rb.AddForce(transform.left * (jumpForwardForce * 0.5))
+                rb.AddForce(-transform.right * (currentJumpForce), ForceMode.Impulse); 
+                rb.AddForce(transform.forward * (currentJumpForwardForce), ForceMode.Impulse);
             }
             else
             {
-                rb.AddForce(transform.right * (jumpForwardForce * 0.5))
+                rb.AddForce(transform.right * (currentJumpForce), ForceMode.Impulse);
+                rb.AddForce(transform.forward * (currentJumpForwardForce), ForceMode.Impulse);
             }
         } 
     }
@@ -225,5 +228,5 @@ public class RBTPP : MonoBehaviour
 
             }
         }
-    }
+    } // I don't understand what you're wanting here Chris :D
 }
