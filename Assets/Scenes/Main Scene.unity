@@ -1716,6 +1716,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1654346385}
   - component: {fileID: 1654346384}
+  - component: {fileID: 1654346386}
   m_Layer: 0
   m_Name: TPPCamera
   m_TagString: Untagged
@@ -4602,7 +4603,7 @@ PrefabInstance:
     - target: {fileID: 8110555185583622386, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
         type: 3}
       propertyPath: m_Mass
-      value: 20
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8110555185583622386, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
         type: 3}
@@ -4636,8 +4637,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8110555185583622387, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
         type: 3}
+      propertyPath: baseJumpForce
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8110555185583622387, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
+        type: 3}
       propertyPath: wallrunGravity
-      value: 1
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8110555185583622387, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
+        type: 3}
+      propertyPath: baseForwardForce
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8110555185583622387, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
+        type: 3}
+      propertyPath: wallrunSpeedMultiplier
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8110555185583622388, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
         type: 3}
