@@ -8,12 +8,12 @@ public class FenrirScript : MonoBehaviour
 
     [SerializeField]
     [Range(0.1f, 20f)]
-    private float _speed;
+    public float _speed;
 
     [SerializeField]
     [Range(1f, 10f)]
-    private float _chaseLength;
-    private float _chaseTimer;
+    public float _chaseLength;
+    public float _chaseTimer;
 
     [SerializeField]
     [Range(1f,5f)]
