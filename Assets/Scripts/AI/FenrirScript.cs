@@ -21,29 +21,17 @@ public class FenrirScript : MonoBehaviour
     private float _pauseLength;
     private float _pauseTimer;
 
-    [SerializeField]
-    [Range(5f, 15f)]
-    private float _xSpawnRange = 5f;
 
     [SerializeField]
-    [Range(5f, 15f)]
-    private float _ySpawnRange = 5f;
-
-    [SerializeField]
-    [Range(5f, 15f)]
-    private float _zSpawnRange = 5f;
-
-
-    [SerializeField]
-    [Range(5f, 15f)]
+    [Range(2f, 15f)]
     private float _xSpawnMinDistance = 5f;
 
     [SerializeField]
-    [Range(5f, 15f)]
+    [Range(2f, 15f)]
     private float _ySpawnMinDistance = 5f;
 
     [SerializeField]
-    [Range(5f, 15f)]
+    [Range(2f, 15f)]
     private float _zSpawnMinDistance = 5f;
 
     private Vector3 _playerSpottedLocation;
@@ -52,10 +40,6 @@ public class FenrirScript : MonoBehaviour
     private State _currentState = State.Chasing;
 
     List<Transform> _children;
-
-    [SerializeField]
-    [Range(15f, 50f)]
-    private float _playerDistanceSpawnModifier = 20f;
 
     private float _LastDistanceFromPlayer = 0;
 
@@ -91,7 +75,7 @@ public class FenrirScript : MonoBehaviour
                 { 
                     _chaseTimer = _chaseLength; _currentState = State.Despawned; 
                     ToggleChildrenActive(false);
-                    _LastDistanceFromPlayer = (_player.position - transform.position).magnitude / _playerDistanceSpawnModifier;
+                    _LastDistanceFromPlayer = (_player.position - transform.position).magnitude;
                 };
                 break;
 			case State.Despawned:
@@ -121,13 +105,40 @@ public class FenrirScript : MonoBehaviour
         transform.position += movementDirection * _speed * Time.deltaTime;
     }
 
+    // Gets direction vector that Fenrir will spawn from relative to the player
+    // This function may be expanded on to allow the spawning of Fenrir to be more sofisticated
+    private Vector3 GetSpawningDirection()
+	{
+        return new Vector3(Random.value, Random.value, Random.value).normalized;
+    }
+
+    // Uses the min spawning distances to offset Fenrir's spawn location and prevent him spawning on top of the player
+    private Vector3 GetOffSetVector(Vector3 playerPosition,Vector3 spawningVector)
+	{
+        Vector3 comparison = playerPosition - spawningVector;
+        if (comparison.x < _xSpawnMinDistance && comparison.x > -_xSpawnMinDistance)
+		{
+            comparison.x = comparison.x > 0 ? _xSpawnMinDistance : -_xSpawnMinDistance;
+		}
+
+        if (comparison.y < _xSpawnMinDistance && comparison.y > -_xSpawnMinDistance)
+        {
+            comparison.y = comparison.y > 0 ? _xSpawnMinDistance : -_xSpawnMinDistance;
+        }
+
+        if (comparison.z < _xSpawnMinDistance && comparison.z > -_xSpawnMinDistance)
+        {
+            comparison.z = comparison.z > 0 ? _xSpawnMinDistance : -_xSpawnMinDistance;
+        }
+        return comparison;
+    }
+
     void Respawn(bool tf_switch)
 	{
-        float xOffset = Random.Range(-_xSpawnRange, _xSpawnRange) + _xSpawnMinDistance * _LastDistanceFromPlayer;
-        float yOffset = Random.Range(-_ySpawnRange, _xSpawnRange) +  _ySpawnMinDistance * _LastDistanceFromPlayer;
-        float zOffset = Random.Range(-_zSpawnRange, _xSpawnRange) + _zSpawnMinDistance * _LastDistanceFromPlayer;
-        Vector3 RandomPositionModifier = new Vector3(xOffset, yOffset, zOffset);
-        transform.position = _player.position + RandomPositionModifier;
+        Vector3 spawningVector = GetSpawningDirection() * _LastDistanceFromPlayer;
+        spawningVector = GetOffSetVector(_player.position, spawningVector);
+        Vector3 spawnLocation = _player.position + spawningVector;
+        transform.position = spawnLocation;
         ToggleChildrenActive(tf_switch);
 	}
 

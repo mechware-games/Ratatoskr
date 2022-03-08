@@ -379,13 +379,9 @@ MonoBehaviour:
   _speed: 4
   _chaseLength: 7
   _pauseLength: 3
-  _xSpawnRange: 15
-  _ySpawnRange: 15
-  _zSpawnRange: 15
-  _xSpawnMinDistance: 15
-  _ySpawnMinDistance: 15
-  _zSpawnMinDistance: 15
-  _playerDistanceSpawnModifier: 50
+  _xSpawnMinDistance: 5
+  _ySpawnMinDistance: 2
+  _zSpawnMinDistance: 3
 --- !u!135 &511321273480114904
 SphereCollider:
   m_ObjectHideFlags: 0
