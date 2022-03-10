@@ -2,58 +2,61 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace movestuff
+
+public class MoveObjectontrigger : MonoBehaviour
 {
-    public class MoveObjectontrigger : MonoBehaviour
+
+    public enum LoopType
     {
+        Once,
+        PingPong,
+        Repeat
+    }
 
-        public enum LoopType
+    public LoopType loopType;
+
+    public bool activate = false;
+    float position;
+    public new Rigidbody rigidbody;
+    public Transform start;
+    public Transform end;
+    public float duration = 1;
+    public AnimationCurve accelCurve;
+    float time = 0f;
+    float direction = 1f;
+
+
+    private void Start()
+    {
+        start.position = rigidbody.position;
+    }
+
+
+    public void FixedUpdate()
+    {
+        if (activate)
         {
-            Once,
-            PingPong,
-            Repeat
+            time = time + (direction * Time.deltaTime / duration);
+            switch (loopType)
+            {
+                case LoopType.Once:
+                    Once();
+                    break;
+                case LoopType.PingPong:
+                    LoopPingPong();
+                    break;
+                case LoopType.Repeat:
+                    LoopRepeat();
+                    break;
+            }
+            PerformTransform(position);
         }
+    }
 
-        public LoopType loopType;
-
-        public bool activate = false;
-        float position;
-        public new Rigidbody rigidbody;
-        //public Vector3 start = -Vector3.forward;
-        //public Vector3 end = Vector3.forward;
-        public Transform start;
-        public Transform end;
-        public float duration = 1;
-        public AnimationCurve accelCurve;
-        float time = 0f;
-        float direction = 1f;
-
-        public void FixedUpdate()
-        {
-            //if (activate)
-            //{
-                time = time + (direction * Time.deltaTime / duration);
-                switch (loopType)
-                {
-                    case LoopType.Once:
-                        LoopOnce();
-                        break;
-                    case LoopType.PingPong:
-                        LoopPingPong();
-                        break;
-                    case LoopType.Repeat:
-                        LoopRepeat();
-                        break;
-                }
-                PerformTransform(position);
-            //}
-        }
-
-
-        public void PerformTransform(float position)
+    public void PerformTransform(float position)
         {
             var curvePosition = accelCurve.Evaluate(position);
-            var pos = transform.TransformPoint(Vector3.Lerp(start.position, end.position, curvePosition));
+            var pos = transform.TransformPoint(Vector3.Lerp(start.localPosition, end.localPosition, curvePosition));
             Vector3 deltaPosition = pos - rigidbody.position;
             if (Application.isEditor && !Application.isPlaying)
                 rigidbody.transform.position = pos;
@@ -71,7 +74,7 @@ namespace movestuff
             position = Mathf.Repeat(time, 1f);
         }
 
-        void LoopOnce()
+        void Once()
         {
             position = Mathf.Clamp01(time);
             if (position >= 1)
@@ -80,21 +83,4 @@ namespace movestuff
                 direction *= -1;
             }
         }
-
-		private void OnTriggerEnter(Collider other)
-		{
-			if (other.tag == "Player")
-			{
-                other.gameObject.transform.parent.parent = transform;
-			}
-		}
-
-		private void OnTriggerExit(Collider other)
-		{
-			if (other.tag == "Player")
-			{
-                other.gameObject.transform.parent.parent = null;
-			}
-		}
-	}
-}
+    }
