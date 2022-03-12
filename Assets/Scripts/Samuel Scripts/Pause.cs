@@ -25,14 +25,15 @@ using UnityEngine.SceneManagement;
             paused = !paused;
             if (paused)
             {
-                //Time.timeScale = 0;
+                Time.timeScale = 0;
                 PauseMenu.SetActive(true);
             }
 
             else
             {
-                //Time.timeScale = 1;
+                Time.timeScale = 1;
                 PauseMenu.SetActive(false);
+                OptionsMenu.SetActive(false);
             }
         }
     }
