@@ -75,7 +75,8 @@ public class FenrirScript : MonoBehaviour
                 { 
                     _chaseTimer = _chaseLength; _currentState = State.Despawned; 
                     ToggleChildrenActive(false);
-                    _LastDistanceFromPlayer = (_player.position - transform.position).magnitude;
+					GetComponent<SphereCollider>().enabled = false;
+					_LastDistanceFromPlayer = (_player.position - transform.position).magnitude;
                 };
                 break;
 			case State.Despawned:
@@ -139,7 +140,8 @@ public class FenrirScript : MonoBehaviour
         spawningVector = GetOffSetVector(_player.position, spawningVector);
         Vector3 spawnLocation = _player.position + spawningVector;
         transform.position = spawnLocation;
-        ToggleChildrenActive(tf_switch);
+		ToggleChildrenActive(tf_switch);
+		GetComponent<SphereCollider>().enabled = tf_switch;
 	}
 
 	private void OnTriggerEnter(Collider other)
