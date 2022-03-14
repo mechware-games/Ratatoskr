@@ -78,7 +78,8 @@ public class Movement : MonoBehaviour
     private void Awake()
     {
         rb = gameObject.GetComponent<Rigidbody>();
-
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         currentSpeed = baseSpeed;
         currentJumpForce = baseJumpForce;
         currentJumpForwardForce = baseForwardForce;
