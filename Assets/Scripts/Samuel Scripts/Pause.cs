@@ -25,14 +25,19 @@ using UnityEngine.SceneManagement;
             paused = !paused;
             if (paused)
             {
-                //Time.timeScale = 0;
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+                Time.timeScale = 0;
                 PauseMenu.SetActive(true);
             }
 
             else
             {
-                //Time.timeScale = 1;
+                Time.timeScale = 1;
                 PauseMenu.SetActive(false);
+                OptionsMenu.SetActive(false);
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
             }
         }
     }
