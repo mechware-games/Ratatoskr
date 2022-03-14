@@ -120,10 +120,11 @@ public class ThirdPersonMovement : MonoBehaviour
 
         isWallRunning = true;
         Debug.Log("YO WE START THE WALLRUN");
+        velocity.y = 0f;
 
         if (rb.velocity.magnitude <= maxWallSpeed)
         {
-            rb.AddForce(orientation.forward * wallrunForce * Time.deltaTime);
+            /*rb.AddForce(orientation.forward * wallrunForce * Time.deltaTime);
             if (isWallRight)
             {
                 rb.AddForce(orientation.right * wallrunForce / 5 * Time.deltaTime);
@@ -131,7 +132,8 @@ public class ThirdPersonMovement : MonoBehaviour
             else
             {
                 rb.AddForce(-orientation.right * wallrunForce / 5 * Time.deltaTime);
-            }
+            }*/
+
         }
     }
 

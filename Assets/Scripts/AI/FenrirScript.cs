@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FenrirScript : MonoBehaviour
 {
@@ -21,6 +22,18 @@ public class FenrirScript : MonoBehaviour
     private float _pauseTimer;
 
 
+    [SerializeField]
+    [Range(2f, 15f)]
+    private float _xSpawnMinDistance = 5f;
+
+    [SerializeField]
+    [Range(2f, 15f)]
+    private float _ySpawnMinDistance = 5f;
+
+    [SerializeField]
+    [Range(2f, 15f)]
+    private float _zSpawnMinDistance = 5f;
+
     private Vector3 _playerSpottedLocation;
 
     private enum State { Chasing, Despawned };
@@ -28,7 +41,9 @@ public class FenrirScript : MonoBehaviour
 
     List<Transform> _children;
 
-    // Start is called before the first frame updatei'l
+    private float _LastDistanceFromPlayer = 0;
+
+    // Start is called before the first frame update
     void Start()
     {
         _pauseTimer = _pauseLength;
@@ -56,11 +71,17 @@ public class FenrirScript : MonoBehaviour
             case State.Chasing:
                 MoveTowardsLastKnownPlayerLocation();
                 _chaseTimer -= Time.deltaTime;
-                if (_chaseTimer < 0) { _chaseTimer = _chaseLength; _currentState = State.Despawned; ToggleChildrenActive(false); };
+                if (_chaseTimer < 0) 
+                { 
+                    _chaseTimer = _chaseLength; _currentState = State.Despawned; 
+                    ToggleChildrenActive(false);
+					GetComponent<SphereCollider>().enabled = false;
+					_LastDistanceFromPlayer = (_player.position - transform.position).magnitude;
+                };
                 break;
 			case State.Despawned:
                 _pauseTimer -= Time.deltaTime;
-                if (_pauseTimer < 0) { _pauseTimer = _pauseLength; _currentState = State.Chasing; ToggleChildrenActive(true); }
+                if (_pauseTimer < 0) { _pauseTimer = _pauseLength; _currentState = State.Chasing; Respawn(true); }
                 break;
 		}
 
@@ -84,4 +105,50 @@ public class FenrirScript : MonoBehaviour
 
         transform.position += movementDirection * _speed * Time.deltaTime;
     }
+
+    // Gets direction vector that Fenrir will spawn from relative to the player
+    // This function may be expanded on to allow the spawning of Fenrir to be more sofisticated
+    private Vector3 GetSpawningDirection()
+	{
+        return new Vector3(Random.value, Random.value, Random.value).normalized;
+    }
+
+    // Uses the min spawning distances to offset Fenrir's spawn location and prevent him spawning on top of the player
+    private Vector3 GetOffSetVector(Vector3 playerPosition,Vector3 spawningVector)
+	{
+        Vector3 comparison = playerPosition - spawningVector;
+        if (comparison.x < _xSpawnMinDistance && comparison.x > -_xSpawnMinDistance)
+		{
+            comparison.x = comparison.x > 0 ? _xSpawnMinDistance : -_xSpawnMinDistance;
+		}
+
+        if (comparison.y < _xSpawnMinDistance && comparison.y > -_xSpawnMinDistance)
+        {
+            comparison.y = comparison.y > 0 ? _xSpawnMinDistance : -_xSpawnMinDistance;
+        }
+
+        if (comparison.z < _xSpawnMinDistance && comparison.z > -_xSpawnMinDistance)
+        {
+            comparison.z = comparison.z > 0 ? _xSpawnMinDistance : -_xSpawnMinDistance;
+        }
+        return comparison;
+    }
+
+    void Respawn(bool tf_switch)
+	{
+        Vector3 spawningVector = GetSpawningDirection() * _LastDistanceFromPlayer;
+        spawningVector = GetOffSetVector(_player.position, spawningVector);
+        Vector3 spawnLocation = _player.position + spawningVector;
+        transform.position = spawnLocation;
+		ToggleChildrenActive(tf_switch);
+		GetComponent<SphereCollider>().enabled = tf_switch;
+	}
+
+	private void OnTriggerEnter(Collider other)
+	{
+        if (other.tag == "Player")
+		{
+            SceneManager.LoadScene("Main Scene");
+        }
+	}
 }
