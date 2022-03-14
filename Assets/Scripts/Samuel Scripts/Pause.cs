@@ -25,6 +25,8 @@ using UnityEngine.SceneManagement;
             paused = !paused;
             if (paused)
             {
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
                 Time.timeScale = 0;
                 PauseMenu.SetActive(true);
             }
@@ -34,6 +36,8 @@ using UnityEngine.SceneManagement;
                 Time.timeScale = 1;
                 PauseMenu.SetActive(false);
                 OptionsMenu.SetActive(false);
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
             }
         }
     }
