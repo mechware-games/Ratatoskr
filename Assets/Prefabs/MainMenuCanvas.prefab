@@ -486,10 +486,22 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7558964017986045347}
+        m_TargetAssemblyTypeName: Optionsmenuscript, Assembly-CSharp
+        m_MethodName: MasterVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
 --- !u!1 &7558964017612630451
 GameObject:
   m_ObjectHideFlags: 0
@@ -2880,6 +2892,7 @@ GameObject:
   - component: {fileID: 7558964017986045352}
   - component: {fileID: 7558964017986045346}
   - component: {fileID: 7558964017986045347}
+  - component: {fileID: 7188327529594896630}
   m_Layer: 5
   m_Name: MainMenuCanvas
   m_TagString: Untagged
@@ -3004,3 +3017,16 @@ MonoBehaviour:
   Audio: {fileID: 7558964017578606570}
   MasterMix: {fileID: 24100000, guid: 14d004d210e7a9d4fa36be1bd5663513, type: 2}
   Resolution: {fileID: 7558964018086205784}
+--- !u!114 &7188327529594896630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8058019686587176814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0816931792b91a34185c2f29eda6ada1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextscene: Main Scene
