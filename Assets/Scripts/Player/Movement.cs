@@ -49,7 +49,12 @@ public class Movement : MonoBehaviour
 
     [SerializeField]
     [Range(1, 50f)]
-    public float _wallKickForce = 20;
+    public float _wallKickOffForce = 20;
+
+    [SerializeField]
+    [Range(1, 50f)]
+    public float _wallKickUpForce = 20;
+
 
     [SerializeField]
     [Range(0.1f, 3f)]
@@ -225,14 +230,14 @@ public class Movement : MonoBehaviour
             case State.Wallrunning:
                 // Wallrun Jump
                 bool isWallRight = Physics.Raycast(transform.position, transform.right, 1f, wallMask);
-                rb.AddForce(Vector3.up * Mathf.Sqrt(currentJumpForce * -2 * Physics.gravity.y), ForceMode.Impulse);
+                rb.AddForce(Vector3.up * _wallKickUpForce, ForceMode.Impulse);
                 if (isWallRight)
                 {
-                    rb.AddForce(-transform.right * _wallKickForce, ForceMode.Impulse);
+                    rb.AddForce(-transform.right * _wallKickOffForce, ForceMode.Impulse);
                 }
 				else
 				{
-                    rb.AddForce(transform.right * _wallKickForce, ForceMode.Impulse);
+                    rb.AddForce(transform.right * _wallKickOffForce, ForceMode.Impulse);
                 }
 
                 break;
