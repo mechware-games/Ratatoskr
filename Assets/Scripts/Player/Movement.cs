@@ -48,6 +48,10 @@ public class Movement : MonoBehaviour
     public float _minWallrunSpeed = 10;
 
     [SerializeField]
+    [Range(1, 50f)]
+    public float _wallKickForce = 20;
+
+    [SerializeField]
     [Range(0.1f, 3f)]
     private float _wallHorizontalActivationDistance = 0.3f;
 
@@ -169,23 +173,25 @@ public class Movement : MonoBehaviour
         {
             case State.Wallrunning:
 				{
-                    float hor = Input.GetAxisRaw("Horizontal");
-                    float ver = Input.GetAxisRaw("Vertical");
-                    Vector3 dir = new Vector3(hor, 0, ver).normalized;
-                    if (dir.magnitude >= 0.1f)
+                    if (WallCheck())
                     {
-                        float targetAngle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-                        float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, CameraSmooth);
-                        transform.rotation = Quaternion.Euler(0f, angle, 0f);
-                        Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+                        float hor = Input.GetAxisRaw("Horizontal");
+                        float ver = Input.GetAxisRaw("Vertical");
+                        Vector3 dir = new Vector3(hor, 0, ver).normalized;
+                        if (dir.magnitude >= 0.1f)
+                        {
+                            float targetAngle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+                            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, CameraSmooth);
+                            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+                            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
-                        Vector3 wallMoveDir = Quaternion.Euler(-90f, targetAngle, 0f) * Vector3.forward;
+                            Vector3 wallMoveDir = Quaternion.Euler(-90f, targetAngle, 0f) * Vector3.forward;
 
-                        rb.AddForce(moveDir.normalized * currentSpeed, ForceMode.Acceleration);
-                        rb.AddForce(wallMoveDir.normalized * _CurrentWallrunForce, ForceMode.Acceleration);
+                            rb.AddForce(moveDir.normalized * currentSpeed, ForceMode.Acceleration);
+                            rb.AddForce(wallMoveDir.normalized * _CurrentWallrunForce, ForceMode.Acceleration);
+                        }
                     }
-
-                    if (!WallCheck())
+                    else
                     {
                         _playerState = State.NotGrounded;
                     }
@@ -222,11 +228,11 @@ public class Movement : MonoBehaviour
                 rb.AddForce(Vector3.up * Mathf.Sqrt(currentJumpForce * -2 * Physics.gravity.y), ForceMode.Impulse);
                 if (isWallRight)
                 {
-                    rb.AddForce(-transform.right * currentJumpForwardForce, ForceMode.Impulse);
+                    rb.AddForce(-transform.right * _wallKickForce, ForceMode.Impulse);
                 }
 				else
 				{
-                    rb.AddForce(transform.right * currentJumpForwardForce, ForceMode.Impulse);
+                    rb.AddForce(transform.right * _wallKickForce, ForceMode.Impulse);
                 }
 
                 break;
