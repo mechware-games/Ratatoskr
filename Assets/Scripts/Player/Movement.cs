@@ -121,6 +121,7 @@ public class Movement : MonoBehaviour
                         {
                             Jump();
                             _playerState = State.NotGrounded;
+                            _ActionTimer = 0;
                         }
                     }
                 }
