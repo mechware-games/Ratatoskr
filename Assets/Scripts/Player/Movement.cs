@@ -64,6 +64,8 @@ public class Movement : MonoBehaviour
     [Range(0.1f, 3f)]
     private float _wallRunForwardActivationDistance = 0.3f;
 
+    [SerializeField]
+    bool _wallJumped = false;
 
     [Header("Bools")]
     public bool _debugMode;
@@ -110,11 +112,16 @@ public class Movement : MonoBehaviour
         switch (_playerState)
         {
             case State.Grounded:
-                { 
-                    if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    _ActionTimer += Time.deltaTime;
+                    if (_ActionTimer > _ActionTimerLength)
                     {
-                        Jump();
-                        _playerState = State.NotGrounded;
+                        _wallJumped = false;
+                        if (Input.GetKeyDown(KeyCode.Space))
+                        {
+                            Jump();
+                            _playerState = State.NotGrounded;
+                        }
                     }
                 }
                 break;
@@ -228,19 +235,24 @@ public class Movement : MonoBehaviour
         switch (_playerState)
 		{
             case State.Wallrunning:
-                // Wallrun Jump
-                bool isWallRight = Physics.Raycast(transform.position, transform.right, _wallHorizontalActivationDistance, wallMask);
-                bool isWallLeft = Physics.Raycast(transform.position, -transform.right, _wallHorizontalActivationDistance, wallMask);
-                rb.AddForce(Vector3.up * _wallKickUpForce, ForceMode.Impulse);
-                if (isWallRight)
                 {
-                    rb.AddForce(-transform.right * _wallKickOffForce, ForceMode.Impulse);
+                    if (!_wallJumped)
+                    {
+                        // Wallrun Jump
+                        bool isWallRight = Physics.Raycast(transform.position, transform.right, _wallHorizontalActivationDistance, wallMask);
+                        bool isWallLeft = Physics.Raycast(transform.position, -transform.right, _wallHorizontalActivationDistance, wallMask);
+                        rb.AddForce(Vector3.up * _wallKickUpForce, ForceMode.Impulse);
+                        if (isWallRight)
+                        {
+                            rb.AddForce(-transform.right * _wallKickOffForce, ForceMode.Impulse);
+                        }
+                        if (isWallLeft)
+                        {
+                            rb.AddForce(transform.right * _wallKickOffForce, ForceMode.Impulse);
+                        }
+                        _wallJumped = true;
+                    }
                 }
-                if (isWallLeft)
-                {
-                    rb.AddForce(transform.right * _wallKickOffForce, ForceMode.Impulse);
-                }
-
                 break;
             default:
                 // Standard Jump
