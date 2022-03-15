@@ -122,14 +122,14 @@ public class FenrirScript : MonoBehaviour
             comparison.x = comparison.x > 0 ? _xSpawnMinDistance : -_xSpawnMinDistance;
 		}
 
-        if (comparison.y < _xSpawnMinDistance && comparison.y > -_xSpawnMinDistance)
+        if (comparison.y < _ySpawnMinDistance && comparison.y > -_ySpawnMinDistance)
         {
-            comparison.y = comparison.y > 0 ? _xSpawnMinDistance : -_xSpawnMinDistance;
+            comparison.y = comparison.y > 0 ? _ySpawnMinDistance : -_ySpawnMinDistance;
         }
 
-        if (comparison.z < _xSpawnMinDistance && comparison.z > -_xSpawnMinDistance)
+        if (comparison.z < _zSpawnMinDistance && comparison.z > -_zSpawnMinDistance)
         {
-            comparison.z = comparison.z > 0 ? _xSpawnMinDistance : -_xSpawnMinDistance;
+            comparison.z = comparison.z > 0 ? _zSpawnMinDistance : -_zSpawnMinDistance;
         }
         return comparison;
     }
