@@ -75,6 +75,23 @@ public class Movement : MonoBehaviour
     public Transform orientation;
     public Transform groundCheck;
 
+    [Header("Down Force")]
+    [SerializeField]
+    [Range(1f, 5f)]
+    private float _DownForceModifierCap = 2f;
+    [SerializeField]
+    [Range(1f, 3f)]
+    private float _gravityIncreaseRate = 1f;
+    [SerializeField]
+    private float _currentGravityModifier = 1f;
+    [SerializeField]
+    [Range(0.01f, 1f)]
+    private float _gravityModifierTimer = 0.5f;
+    [SerializeField]
+    private float _currentGravityModifierTimer = 0;
+
+
+
     [Header("Masks")]
     public LayerMask groundMask;
     public LayerMask wallMask;
@@ -128,6 +145,7 @@ public class Movement : MonoBehaviour
                 break;
             case State.NotGrounded:
 				{
+
                     _ActionTimer += Time.deltaTime;
                     if (_ActionTimer > _ActionTimerLength)
                     {
@@ -210,6 +228,23 @@ public class Movement : MonoBehaviour
                     }
                 }
                 break;
+                case State.NotGrounded:
+			        {
+                    _currentGravityModifierTimer += Time.deltaTime; 
+                    if (_currentGravityModifierTimer > _gravityModifierTimer)
+					{
+                        if (_currentGravityModifier < _DownForceModifierCap)
+						{
+                            _currentGravityModifier += Time.deltaTime * _gravityIncreaseRate;  
+						}
+                        rb.AddForce(_currentGravityModifier * Physics.gravity, ForceMode.Acceleration);
+                    }
+                        goto default;
+			        }
+            case State.Grounded:
+                _currentGravityModifier = 0;
+                _currentGravityModifierTimer = 0;
+                goto default;
             default:
                 {
                     // TODO: Add code to make the character not able to add input in the direction of a wall if they are touching a wall
@@ -257,7 +292,7 @@ public class Movement : MonoBehaviour
                 break;
             default:
                 // Standard Jump
-                rb.AddForce(Vector3.up * Mathf.Sqrt(currentJumpForce * -2 * Physics.gravity.y), ForceMode.Impulse);
+                rb.AddForce(Vector3.up * baseJumpForce, ForceMode.Impulse);
                 rb.AddForce(transform.forward * currentJumpForwardForce, ForceMode.Impulse);
                 break;
 		}
