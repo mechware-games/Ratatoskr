@@ -229,14 +229,15 @@ public class Movement : MonoBehaviour
 		{
             case State.Wallrunning:
                 // Wallrun Jump
-                bool isWallRight = Physics.Raycast(transform.position, transform.right, 1f, wallMask);
+                bool isWallRight = Physics.Raycast(transform.position, transform.right, _wallHorizontalActivationDistance, wallMask);
+                bool isWallLeft = Physics.Raycast(transform.position, -transform.right, _wallHorizontalActivationDistance, wallMask);
                 rb.AddForce(Vector3.up * _wallKickUpForce, ForceMode.Impulse);
                 if (isWallRight)
                 {
                     rb.AddForce(-transform.right * _wallKickOffForce, ForceMode.Impulse);
                 }
-				else
-				{
+                if (isWallLeft)
+                {
                     rb.AddForce(transform.right * _wallKickOffForce, ForceMode.Impulse);
                 }
 
