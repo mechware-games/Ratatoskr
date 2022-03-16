@@ -14,8 +14,8 @@ public class MoveObjectontrigger : MonoBehaviour
     }
 
     public LoopType loopType;
-
-    public bool activate = false;
+    [SerializeField]
+    private bool activate = false;
     float position;
     public new Rigidbody rigidbody;
     public Transform start;
@@ -25,6 +25,7 @@ public class MoveObjectontrigger : MonoBehaviour
     float time = 0f;
     float direction = 1f;
 
+    public bool Activate { get => activate; set => activate = value; }
 
     private void Start()
     {
@@ -34,7 +35,7 @@ public class MoveObjectontrigger : MonoBehaviour
 
     public void FixedUpdate()
     {
-        if (activate)
+        if (Activate)
         {
             time = time + (direction * Time.deltaTime / duration);
             switch (loopType)
