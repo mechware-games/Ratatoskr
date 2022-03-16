@@ -16,6 +16,9 @@ public class CheckPoint : MonoBehaviour
     [SerializeField]
     private Material _gold;
 
+    [SerializeField]
+    private GameObject _mesh;
+
     private int _checkpointIndex;
 
     // Start is called before the first frame update
@@ -32,14 +35,14 @@ public class CheckPoint : MonoBehaviour
 
     public void ChangeColour()
 	{   
-        gameObject.GetComponent<MeshRenderer>().material = _blue;
-        gameObject.GetComponent<MeshRenderer>().enabled = true;
+        _mesh.GetComponent<MeshRenderer>().material = _blue;
+        _mesh.GetComponent<MeshRenderer>().enabled = true;
     }
 
     public void UnChangeColour()
     {
-        gameObject.GetComponent<MeshRenderer>().material = _red;
-        gameObject.GetComponent<Renderer>().enabled = true;
+        _mesh.GetComponent<MeshRenderer>().material = _red;
+        _mesh.GetComponent<Renderer>().enabled = true;
     }
 
     public void SetIndex(int value)
@@ -57,8 +60,8 @@ public class CheckPoint : MonoBehaviour
 
     public void CompletedColour()
 	{
-        gameObject.GetComponent<MeshRenderer>().material = _gold;
-        gameObject.GetComponent<Renderer>().enabled = true;
+        _mesh.GetComponent<MeshRenderer>().material = _gold;
+        _mesh.GetComponent<Renderer>().enabled = true;
     }
 
 
