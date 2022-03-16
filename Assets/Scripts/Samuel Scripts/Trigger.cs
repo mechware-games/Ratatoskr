@@ -9,14 +9,14 @@ public class Trigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        arse.activate = true;
+        arse.Activate = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (stoponexit)
         {
-            arse.activate = false;
+            arse.Activate = false;
         }
     }
 }
