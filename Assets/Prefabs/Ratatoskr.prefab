@@ -211,6 +211,8 @@ MonoBehaviour:
   _wallJumped: 0
   _debugMode: 1
   cam: {fileID: 0}
+  tppcam: {fileID: 0}
+  MainCamTransform: {fileID: 0}
   orientation: {fileID: 8110555185583622385}
   groundCheck: {fileID: 8110555185532266356}
   _DownForceModifierCap: 3
