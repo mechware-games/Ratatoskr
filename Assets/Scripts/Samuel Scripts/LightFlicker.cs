@@ -56,7 +56,7 @@ public class LightFlicker : MonoBehaviour
                 foreach (var C in lights) C.color = tempcolor;
             }
 
-            yield return new WaitForSeconds(.1f);
+            yield return new WaitForSeconds(interval);
         }
     }
 }
