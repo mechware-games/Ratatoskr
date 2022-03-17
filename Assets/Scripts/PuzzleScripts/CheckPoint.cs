@@ -36,13 +36,14 @@ public class CheckPoint : MonoBehaviour
     public void ChangeColour()
 	{   
         _mesh.GetComponent<MeshRenderer>().material = _blue;
-        _mesh.GetComponent<MeshRenderer>().enabled = true;
+        gameObject.transform.Find("Point Light").gameObject.GetComponent<Light>().color = Color.blue;
+
     }
 
     public void UnChangeColour()
     {
         _mesh.GetComponent<MeshRenderer>().material = _red;
-        _mesh.GetComponent<Renderer>().enabled = true;
+        gameObject.transform.Find("Point Light").gameObject.GetComponent<Light>().color = Color.red;
     }
 
     public void SetIndex(int value)
@@ -61,7 +62,7 @@ public class CheckPoint : MonoBehaviour
     public void CompletedColour()
 	{
         _mesh.GetComponent<MeshRenderer>().material = _gold;
-        _mesh.GetComponent<Renderer>().enabled = true;
+        gameObject.transform.Find("Point Light").gameObject.GetComponent<Light>().color = Color.green;
     }
 
 
