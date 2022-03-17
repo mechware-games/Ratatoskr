@@ -72,6 +72,8 @@ public class Movement : MonoBehaviour
 
     [Header("Transform References")]
     public Transform cam;
+    public Transform tppcam;
+    public Transform MainCamTransform;
     public Transform orientation;
     public Transform groundCheck;
 
@@ -115,6 +117,11 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
+        if (cam == tppcam)
+        {
+            cam = MainCamTransform;
+        }
+
         if (_debugMode)
 		{
             DebugMode();
