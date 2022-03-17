@@ -7,9 +7,9 @@ public class LightFlicker : MonoBehaviour
 
     float r, g, b, intensity;
     [SerializeField]
-    float rmin, rmax, gmin, gmax, bmin, bmax;
+    float rmin=1, rmax=2, gmin=1, gmax=2, bmin=1, bmax=2;
     [SerializeField]
-    float intensitymin, intensitymax;
+    float intensitymin =0.001f, intensitymax= 0.002f;
     [SerializeField]
     List<Light> lights = new List<Light>();
     [SerializeField]
@@ -42,18 +42,29 @@ public class LightFlicker : MonoBehaviour
     {
         for (; ; )
         {
-            r = Random.Range(rmin, rmax);
-            g = Random.Range(gmin, gmax);
-            b = Random.Range(bmin, bmax);
-            intensity = Random.Range(intensitymin, intensitymax);
-            Color tempcolor = new Color(r, g, b);
+            //r = Random.Range(rmin, rmax);
+            //g = Random.Range(gmin, gmax);
+            //b = Random.Range(bmin, bmax);
+            //intensity = Random.Range(intensitymin, intensitymax);
+            //Color tempcolor = new Color(r, g, b);
             if (intensityflicker)
             {
-                foreach (var L in lights) L.intensity = intensity;
+                foreach (var L in lights)
+                {
+                    intensity = Random.Range(intensitymin, intensitymax);
+                    L.intensity = intensity;
+                }
             }
             if (colourflicker)
             {
-                foreach (var C in lights) C.color = tempcolor;
+                foreach (var C in lights)
+                {
+                    r = Random.Range(rmin, rmax);
+                    g = Random.Range(gmin, gmax);
+                    b = Random.Range(bmin, bmax);
+                    Color tempcolor = new Color(r, g, b);
+                    C.color = tempcolor;
+                }
             }
 
             yield return new WaitForSeconds(interval);

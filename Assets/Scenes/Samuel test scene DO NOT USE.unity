@@ -256,15 +256,15 @@ MonoBehaviour:
   gmax: 10
   bmin: 5
   bmax: 10
-  intensitymin: 0.001
-  intensitymax: 0.002
+  intensitymin: 0.005
+  intensitymax: 0.007
   lights:
   - {fileID: 1057386999}
   - {fileID: 1429325041}
   - {fileID: 1881189940}
-  interval: 0.5
+  interval: 0.1
   intensityflicker: 1
-  colourflicker: 0
+  colourflicker: 1
 --- !u!4 &724071765
 Transform:
   m_ObjectHideFlags: 0
