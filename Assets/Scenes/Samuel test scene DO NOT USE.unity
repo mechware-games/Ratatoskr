@@ -264,7 +264,7 @@ MonoBehaviour:
   - {fileID: 1881189940}
   interval: 0.1
   intensityflicker: 1
-  colourflicker: 0
+  colourflicker: 1
 --- !u!4 &724071765
 Transform:
   m_ObjectHideFlags: 0
