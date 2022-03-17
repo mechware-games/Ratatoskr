@@ -42,18 +42,28 @@ public class LightFlicker : MonoBehaviour
     {
         for (; ; )
         {
-            r = Random.Range(rmin, rmax);
-            g = Random.Range(gmin, gmax);
-            b = Random.Range(bmin, bmax);
-            intensity = Random.Range(intensitymin, intensitymax);
+            //r = Random.Range(rmin, rmax);
+            //g = Random.Range(gmin, gmax);
+            //b = Random.Range(bmin, bmax);
+            //intensity = Random.Range(intensitymin, intensitymax);
             Color tempcolor = new Color(r, g, b);
             if (intensityflicker)
             {
-                foreach (var L in lights) L.intensity = intensity;
+                foreach (var L in lights)
+                {
+                    intensity = Random.Range(intensitymin, intensitymax);
+                    L.intensity = intensity;
+                }
             }
             if (colourflicker)
             {
-                foreach (var C in lights) C.color = tempcolor;
+                foreach (var C in lights)
+                {
+                    r = Random.Range(rmin, rmax);
+                    g = Random.Range(gmin, gmax);
+                    b = Random.Range(bmin, bmax);
+                    C.color = tempcolor;
+                }
             }
 
             yield return new WaitForSeconds(interval);
