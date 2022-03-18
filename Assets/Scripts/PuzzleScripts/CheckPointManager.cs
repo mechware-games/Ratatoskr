@@ -13,7 +13,10 @@ public class CheckPointManager : MonoBehaviour
 
     [SerializeField]
     private int _puzzleProgress = 0;
-	private class Checkpoint
+
+    [SerializeField]
+    private GameObject _door;
+    private class Checkpoint
 	{
         public Checkpoint (float timerLength)
 		{
@@ -84,6 +87,7 @@ public class CheckPointManager : MonoBehaviour
                     _checkPoints[i].GetComponent<CheckPoint>().CompletedColour();
 				}
                 _CompletedPuzzle = true;
+                _door.GetComponent<activatedeactivatefunction>().Active = false;
             }
         }
     }
