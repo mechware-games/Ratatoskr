@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 367206382463099625}
   - component: {fileID: 325107940262102370}
   - component: {fileID: 7222526082313699438}
-  m_Layer: 0
+  - component: {fileID: 5943449088452027683}
+  m_Layer: 3
   m_Name: ModPlatA1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,3 +85,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5943449088452027683
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3879341863622820506}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5470323665102357429, guid: 71c25b8ed3ebd5749989dfbaa1d20224, type: 3}
