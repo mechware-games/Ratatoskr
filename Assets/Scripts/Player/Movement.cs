@@ -137,6 +137,10 @@ public class Movement : MonoBehaviour
         {
             case State.Grounded:
                 {
+					if (!Physics.CheckSphere(groundCheck.position, groundDist, groundMask))
+					{
+                        _playerState = State.NotGrounded;
+					}
                     _ActionTimer += Time.deltaTime;
                     if (_ActionTimer > _ActionTimerLength)
                     {
