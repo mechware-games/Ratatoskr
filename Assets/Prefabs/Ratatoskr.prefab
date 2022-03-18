@@ -141,6 +141,7 @@ GameObject:
   - component: {fileID: 8110555185583622385}
   - component: {fileID: 8110555185583622386}
   - component: {fileID: 3597101860629711175}
+  - component: {fileID: 6351963227034360805}
   m_Layer: 0
   m_Name: Ratatoskr
   m_TagString: Untagged
@@ -230,3 +231,16 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   CameraSmooth: 0.1
+--- !u!114 &6351963227034360805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8110555185583622388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09dad85fe70d8a9439cadcbcf72ed339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 0}
