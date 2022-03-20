@@ -7,6 +7,7 @@ public class ChangeSceneScript : MonoBehaviour
     string nextscene;
     public void NextScene()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(nextscene);
     }
 }
