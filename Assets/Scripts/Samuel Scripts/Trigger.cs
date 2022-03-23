@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Trigger : MonoBehaviour
 {
-    public MoveObjectontrigger arse;
+    public MovePlatform arse;
     public bool stoponexit;
 
     private void OnTriggerEnter(Collider other)

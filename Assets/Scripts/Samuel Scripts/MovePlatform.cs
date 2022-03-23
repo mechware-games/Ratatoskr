@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class MoveObjectontrigger : MonoBehaviour
+public class MovePlatform: MonoBehaviour
 {
 
     public enum LoopType
