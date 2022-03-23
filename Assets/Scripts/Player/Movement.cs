@@ -145,7 +145,8 @@ public class Movement : MonoBehaviour
                     if (_ActionTimer > _ActionTimerLength)
                     {
                         _wallJumped = false;
-                        if (Input.GetKeyDown(KeyCode.Space))
+                        //if (Input.GetKeyDown(KeyCode.Space))
+                        if (Input.GetButton("Jump"))
                         {
                             Jump();
                             _playerState = State.NotGrounded;
@@ -176,7 +177,8 @@ public class Movement : MonoBehaviour
                 break;
             case State.Wallrunning:
 				{
-                    if (Input.GetKeyDown(KeyCode.Space))
+                    //if (Input.GetKeyDown(KeyCode.Space))
+                    if(Input.GetButton("Jump"))
                     {
                         Jump();
                         _playerState = State.NotGrounded;
