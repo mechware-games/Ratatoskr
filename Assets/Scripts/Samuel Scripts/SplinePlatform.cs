@@ -29,6 +29,7 @@ public class SplinePlatform : MonoBehaviour
     float3 previous;
     float3 next;
     int nextnode = 2;
+    bool inreverse = false;
 
     public bool Activate { get => activate; set => activate = value; }
 
@@ -73,12 +74,21 @@ public class SplinePlatform : MonoBehaviour
 
     void LoopPingPong()
     {
-        position = Mathf.PingPong(time, 1f);
-        Debug.Log(position);
+        position = Mathf.Repeat(time, 1f);
+        if (position >= 0.98f)
+        {
+            if (!inreverse)
+            {
+                previous = next;
+                next = path.Spline[nextnode].Position;
+            }
+            nextnode++;
+        }
     }
 
     void LoopRepeat()
     {
+        inreverse = false;
         position = Mathf.Repeat(time, 1f);
         if (position >= 0.98f)
         {
