@@ -198,7 +198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseSpeed: 50
   maxSpeed: 100
-  _ActionTimerLength: 0.3
+  _ActionTimerLength: 0.05
   baseJumpForce: 30
   baseForwardForce: 10
   groundDist: 0.4
@@ -274,7 +274,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8895580122849441810}
   m_LocalRotation: {x: 0.04022365, y: 0.01786946, z: -0.00071947236, w: 0.99903065}
-  m_LocalPosition: {x: -0.62051773, y: 2.0369997, z: -16.34016}
+  m_LocalPosition: {x: -3.267517, y: -2.1529999, z: 99.70984}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
