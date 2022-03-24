@@ -44,3 +44,5 @@ Logs/
 UserSettings/Layouts/
 *.dwlt
 *.dwlt
+
+UserSettings/EditorUserSettings.asset
