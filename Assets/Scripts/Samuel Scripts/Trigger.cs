@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class Trigger : MonoBehaviour
 {
-    public MoveObjectontrigger arse;
+    public MovePlatform arse;
     public bool stoponexit;
 
     private void OnTriggerEnter(Collider other)
     {
-        arse.activate = true;
+        arse.Activate = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (stoponexit)
         {
-            arse.activate = false;
+            arse.Activate = false;
         }
     }
 }

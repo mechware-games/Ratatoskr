@@ -3,8 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class ChangeSceneScript : MonoBehaviour
 {
+    [SerializeField]
+    string nextscene;
     public void NextScene()
     {
-        SceneManager.LoadScene("Main Scene");
+        Time.timeScale = 1;
+        SceneManager.LoadScene(nextscene);
     }
 }

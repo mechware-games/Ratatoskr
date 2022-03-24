@@ -48,6 +48,15 @@ public class Movement : MonoBehaviour
     public float _minWallrunSpeed = 10;
 
     [SerializeField]
+    [Range(1, 50f)]
+    public float _wallKickOffForce = 20;
+
+    [SerializeField]
+    [Range(1, 50f)]
+    public float _wallKickUpForce = 20;
+
+
+    [SerializeField]
     [Range(0.1f, 3f)]
     private float _wallHorizontalActivationDistance = 0.3f;
 
@@ -55,14 +64,35 @@ public class Movement : MonoBehaviour
     [Range(0.1f, 3f)]
     private float _wallRunForwardActivationDistance = 0.3f;
 
+    [SerializeField]
+    bool _wallJumped = false;
 
     [Header("Bools")]
     public bool _debugMode;
 
     [Header("Transform References")]
     public Transform cam;
+    public Transform tppcam;
+    public Transform MainCamTransform;
     public Transform orientation;
     public Transform groundCheck;
+
+    [Header("Down Force")]
+    [SerializeField]
+    [Range(1f, 5f)]
+    private float _DownForceModifierCap = 2f;
+    [SerializeField]
+    [Range(1f, 3f)]
+    private float _gravityIncreaseRate = 1f;
+    [SerializeField]
+    private float _currentGravityModifier = 1f;
+    [SerializeField]
+    [Range(0.01f, 1f)]
+    private float _gravityModifierTimer = 0.5f;
+    [SerializeField]
+    private float _currentGravityModifierTimer = 0;
+
+
 
     [Header("Masks")]
     public LayerMask groundMask;
@@ -78,7 +108,8 @@ public class Movement : MonoBehaviour
     private void Awake()
     {
         rb = gameObject.GetComponent<Rigidbody>();
-
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         currentSpeed = baseSpeed;
         currentJumpForce = baseJumpForce;
         currentJumpForwardForce = baseForwardForce;
@@ -86,6 +117,11 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
+        if (cam == tppcam)
+        {
+            cam = MainCamTransform;
+        }
+
         if (_debugMode)
 		{
             DebugMode();
@@ -100,16 +136,28 @@ public class Movement : MonoBehaviour
         switch (_playerState)
         {
             case State.Grounded:
-                { 
-                    if (Input.GetKeyDown(KeyCode.Space))
-                    {
-                        Jump();
+                {
+					if (!Physics.CheckSphere(groundCheck.position, groundDist, groundMask))
+					{
                         _playerState = State.NotGrounded;
+					}
+                    _ActionTimer += Time.deltaTime;
+                    if (_ActionTimer > _ActionTimerLength)
+                    {
+                        _wallJumped = false;
+                        //if (Input.GetKeyDown(KeyCode.Space))
+                        if (Input.GetButton("Jump"))
+                        {
+                            Jump();
+                            _playerState = State.NotGrounded;
+                            _ActionTimer = 0;
+                        }
                     }
                 }
                 break;
             case State.NotGrounded:
 				{
+
                     _ActionTimer += Time.deltaTime;
                     if (_ActionTimer > _ActionTimerLength)
                     {
@@ -129,7 +177,8 @@ public class Movement : MonoBehaviour
                 break;
             case State.Wallrunning:
 				{
-                    if (Input.GetKeyDown(KeyCode.Space))
+                    //if (Input.GetKeyDown(KeyCode.Space))
+                    if(Input.GetButton("Jump"))
                     {
                         Jump();
                         _playerState = State.NotGrounded;
@@ -168,28 +217,47 @@ public class Movement : MonoBehaviour
         {
             case State.Wallrunning:
 				{
-                    float hor = Input.GetAxisRaw("Horizontal");
-                    float ver = Input.GetAxisRaw("Vertical");
-                    Vector3 dir = new Vector3(hor, 0, ver).normalized;
-                    if (dir.magnitude >= 0.1f)
+                    if (WallCheck())
                     {
-                        float targetAngle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-                        float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, CameraSmooth);
-                        transform.rotation = Quaternion.Euler(0f, angle, 0f);
-                        Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+                        float hor = Input.GetAxisRaw("Horizontal");
+                        float ver = Input.GetAxisRaw("Vertical");
+                        Vector3 dir = new Vector3(hor, 0, ver).normalized;
+                        if (dir.magnitude >= 0.1f)
+                        {
+                            float targetAngle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+                            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, CameraSmooth);
+                            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+                            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
-                        Vector3 wallMoveDir = Quaternion.Euler(-90f, targetAngle, 0f) * Vector3.forward;
+                            Vector3 wallMoveDir = Quaternion.Euler(-90f, targetAngle, 0f) * Vector3.forward;
 
-                        rb.AddForce(moveDir.normalized * currentSpeed, ForceMode.Acceleration);
-                        rb.AddForce(wallMoveDir.normalized * _CurrentWallrunForce, ForceMode.Acceleration);
+                            rb.AddForce(moveDir.normalized * currentSpeed, ForceMode.Acceleration);
+                            rb.AddForce(wallMoveDir.normalized * _CurrentWallrunForce, ForceMode.Acceleration);
+                        }
                     }
-
-                    if (!WallCheck())
+                    else
                     {
                         _playerState = State.NotGrounded;
                     }
                 }
                 break;
+                case State.NotGrounded:
+			        {
+                    _currentGravityModifierTimer += Time.deltaTime; 
+                    if (_currentGravityModifierTimer > _gravityModifierTimer)
+					{
+                        if (_currentGravityModifier < _DownForceModifierCap)
+						{
+                            _currentGravityModifier += Time.deltaTime * _gravityIncreaseRate;  
+						}
+                        rb.AddForce(_currentGravityModifier * Physics.gravity, ForceMode.Acceleration);
+                    }
+                        goto default;
+			        }
+            case State.Grounded:
+                _currentGravityModifier = 0;
+                _currentGravityModifierTimer = 0;
+                goto default;
             default:
                 {
                     // TODO: Add code to make the character not able to add input in the direction of a wall if they are touching a wall
@@ -216,22 +284,28 @@ public class Movement : MonoBehaviour
         switch (_playerState)
 		{
             case State.Wallrunning:
-                // Wallrun Jump
-                bool isWallRight = Physics.Raycast(transform.position, transform.right, 1f, wallMask);
-                rb.AddForce(Vector3.up * Mathf.Sqrt(currentJumpForce * -2 * Physics.gravity.y), ForceMode.Impulse);
-                if (isWallRight)
                 {
-                    rb.AddForce(-transform.right * currentJumpForwardForce, ForceMode.Impulse);
+                    if (!_wallJumped)
+                    {
+                        // Wallrun Jump
+                        bool isWallRight = Physics.Raycast(transform.position, transform.right, _wallHorizontalActivationDistance, wallMask);
+                        bool isWallLeft = Physics.Raycast(transform.position, -transform.right, _wallHorizontalActivationDistance, wallMask);
+                        rb.AddForce(Vector3.up * _wallKickUpForce, ForceMode.Impulse);
+                        if (isWallRight)
+                        {
+                            rb.AddForce(-transform.right * _wallKickOffForce, ForceMode.Impulse);
+                        }
+                        if (isWallLeft)
+                        {
+                            rb.AddForce(transform.right * _wallKickOffForce, ForceMode.Impulse);
+                        }
+                        _wallJumped = true;
+                    }
                 }
-				else
-				{
-                    rb.AddForce(transform.right * currentJumpForwardForce, ForceMode.Impulse);
-                }
-
                 break;
             default:
                 // Standard Jump
-                rb.AddForce(Vector3.up * Mathf.Sqrt(currentJumpForce * -2 * Physics.gravity.y), ForceMode.Impulse);
+                rb.AddForce(Vector3.up * baseJumpForce, ForceMode.Impulse);
                 rb.AddForce(transform.forward * currentJumpForwardForce, ForceMode.Impulse);
                 break;
 		}

@@ -79,16 +79,16 @@ public class Optionsmenuscript : MonoBehaviour
     
     public void MasterVolume(float masterLevel)
     {
-        MasterMix.SetFloat("MasterMix", masterLevel);
+        MasterMix.SetFloat("Master", Mathf.Log10(masterLevel) * 20);
     }
 
     public void SetMusicLvl (float musicLvl)
     {
-        MasterMix.SetFloat("Music", musicLvl);
+        MasterMix.SetFloat("Music", Mathf.Log10(musicLvl) * 20);
     }
 
     public void SetSFXLevel(float sfxlevel)
     {
-        MasterMix.SetFloat("SoundEffects", sfxlevel);
+        MasterMix.SetFloat("Sound Effects", Mathf.Log10(sfxlevel) * 20);
     }
 }
