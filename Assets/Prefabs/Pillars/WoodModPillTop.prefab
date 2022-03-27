@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 740302549608676320}
   - component: {fileID: 6083269651130968695}
   - component: {fileID: 4573893491352045045}
+  - component: {fileID: 7790116985923097573}
   m_Layer: 0
   m_Name: WoodModPillTop
   m_TagString: Untagged
@@ -84,6 +85,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7790116985923097573
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4339844098198120452}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &8064444442182811520
 GameObject:
   m_ObjectHideFlags: 0
