@@ -47,6 +47,8 @@ public class RBTPP : MonoBehaviour
 
     [Header("Transform References")]
     public Transform cam;
+    public Transform tppcam;
+    public Transform MainCamTransform;
     public Transform orientation;
     public Transform groundCheck;
 
@@ -75,6 +77,10 @@ public class RBTPP : MonoBehaviour
 
     private void Update()
     {
+        if (CameraSwitcher.ActiveCamera != null)
+        {
+            cam = CameraSwitcher.ActiveCamera.transform;
+        }
         DebugMode();
         Jump();
         if (isGrounded)
@@ -84,6 +90,11 @@ public class RBTPP : MonoBehaviour
         if (currentSpeed > maxSpeed && isGrounded)
         {
             //reduce current speed over time
+        }
+
+        if (cam == tppcam)
+        {
+            cam = MainCamTransform;
         }
     }
 
