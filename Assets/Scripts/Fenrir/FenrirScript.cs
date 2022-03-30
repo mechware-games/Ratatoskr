@@ -43,21 +43,40 @@ public class FenrirScript : MonoBehaviour
 
     private float _LastDistanceFromPlayer = 0;
 
+    [SerializeField]
+    private bool _isActive;
+
     // Start is called before the first frame update
     void Start()
     {
         _pauseTimer = _pauseLength;
         _chaseTimer = _chaseLength;
         _children = new List<Transform>(transform.GetComponentsInChildren<Transform>());
+        _LastDistanceFromPlayer = (_player.position - transform.position).magnitude;
 
     }
 
-	private void OnEnable()
+    public bool GetActive()
 	{
+        return _isActive;
+	}
+
+    public void SetActive(bool tf)
+	{
+        _isActive = tf;
+	}
+
+	private void OnEnable()
+    {
+        _children = new List<Transform>(transform.GetComponentsInChildren<Transform>());
         // The player must have the tag "Player" for this script to work.
         // No other object in the scene should have the tag "Player"
         _player = GameObject.FindGameObjectWithTag("Player").transform;
         _currentState = State.Chasing;
+        if (!_isActive)
+		{
+            Spawn(false);
+		}
 
     }
 
@@ -65,27 +84,27 @@ public class FenrirScript : MonoBehaviour
 	void Update()
     {
         transform.LookAt(_playerSpottedLocation);
-
-        switch (_currentState)
-		{
-            case State.Chasing:
-                MoveTowardsLastKnownPlayerLocation();
-                _chaseTimer -= Time.deltaTime;
-                if (_chaseTimer < 0) 
-                { 
-                    _chaseTimer = _chaseLength; _currentState = State.Despawned; 
-                    ToggleChildrenActive(false);
-					GetComponent<SphereCollider>().enabled = false;
-					_LastDistanceFromPlayer = (_player.position - transform.position).magnitude;
-                };
-                break;
-			case State.Despawned:
-                _pauseTimer -= Time.deltaTime;
-                if (_pauseTimer < 0) { _pauseTimer = _pauseLength; _currentState = State.Chasing; Respawn(true); }
-                break;
-		}
-
-
+        if (_isActive)
+        {
+            switch (_currentState)
+            {
+                case State.Chasing:
+                    MoveTowardsLastKnownPlayerLocation();
+                    _chaseTimer -= Time.deltaTime;
+                    if (_chaseTimer < 0)
+                    {
+                        _chaseTimer = _chaseLength; _currentState = State.Despawned;
+                        ToggleChildrenActive(false);
+                        GetComponent<SphereCollider>().enabled = false;
+                        _LastDistanceFromPlayer = (_player.position - transform.position).magnitude;
+                    };
+                    break;
+                case State.Despawned:
+                    _pauseTimer -= Time.deltaTime;
+                    if (_pauseTimer < 0) { _pauseTimer = _pauseLength; _currentState = State.Chasing; Spawn(true); }
+                    break;
+            }
+        }
     }
     private void ToggleChildrenActive(bool tf_switch)
 	{
@@ -134,7 +153,7 @@ public class FenrirScript : MonoBehaviour
         return comparison;
     }
 
-    void Respawn(bool tf_switch)
+    public void Spawn(bool tf_switch)
 	{
         Vector3 spawningVector = GetSpawningDirection() * _LastDistanceFromPlayer;
         spawningVector = GetOffSetVector(_player.position, spawningVector);
