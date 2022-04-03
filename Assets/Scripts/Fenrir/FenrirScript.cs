@@ -34,6 +34,13 @@ public class FenrirScript : MonoBehaviour
     [Range(2f, 15f)]
     private float _zSpawnMinDistance = 5f;
 
+    [SerializeField]
+    [Range(5f, 50f)]
+    private float _maxFenrirSpawnRange = 10f;
+
+    [SerializeField]
+    Vector3 _chasePositionOffset = new Vector3(0, 1, 0);
+
     private Vector3 _playerSpottedLocation;
 
     private enum State { Chasing, Despawned };
@@ -117,8 +124,19 @@ public class FenrirScript : MonoBehaviour
     void MoveTowardsLastKnownPlayerLocation()
     {
         _playerSpottedLocation = _player.position;
-
-        Vector3 movementDirection = _playerSpottedLocation - transform.position;
+        
+        float distanceFromPlayer = (_player.position - transform.position).magnitude;
+        Vector3 movementDirection;
+        
+        // Causes Fenrir to chase the player more directly when they are within 5 units of the player
+        if (distanceFromPlayer < 5) 
+        { 
+            movementDirection = _playerSpottedLocation - transform.position;
+        }
+		else
+		{
+            movementDirection = (_playerSpottedLocation + _chasePositionOffset) - transform.position;
+        }
 
         movementDirection = movementDirection.normalized;
 
