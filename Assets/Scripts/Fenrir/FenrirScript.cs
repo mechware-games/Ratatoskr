@@ -173,6 +173,10 @@ public class FenrirScript : MonoBehaviour
 
     public void Spawn(bool tf_switch)
 	{
+        if (_LastDistanceFromPlayer > _maxFenrirSpawnRange)
+		{
+            _LastDistanceFromPlayer = _maxFenrirSpawnRange;
+		}
         Vector3 spawningVector = GetSpawningDirection() * _LastDistanceFromPlayer;
         spawningVector = GetOffSetVector(_player.position, spawningVector);
         Vector3 spawnLocation = _player.position + spawningVector;
