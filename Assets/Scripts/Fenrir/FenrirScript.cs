@@ -7,6 +7,8 @@ public class FenrirScript : MonoBehaviour
 {
     private Transform _player;
 
+	#region CoreValues
+	[Header("Core Values")]
     [SerializeField]
     [Range(0.1f, 20f)]
     public float _speed;
@@ -21,37 +23,57 @@ public class FenrirScript : MonoBehaviour
     private float _pauseLength;
     private float _pauseTimer;
 
+    #endregion
 
+    #region Contraints
+    [Header("Contraints")]
     [SerializeField]
+    [Tooltip("Minimum allowed spawning distance from the player in the x axis.")]
     [Range(2f, 15f)]
     private float _xSpawnMinDistance = 5f;
 
     [SerializeField]
+    [Tooltip("Minimum allowed spawning distance from the player in the y axis.")]
     [Range(2f, 15f)]
     private float _ySpawnMinDistance = 5f;
 
     [SerializeField]
+    [Tooltip("Minimum allowed spawning distance from the player in the z axis.")]
     [Range(2f, 15f)]
     private float _zSpawnMinDistance = 5f;
-
+      
     [SerializeField]
+    [Tooltip("Maximum distance Fenrir can spawn from the player.")]
     [Range(5f, 50f)]
     private float _maxFenrirSpawnRange = 10f;
+	#endregion
 
-    [SerializeField]
+	#region Offsets
+	[SerializeField]
     Vector3 _chasePositionOffset = new Vector3(0, 1, 0);
 
-    private Vector3 _playerSpottedLocation;
+    [SerializeField]
+    [Tooltip("The vector Fenrir will use for strafing when chasing the player and not closer than the full agrro range.")]
+    Vector3 _fenrirStrafeVector = new Vector3(0, 1, 0);
+    #endregion
 
+    #region State
     private enum State { Chasing, Despawned };
     private State _currentState = State.Chasing;
+    #endregion
 
-    List<Transform> _children;
+    #region Misc
+    List<Transform> _children; // Is used for setActive later on
 
     private float _LastDistanceFromPlayer = 0;
 
+    [Header("Active?")]
     [SerializeField]
+    [Tooltip("Is ticked if Fenrir is active.")]
     private bool _isActive;
+
+    private Vector3 _playerSpottedLocation;
+    #endregion
 
     // Start is called before the first frame update
     void Start()
