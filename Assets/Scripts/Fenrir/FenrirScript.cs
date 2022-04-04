@@ -148,21 +148,41 @@ public class FenrirScript : MonoBehaviour
         _playerSpottedLocation = _player.position;
         
         float distanceFromPlayer = (_player.position - transform.position).magnitude;
-        Vector3 movementDirection;
-        
-        // Causes Fenrir to chase the player more directly when they are within 5 units of the player
-        if (distanceFromPlayer < 5) 
-        { 
-            movementDirection = _playerSpottedLocation - transform.position;
+        Vector3 target;
+
+        // Causes Fenrir to target the player more directly when they are within 5 units of the player
+        if (distanceFromPlayer < 5)
+		{
+            target = _playerSpottedLocation;
         }
 		else
 		{
-            movementDirection = (_playerSpottedLocation + _chasePositionOffset) - transform.position;
-        }
+            target = _playerSpottedLocation + _chasePositionOffset;
+            // Causes Fenrir to strafe if they're not directly targeting the player
+            FenrirStrafe(target); 
+		}
 
-        movementDirection = movementDirection.normalized;
+        Vector3 movementDirection = (target - transform.position).normalized;
 
-        transform.position += movementDirection * _speed * Time.deltaTime;
+        transform.position += _speed * Time.deltaTime * movementDirection;
+    }
+
+    // Causes Fenrir to strafe using the strafe vector in relation to the target
+    private void FenrirStrafe(Vector3 target)
+	{
+        // At the moment this is over engineered though I think the using a vector might come in handy later on
+        // Fenrir would likely need to strafe if they are chasing the player through a wall
+        // A check to determine whether this is the could be done but this is something I'm not going to worry about right now
+
+
+        // In the future I may want to do a series of checks to consider whether strafing in each axis is necessary
+        // I could then use the final strafe variable below to apply the resulting strafe vector using Fenrir's strafe vector
+        // Vector3 finalStrafe = new Vector3(0,0,0); 
+
+        if (target.y > transform.position.y)
+		{
+            transform.position += _fenrirStrafeVector * Time.deltaTime;
+		}
     }
 
     // Gets direction vector that Fenrir will spawn from relative to the player
