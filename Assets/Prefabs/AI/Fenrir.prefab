@@ -325,13 +325,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fc105f46ee2db8419f8a7978970c57e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 7
+  _speed: 10
   _chaseLength: 7
   _chaseTimer: 0
   _pauseLength: 3
   _xSpawnMinDistance: 5
   _ySpawnMinDistance: 2
   _zSpawnMinDistance: 3
+  _maxFenrirSpawnRange: 10
+  _chasePositionOffset: {x: 0, y: 3, z: 0}
+  _fenrirStrafeVector: {x: 0, y: 3, z: 0}
+  _isActive: 0
 --- !u!135 &511321273480114904
 SphereCollider:
   m_ObjectHideFlags: 0
