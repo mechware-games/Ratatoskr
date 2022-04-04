@@ -80,9 +80,7 @@ public class FenrirScript : MonoBehaviour
     {
         _pauseTimer = _pauseLength;
         _chaseTimer = _chaseLength;
-        _children = new List<Transform>(transform.GetComponentsInChildren<Transform>());
         _LastDistanceFromPlayer = (_player.position - transform.position).magnitude;
-
     }
 
     public bool GetActive()
@@ -102,9 +100,9 @@ public class FenrirScript : MonoBehaviour
         // No other object in the scene should have the tag "Player"
         _player = GameObject.FindGameObjectWithTag("Player").transform;
         _currentState = State.Chasing;
-        if (!_isActive)
+        if (!GetActive())
 		{
-            Despawn(false);
+            Despawn();
 		}
 
     }
@@ -113,7 +111,7 @@ public class FenrirScript : MonoBehaviour
 	void Update()
     {
         transform.LookAt(_playerSpottedLocation);
-        if (_isActive)
+        if (GetActive())
         {
             switch (_currentState)
             {
@@ -122,7 +120,7 @@ public class FenrirScript : MonoBehaviour
                     _chaseTimer -= Time.deltaTime;
                     if (_chaseTimer < 0)
                     {
-                        Despawn(_isActive);
+                        Despawn();
                     };
                     break;
                 case State.Despawned:
@@ -210,9 +208,8 @@ public class FenrirScript : MonoBehaviour
         return comparison;
     }
 
-    public void Despawn(bool active)
+    public void Despawn()
     {
-        _isActive = active;
         _chaseTimer = _chaseLength; 
         _currentState = State.Despawned;
         ToggleChildrenActive(false);
@@ -224,7 +221,7 @@ public class FenrirScript : MonoBehaviour
 	{
         _pauseTimer = _pauseLength;
         _currentState = State.Chasing;
-        _isActive = true;
+        SetActive(true);
         ToggleChildrenActive(true);
         GetComponent<SphereCollider>().enabled = true;
 
