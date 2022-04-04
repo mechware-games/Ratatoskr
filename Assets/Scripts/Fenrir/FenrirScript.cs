@@ -104,7 +104,7 @@ public class FenrirScript : MonoBehaviour
         _currentState = State.Chasing;
         if (!_isActive)
 		{
-            Spawn(false);
+            Despawn(false);
 		}
 
     }
@@ -122,15 +122,12 @@ public class FenrirScript : MonoBehaviour
                     _chaseTimer -= Time.deltaTime;
                     if (_chaseTimer < 0)
                     {
-                        _chaseTimer = _chaseLength; _currentState = State.Despawned;
-                        ToggleChildrenActive(false);
-                        GetComponent<SphereCollider>().enabled = false;
-                        _LastDistanceFromPlayer = (_player.position - transform.position).magnitude;
+                        Despawn(_isActive);
                     };
                     break;
                 case State.Despawned:
                     _pauseTimer -= Time.deltaTime;
-                    if (_pauseTimer < 0) { _pauseTimer = _pauseLength; _currentState = State.Chasing; Spawn(true); }
+                    if (_pauseTimer < 0) { Spawn();}
                     break;
             }
         }
@@ -142,7 +139,7 @@ public class FenrirScript : MonoBehaviour
             _children[i].gameObject.SetActive(tf_switch);
 		}
 	}
-     
+
     void MoveTowardsLastKnownPlayerLocation()
     {
         _playerSpottedLocation = _player.position;
@@ -213,19 +210,40 @@ public class FenrirScript : MonoBehaviour
         return comparison;
     }
 
-    public void Spawn(bool tf_switch)
+    public void Despawn(bool active)
+    {
+        _isActive = active;
+        _chaseTimer = _chaseLength; 
+        _currentState = State.Despawned;
+        ToggleChildrenActive(false);
+        GetComponent<SphereCollider>().enabled = false;
+        _LastDistanceFromPlayer = (_player.position - transform.position).magnitude;
+    }
+
+    public void Spawn()
 	{
+        _pauseTimer = _pauseLength;
+        _currentState = State.Chasing;
+        _isActive = true;
+        ToggleChildrenActive(true);
+        GetComponent<SphereCollider>().enabled = true;
+
+        // Ensures Fenrir doesn't spawn too far from the player
         if (_LastDistanceFromPlayer > _maxFenrirSpawnRange)
 		{
             _LastDistanceFromPlayer = _maxFenrirSpawnRange;
 		}
+
+        SetSpawnLocation();
+	}
+
+    void SetSpawnLocation()
+	{
         Vector3 spawningVector = GetSpawningDirection() * _LastDistanceFromPlayer;
         spawningVector = GetOffSetVector(_player.position, spawningVector);
         Vector3 spawnLocation = _player.position + spawningVector;
         transform.position = spawnLocation;
-		ToggleChildrenActive(tf_switch);
-		GetComponent<SphereCollider>().enabled = tf_switch;
-	}
+    }
 
 	private void OnTriggerEnter(Collider other)
 	{

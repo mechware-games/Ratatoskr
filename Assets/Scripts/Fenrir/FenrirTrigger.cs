@@ -29,14 +29,21 @@ public class FenrirTrigger : MonoBehaviour
 	{
 		if (other.tag == "Player")
 		{
-            bool active = _fenrir.GetComponent<FenrirScript>().GetActive();
+            bool fenrirActive = _fenrir.GetComponent<FenrirScript>().GetActive();
             if (_toggle)
 			{  
-                _fenrir.GetComponent<FenrirScript>().SetActive(!active);
+               if (fenrirActive)
+				{
+                    _fenrir.GetComponent<FenrirScript>().Despawn(false);
+				}
+				else
+				{
+                    _fenrir.GetComponent<FenrirScript>().Spawn();
+                }
             }
-            else if (_set != active) // If Fenrir's active state is different to the one this interactable triggers, set it accordingly
+            else if (_set != fenrirActive) // If Fenrir's active state is different to the one this interactable triggers, set it accordingly
 			{
-                _fenrir.GetComponent<FenrirScript>().SetActive(active);
+                _fenrir.GetComponent<FenrirScript>().SetActive(fenrirActive);
 
             }
 
