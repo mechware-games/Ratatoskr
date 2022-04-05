@@ -41,7 +41,7 @@ Material:
     - _Cull: 2
     - _DstBlend: 0
     - _FresnelPower: 2
-    - _NoiseAmount: 0.5
+    - _NoiseAmount: 0.754
     - _NoiseScale: 10
     - _QueueControl: 0
     - _QueueOffset: 0
@@ -51,9 +51,9 @@ Material:
     - _ZWrite: 1
     - _ZWriteControl: 0
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 0}
-    - _NoiseSpeed: {r: 0.5, g: 0.5, b: 0, a: 0}
-    - _NoiseTiling: {r: 0.5, g: 30, b: 0, a: 0}
+    - _Color: {r: 0.28773582, g: 1, b: 0.9486259, a: 0}
+    - _NoiseSpeed: {r: 0.2, g: 1, b: 0, a: 0}
+    - _NoiseTiling: {r: 0.29, g: 20, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &5776796075002794168
 MonoBehaviour:
