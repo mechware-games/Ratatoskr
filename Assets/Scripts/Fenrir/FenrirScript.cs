@@ -247,7 +247,8 @@ public class FenrirScript : MonoBehaviour
 	{
         if (other.tag == "Player")
 		{
-            SceneManager.LoadScene("Main Scene");
+            FindObjectOfType<Player>().Death();
+            Despawn();
         }
 	}
 }
