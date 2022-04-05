@@ -73,25 +73,20 @@ public class FenrirScript : MonoBehaviour
     private bool _isActive;
 
     private Vector3 _playerSpottedLocation;
-    #endregion
+	#endregion
 
-    // Start is called before the first frame update
-    void Start()
+	#region needsCleaning
+	// Start is called before the first frame update
+	void Start()
     {
         _pauseTimer = _pauseLength;
         _chaseTimer = _chaseLength;
         _LastDistanceFromPlayer = (_player.position - transform.position).magnitude;
+        if (!GetActive())
+        {
+            Despawn();
+        }
     }
-
-    public bool GetActive()
-	{
-        return _isActive;
-	}
-
-    public void SetActive(bool tf)
-	{
-        _isActive = tf;
-	}
 
 	private void OnEnable()
     {
@@ -100,12 +95,8 @@ public class FenrirScript : MonoBehaviour
         // No other object in the scene should have the tag "Player"
         _player = GameObject.FindGameObjectWithTag("Player").transform;
         _currentState = State.Chasing;
-        if (!GetActive())
-		{
-            Despawn();
-		}
-
     }
+#endregion
 
 	// Update is called once per frame
 	void Update()
@@ -129,6 +120,16 @@ public class FenrirScript : MonoBehaviour
                     break;
             }
         }
+    }
+
+    public void SetActive(bool tf)
+    {
+        _isActive = tf;
+    }
+
+    public bool GetActive()
+    {
+        return _isActive;
     }
     private void ToggleChildrenActive(bool tf_switch)
 	{
