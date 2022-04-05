@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 1913559085828631181}
   - component: {fileID: 3649750666041499226}
   - component: {fileID: 2908917562812614552}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Wolf_Body5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 175503697043214525}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Wolf_Model4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -288,9 +288,9 @@ GameObject:
   - component: {fileID: 7725275085506325409}
   - component: {fileID: 1096577192559018055}
   - component: {fileID: 511321273480114904}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fenrir
-  m_TagString: Untagged
+  m_TagString: Fenrir
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -360,7 +360,7 @@ GameObject:
   - component: {fileID: 7835992596719118041}
   - component: {fileID: 7835992596719118038}
   - component: {fileID: 7835992596719118039}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -465,7 +465,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -572,7 +572,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0, g: 0, b: 0, a: 1}
+      maxColor: {r: 0.31910825, g: 0.9528302, b: 0.86382425, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -634,7 +634,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.1
+      scalar: 0.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4171,9 +4171,9 @@ ParticleSystem:
       properties: 0
       emitProbability: 1
   LightsModule:
-    enabled: 0
-    ratio: 0
-    light: {fileID: 0}
+    enabled: 1
+    ratio: 0.5
+    light: {fileID: 4401367103365625750, guid: 36c816791c585e6468e21eb13040e92d, type: 3}
     randomDistribution: 1
     color: 1
     range: 1
@@ -4286,7 +4286,7 @@ ParticleSystem:
         m_RotationOrder: 4
     maxLights: 20
   TrailModule:
-    enabled: 0
+    enabled: 1
     mode: 0
     ratio: 1
     lifetime:
@@ -5120,7 +5120,8 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e823cd5b5d27c0f4b8256e7c12ee3e6d, type: 2}
+  - {fileID: 2100000, guid: d8d97768c6a2099458417b27471875b1, type: 2}
+  - {fileID: 2100000, guid: d8d97768c6a2099458417b27471875b1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
