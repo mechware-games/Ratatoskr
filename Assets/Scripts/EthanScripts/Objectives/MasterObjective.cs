@@ -9,7 +9,8 @@ public class MasterObjective : MonoBehaviour
     public static float acorns = 0f;
     public static float goldenAcorns = 0f;
 
-    public TMP_Text scoreText;
+    public TMP_Text acornText;
+    public TMP_Text goldenAcornText;
 
     private void OnEnable()
     {
@@ -19,6 +20,7 @@ public class MasterObjective : MonoBehaviour
 
     void Update()
     {
-        scoreText.text = acorns.ToString();
+        acornText.text = acorns.ToString();
+        goldenAcornText.text = goldenAcorns.ToString();
     }
 }
