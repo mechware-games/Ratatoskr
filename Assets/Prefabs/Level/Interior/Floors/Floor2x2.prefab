@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 370864610078897120}
   m_Layer: 0
-  m_Name: Floor4x4
+  m_Name: Floor2x2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
