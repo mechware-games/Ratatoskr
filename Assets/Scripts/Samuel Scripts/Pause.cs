@@ -15,7 +15,7 @@ using UnityEngine.SceneManagement;
 
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetButtonDown("Cancel"))
             {
                 SetPaused();
             }

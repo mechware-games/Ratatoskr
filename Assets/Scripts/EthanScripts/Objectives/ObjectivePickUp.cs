@@ -6,10 +6,23 @@ public class ObjectivePickUp : MonoBehaviour
 {
     //public GameObject pickUp;
     private float score = 0f;
+    [SerializeField]
+    private bool acorn;
+    [SerializeField]
+    private bool goldenAcorn;
+
     private void OnTriggerEnter(Collider other)
     {
         //Destroy(pickUp);
-        Destroy(gameObject);
-        MasterObjective.score += 1f;
+        if (acorn)
+        {
+            Destroy(gameObject);
+            MasterObjective.acorns += 1f;
+        }
+        if (goldenAcorn)
+        {
+            Destroy(gameObject);
+            MasterObjective.goldenAcorns += 1f;
+        }
     }
 }
