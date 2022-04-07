@@ -58,6 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ba241860a17f19478c2d2c04a3c18fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 6
 --- !u!1 &2309096271882773548
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,6 +230,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14078b70a68b5624fbe986d341fe6270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acorn: 1
+  goldenAcorn: 0
 --- !u!136 &3328619964281588360
 CapsuleCollider:
   m_ObjectHideFlags: 0

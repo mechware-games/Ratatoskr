@@ -6,16 +6,19 @@ using TMPro;
 
 public class MasterObjective : MonoBehaviour
 {
-    public static float score = 0f;
+    public static float acorns = 0f;
+    public static float goldenAcorns = 0f;
+
     public TMP_Text scoreText;
 
     private void OnEnable()
     {
-        score = 0f;
+        acorns = 0f;
+        goldenAcorns = 0f;
     }
 
     void Update()
     {
-        scoreText.text = score.ToString();
+        scoreText.text = acorns.ToString();
     }
 }

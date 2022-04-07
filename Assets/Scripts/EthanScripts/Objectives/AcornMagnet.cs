@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(SphereCollider))]
 public class AcornMagnet : MonoBehaviour
 {
-    private float speed = 5f;
+    [SerializeField]
+    private float speed = 6f;
+
     Vector3 moveDirection = new Vector3(0,0,0);
-    
 
     private void OnTriggerEnter(Collider other)
     {
@@ -17,7 +19,6 @@ public class AcornMagnet : MonoBehaviour
             moveDirection = (ratPos - acornPos).normalized;
         }
     }
-
 
     private void OnTriggerStay(Collider other)
     {
