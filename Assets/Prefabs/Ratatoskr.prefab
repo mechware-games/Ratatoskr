@@ -1019,6 +1019,7 @@ GameObject:
   - component: {fileID: 3597101860629711175}
   - component: {fileID: 6351963227034360805}
   - component: {fileID: 9129586590787326418}
+  - component: {fileID: 9111833776403252975}
   m_Layer: 0
   m_Name: Ratatoskr
   m_TagString: Untagged
@@ -1095,7 +1096,7 @@ MonoBehaviour:
   _wallJumped: 0
   _debugMode: 1
   cam: {fileID: 8993922019335956604}
-  tppcam: {fileID: 0}
+  tppcam: {fileID: 3587944483847994154}
   MainCamTransform: {fileID: 0}
   orientation: {fileID: 8110555185583622385}
   groundCheck: {fileID: 8110555185532266356}
@@ -1143,6 +1144,22 @@ MonoBehaviour:
   gameOverScreen: {fileID: 3842213345157663806}
   LastCheckpoint: {x: 0, y: 0, z: 0}
   self: {fileID: 8110555185583622388}
+--- !u!114 &9111833776403252975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8110555185583622388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb41ba8b53ed6d0468f63c3ac1649acd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoomPercent: 1
+  zoomSensitivity: 0.5
+  minZoom: 0.75
+  maxZoom: 2
 --- !u!1 &8895580122849441810
 GameObject:
   m_ObjectHideFlags: 0
