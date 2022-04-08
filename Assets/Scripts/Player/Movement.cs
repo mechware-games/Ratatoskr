@@ -313,7 +313,7 @@ public class Movement : MonoBehaviour
     private bool WallCheck()
     {
         bool isWallRight = Physics.Raycast(transform.position, transform.right, _wallHorizontalActivationDistance, wallMask);
-        bool isWallLeft = Physics.Raycast(transform.position, transform.right, _wallHorizontalActivationDistance, wallMask);
+        bool isWallLeft = Physics.Raycast(transform.position, -transform.right, _wallHorizontalActivationDistance, wallMask);
         bool isWallFront = Physics.Raycast(transform.position, transform.forward, _wallRunForwardActivationDistance, wallMask);
 
         return isWallRight || isWallLeft || isWallFront;
