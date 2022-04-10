@@ -369,7 +369,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09dad85fe70d8a9439cadcbcf72ed339, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 1205794380878009593}
+  acornText: {fileID: 0}
+  goldenAcornText: {fileID: 0}
 --- !u!1 &8895580122849441810
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,7 +640,7 @@ Animator:
   m_GameObject: {fileID: 7876525972338005509}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5885348e5dc951b4b9f28af22f69117b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8eda568aae7965647bb566abb604fee8, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -804,15 +805,3 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 7796408833791925359}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1205794380878009593 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8973913873006971030, guid: f2b49f2ce509afa488f3d3d1c4d0bec8,
-    type: 3}
-  m_PrefabInstance: {fileID: 7796408833791925359}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
