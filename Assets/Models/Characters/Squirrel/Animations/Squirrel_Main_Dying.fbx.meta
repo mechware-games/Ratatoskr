@@ -1,14 +1,11 @@
 fileFormatVersion: 2
-guid: a4653ad7b5f899442a36de49ab834d67
+guid: 29e25ce08bc72de47b5cc9d6c496dc97
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: Jump
-  - first:
-      74: -7497848331705974981
-    second: Land
+    second: Dying
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -39,40 +36,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Jump
+      name: Dying
       takeName: Take 001
       internalID: 0
-      firstFrame: 6
-      lastFrame: 24
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Land
-      takeName: Take 001
-      internalID: 0
-      firstFrame: 24
-      lastFrame: 42
+      firstFrame: 0
+      lastFrame: 100
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
