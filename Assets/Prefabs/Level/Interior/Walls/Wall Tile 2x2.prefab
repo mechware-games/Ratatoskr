@@ -102,6 +102,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall Tile (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1309288754412280072, guid: f9db3721276e5ed40af357b600429ced,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 10ebd116e7cce1a42a792210277ad393, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9db3721276e5ed40af357b600429ced, type: 3}
 --- !u!4 &1382694609065890348 stripped
@@ -177,6 +182,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall Tile
       objectReference: {fileID: 0}
+    - target: {fileID: 1309288754412280072, guid: f9db3721276e5ed40af357b600429ced,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 10ebd116e7cce1a42a792210277ad393, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9db3721276e5ed40af357b600429ced, type: 3}
 --- !u!4 &2340972517083866933 stripped
@@ -252,6 +262,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall Tile (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1309288754412280072, guid: f9db3721276e5ed40af357b600429ced,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 10ebd116e7cce1a42a792210277ad393, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9db3721276e5ed40af357b600429ced, type: 3}
 --- !u!4 &2943692214870876505 stripped
@@ -327,6 +342,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall Tile (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1309288754412280072, guid: f9db3721276e5ed40af357b600429ced,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 10ebd116e7cce1a42a792210277ad393, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9db3721276e5ed40af357b600429ced, type: 3}
 --- !u!4 &5376554987933382858 stripped
