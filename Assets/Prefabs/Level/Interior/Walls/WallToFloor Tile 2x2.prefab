@@ -102,6 +102,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall Tile (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1309288754412280072, guid: f9db3721276e5ed40af357b600429ced,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 10ebd116e7cce1a42a792210277ad393, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9db3721276e5ed40af357b600429ced, type: 3}
 --- !u!4 &6480261665922641964 stripped
@@ -117,6 +122,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7497534835645111541}
     m_Modifications:
+    - target: {fileID: 2719341336242208199, guid: d7b6b767ba80a7a4f89d4f119ab84c8d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 10ebd116e7cce1a42a792210277ad393, type: 2}
     - target: {fileID: 3888337475027814056, guid: d7b6b767ba80a7a4f89d4f119ab84c8d,
         type: 3}
       propertyPath: m_RootOrder
@@ -252,6 +262,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall Tile
       objectReference: {fileID: 0}
+    - target: {fileID: 1309288754412280072, guid: f9db3721276e5ed40af357b600429ced,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 10ebd116e7cce1a42a792210277ad393, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9db3721276e5ed40af357b600429ced, type: 3}
 --- !u!4 &8012864444006057664 stripped
@@ -267,6 +282,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7497534835645111541}
     m_Modifications:
+    - target: {fileID: 2719341336242208199, guid: d7b6b767ba80a7a4f89d4f119ab84c8d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 10ebd116e7cce1a42a792210277ad393, type: 2}
     - target: {fileID: 3888337475027814056, guid: d7b6b767ba80a7a4f89d4f119ab84c8d,
         type: 3}
       propertyPath: m_RootOrder
