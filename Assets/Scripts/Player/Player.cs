@@ -6,7 +6,6 @@ public class Player : MonoBehaviour
 {
     public GameOverScreen gameOverScreen;
     public Vector3 LastCheckpoint;
-    public GameObject self;
     Renderer rend;
 
     public void Death()
