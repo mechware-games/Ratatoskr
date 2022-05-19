@@ -27812,7 +27812,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7783505, y: 1}
+    m_SensorSize: {x: 1.869863, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -45440,7 +45440,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7783505, y: 1}
+    m_SensorSize: {x: 1.869863, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -70465,7 +70465,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7783505, y: 1}
+    m_SensorSize: {x: 1.869863, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -70481,7 +70481,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1518566703}
-  m_LocalRotation: {x: 0.008695316, y: 0.9865305, z: -0.15348776, w: 0.055888455}
+  m_LocalRotation: {x: 0.008695318, y: 0.9865305, z: -0.15348777, w: 0.055888467}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -76145,7 +76145,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7783505, y: 1}
+    m_SensorSize: {x: 1.869863, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -101392,7 +101392,7 @@ PrefabInstance:
     - target: {fileID: 1205794380878009595, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
         type: 3}
       propertyPath: m_Name
-      value: Text_GA (TMP)
+      value: Text_A (TMP)
       objectReference: {fileID: 0}
     - target: {fileID: 2433114715847609793, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
         type: 3}
@@ -101478,12 +101478,12 @@ PrefabInstance:
         type: 3}
       propertyPath: acornText
       value: 
-      objectReference: {fileID: 1573011359}
+      objectReference: {fileID: 1416120293}
     - target: {fileID: 6351963227034360805, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
         type: 3}
       propertyPath: goldenAcornText
       value: 
-      objectReference: {fileID: 1416120293}
+      objectReference: {fileID: 1573011359}
     - target: {fileID: 6567468965007069415, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -101572,7 +101572,7 @@ PrefabInstance:
     - target: {fileID: 7995428893020161465, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
         type: 3}
       propertyPath: m_Name
-      value: Text_A (TMP)
+      value: Text_GA (TMP)
       objectReference: {fileID: 0}
     - target: {fileID: 8110555185583622385, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
         type: 3}
