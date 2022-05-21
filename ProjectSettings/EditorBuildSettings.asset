@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level 1_Grand Hall.unity
     guid: d295a20b320cc6c4da969610ef60200b
+  - enabled: 1
+    path: Assets/Scenes/Level5_topFloor.unity
+    guid: 883890431deb48a488df5d3c96fde232
   m_configObjects: {}
