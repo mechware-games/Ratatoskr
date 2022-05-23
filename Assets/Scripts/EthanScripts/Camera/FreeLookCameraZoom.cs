@@ -37,13 +37,13 @@ public class FreeLookCameraZoom : MonoBehaviour
         if(zoomPercent < minZoom) zoomPercent = minZoom;
         if(zoomPercent > maxZoom) zoomPercent = maxZoom;
 
-        if(Input.GetAxis("Camera Zoom") > 0)
+        if(Input.GetAxis("Camera Zoom In") > 0)
         {
             zoomPercent += zoomSensitivity * Time.deltaTime;
             Debug.Log("Zoom In");
         }
 
-        if(Input.GetAxis("Camera Zoom") < 0)
+        if(Input.GetAxis("Camera Zoom Out") < 0)
         {
             zoomPercent -= zoomSensitivity * Time.deltaTime;
             Debug.Log("Zoom Out");
