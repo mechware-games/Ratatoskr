@@ -19,6 +19,8 @@ public class AnimationScipt : MonoBehaviour
     [SerializeField] Transform GroundCheck;
     [SerializeField] private float TestingMoreThings;
     [SerializeField] private float IDonno;
+
+    public float speed = 2f;
     
     // Update is called once per frame.
     void Start()
@@ -32,13 +34,9 @@ public class AnimationScipt : MonoBehaviour
     }
     void Update()
     {
-
         run();
         JumpingAndFalling();
         Dead();
-
-        
-        
     }
     private void run()
     {
@@ -50,6 +48,7 @@ public class AnimationScipt : MonoBehaviour
         //animation calls
         anim.SetFloat("Forwards", Input.GetAxis("Vertical"));
         anim.SetFloat("Turning", Input.GetAxis("Horizontal"));
+        anim.speed = speed;
         
     }
     private void JumpingAndFalling()
