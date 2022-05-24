@@ -20,7 +20,7 @@ public class AnimationScipt : MonoBehaviour
     [SerializeField] private float TestingMoreThings;
     [SerializeField] private float IDonno;
 
-    public float speed = 2f;
+    //public float speed = 2f;
     
     // Update is called once per frame.
     void Start()
@@ -48,7 +48,7 @@ public class AnimationScipt : MonoBehaviour
         //animation calls
         anim.SetFloat("Forwards", Input.GetAxis("Vertical"));
         anim.SetFloat("Turning", Input.GetAxis("Horizontal"));
-        anim.speed = speed;
+       // anim.speed = speed;
         
     }
     private void JumpingAndFalling()
