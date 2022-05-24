@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3875543158836557980}
   - component: {fileID: 6140725561201244604}
   - component: {fileID: 7649642580239118362}
+  - component: {fileID: 5992781978423418058}
   m_Layer: 0
   m_Name: RuneStone_Text
   m_TagString: Untagged
@@ -117,6 +118,20 @@ MonoBehaviour:
   messages: []
   tutTex: {fileID: 4242733138137635059}
   canvas: {fileID: 1270930885271460999}
+--- !u!64 &5992781978423418058
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3371029568009427273}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5495902117074765545, guid: de39b418d007b334ea1477676ad10124, type: 3}
 --- !u!1 &9044134105789404983
 GameObject:
   m_ObjectHideFlags: 0
