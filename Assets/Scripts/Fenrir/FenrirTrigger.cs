@@ -5,10 +5,10 @@ using UnityEngine;
 public class FenrirTrigger : MonoBehaviour
 {
     [SerializeField]
-    [Header("Does ")]
     private bool _toggle = false;
 
     [SerializeField]
+    [Tooltip("Determines whether Fenrir will be activated or deactivated by this script")]
     private bool _set = true;
 
     private GameObject _fenrir;
@@ -46,7 +46,8 @@ public class FenrirTrigger : MonoBehaviour
             }
             else if (_set != fenrirActive) // If Fenrir's active state is different to the one this interactable triggers, set it accordingly
 			{
-                _fenrir.GetComponent<FenrirScript>().SetActive(fenrirActive);
+                _fenrir.GetComponent<FenrirScript>().SetActive(_set);
+                _fenrir.GetComponent<FenrirScript>().Despawn();
 
             }
 
