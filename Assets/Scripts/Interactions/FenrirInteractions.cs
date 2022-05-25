@@ -13,7 +13,7 @@ public class FenrirInteractions : Interactable
     public float aoeMaxTimeActive;
 
     private float fenrirBaseSpeed;
-    private float fenrirNewSpeed;
+    public float fenrirNewSpeed;
 
     private bool isActive = false;
     private bool isGrowing = false;
@@ -24,7 +24,6 @@ public class FenrirInteractions : Interactable
     private void Start()
     {
         fenrirBaseSpeed = fenrir._speed;
-        fenrirNewSpeed = fenrirBaseSpeed * 0.1f;
 
         child = GetComponentInChildren(typeof(FenrirInteractableChild)) as FenrirInteractableChild;
     }
