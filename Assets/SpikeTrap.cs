@@ -6,7 +6,7 @@ public class SpikeTrap : MonoBehaviour
 {
     private bool trapActive;
     public float delay = 3;
-    Animation anim;
+    [SerializeField] Animation anim;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -46,6 +46,7 @@ public class SpikeTrap : MonoBehaviour
         while (true)
         {
             anim.Play();
+            anim.name = "SpikeTrapPew";
             trapActive = true;
             yield return new WaitForSeconds(2);
             trapActive = false;

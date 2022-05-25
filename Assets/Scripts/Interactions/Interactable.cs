@@ -5,7 +5,7 @@ using UnityEngine;
 public class Interactable : MonoBehaviour
 {
     public float radius;
-    private SphereCollider range;
+    public SphereCollider range;
     public bool inRange;
 
     private void OnDrawGizmos()
