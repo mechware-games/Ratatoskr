@@ -113,9 +113,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed2abe5267784334e9d922116f785591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 10
+  radius: 12
   inRange: 0
-  messages: []
+  messages:
+  - Hey loser this is the first message in the array and im going to test out the
+    char limit because we dont want to overflow the text box now, do we? LMAO
   tutTex: {fileID: 4242733138137635059}
   canvas: {fileID: 1270930885271460999}
 --- !u!64 &5992781978423418058

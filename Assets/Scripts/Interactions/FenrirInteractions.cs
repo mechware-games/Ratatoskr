@@ -13,11 +13,19 @@ public class FenrirInteractions : Interactable
     public float aoeMaxTimeActive;
 
     private float fenrirBaseSpeed;
-    public float fenrirNewSpeed;
 
     private bool isActive = false;
     private bool isGrowing = false;
     private bool isShrinking = false;
+
+    [Header("Fenrir Effects")]
+    [SerializeField] private bool fenrirSlow;
+    [SerializeField] private float fenrirNewSpeed;
+
+    [SerializeField] private bool fenrirDeactivate;
+
+    [SerializeField] private bool fenrirDeactivates;
+
 
     private FenrirInteractableChild child;
 
@@ -34,11 +42,14 @@ public class FenrirInteractions : Interactable
         {
             StartCoroutine(GrowArea());
         }
+
     }
 
     private void Update()
     {
+        range.radius = radius;
         GetInput();
+
         if (child.isFenrirInsideMe)
         {
             fenrir._speed = fenrirNewSpeed;
@@ -90,21 +101,6 @@ public class FenrirInteractions : Interactable
             }
         }
         yield return new WaitForSeconds(aoeTimeToGrow);
-
-        // yield return new WaitForSeconds(aoeMaxTimeActive);
-        // 
-        // 
-        // while (child.transform.localScale.x > aoeBaseRadius)
-        // {
-        //     child.transform.localScale += new Vector3(1f, 1f, 1f) * Time.deltaTime;
-        // }
-        // 
-        // if (child.transform.localScale.x < aoeBaseRadius)
-        // {
-        //     child.transform.localScale = new Vector3(aoeBaseRadius, aoeBaseRadius, aoeBaseRadius);
-        // }
-        // 
-        // yield return new WaitForSeconds(1);
 
         yield return new WaitForSeconds(2);
         isActive = false;

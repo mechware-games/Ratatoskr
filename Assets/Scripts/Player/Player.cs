@@ -8,6 +8,14 @@ public class Player : MonoBehaviour
     public Vector3 LastCheckpoint;
     Renderer rend;
 
+    private bool Dying = true;
+    Animator anim;
+
+    private void Start()
+    {
+        anim = GetComponent(typeof(Animator)) as Animator;
+    }
+
     public void Death()
     {
         transform.position = LastCheckpoint;
@@ -15,5 +23,15 @@ public class Player : MonoBehaviour
         Time.timeScale = 0;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        anim.Play("Death");
+
+        if (Dying == true)
+        {
+            anim.SetBool("Dying", Dying);
+        }
+        else
+        {
+            anim.SetBool("Dying", Dying);
+        }
     }
 }

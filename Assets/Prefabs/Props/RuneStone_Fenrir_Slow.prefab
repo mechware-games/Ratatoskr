@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db504eff74e5c9e45a3acb1c03838204, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 10
+  radius: 12
   inRange: 0
   fenrir: {fileID: 0}
   aoeRadius: 25
