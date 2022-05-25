@@ -237,6 +237,7 @@ GameObject:
   - component: {fileID: 2783853472298579570}
   - component: {fileID: 651586014365042728}
   - component: {fileID: 2998788128488873229}
+  - component: {fileID: 1404267142647725035}
   m_Layer: 0
   m_Name: TPPCamera
   m_TagString: Untagged
@@ -396,6 +397,22 @@ MonoBehaviour:
   m_Damping: 0.89
   m_DampingWhenOccluded: 0.68
   m_OptimalTargetDistance: 0
+--- !u!114 &1404267142647725035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2692274684747394555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb41ba8b53ed6d0468f63c3ac1649acd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoomPercent: 1
+  zoomSensitivity: 0.5
+  minZoom: 0.75
+  maxZoom: 2
 --- !u!1 &4458585706977996419
 GameObject:
   m_ObjectHideFlags: 0
