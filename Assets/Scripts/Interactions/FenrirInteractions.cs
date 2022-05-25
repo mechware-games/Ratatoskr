@@ -24,7 +24,7 @@ public class FenrirInteractions : Interactable
     private void Start()
     {
         fenrirBaseSpeed = fenrir._speed;
-        fenrirNewSpeed = fenrirBaseSpeed * 0.8f;
+        fenrirNewSpeed = fenrirBaseSpeed * 0.1f;
 
         child = GetComponentInChildren(typeof(FenrirInteractableChild)) as FenrirInteractableChild;
     }
@@ -37,10 +37,23 @@ public class FenrirInteractions : Interactable
         }
     }
 
+    private void Update()
+    {
+        GetInput();
+        if (child.isFenrirInsideMe)
+        {
+            fenrir._speed = fenrirNewSpeed;
+        }
+        else
+        {
+            fenrir._speed = fenrirBaseSpeed;
+        }
+    }
+
     IEnumerator GrowArea()
     {
-        float scaleUp = Mathf.Lerp(aoeBaseRadius, aoeRadius, Time.deltaTime / aoeTimeToGrow);
-        float scaleDown = Mathf.Lerp(aoeRadius, aoeBaseRadius, Time.deltaTime / aoeTimeToGrow);
+        float scaleUp = Mathf.Lerp(aoeBaseRadius, aoeRadius, aoeTimeToGrow);
+        float scaleDown = Mathf.Lerp(aoeRadius, aoeBaseRadius, aoeTimeToGrow);
 
         isActive = true;
         isGrowing = true;
