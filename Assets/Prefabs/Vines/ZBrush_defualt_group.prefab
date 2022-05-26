@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 1455291441741845968}
   - component: {fileID: 974284760768737087}
   - component: {fileID: 3919037425380985213}
-  m_Layer: 0
+  - component: {fileID: 7079312693103754666}
+  m_Layer: 3
   m_Name: ZBrush_defualt_group
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7079312693103754666
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9021805649800124320}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6831440722055496184, guid: ba9d70f0d1ce77f4386195586664f760, type: 3}
