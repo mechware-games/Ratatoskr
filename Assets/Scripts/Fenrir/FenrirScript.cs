@@ -7,11 +7,13 @@ public class FenrirScript : MonoBehaviour
 {
     private Transform _player;
 
-	#region CoreValues
-	[Header("Core Values")]
+    #region CoreValues
+    [Header("Core Values")]
     [SerializeField]
     [Range(0.1f, 20f)]
-    public float _speed;
+    private float _baseSpeed = 15f;
+    public float currentSpeed;
+    
 
     [SerializeField]
     [Range(1f, 10f)]
@@ -90,6 +92,7 @@ public class FenrirScript : MonoBehaviour
 
 	private void OnEnable()
     {
+        currentSpeed = _baseSpeed;
         _children = new List<Transform>(transform.GetComponentsInChildren<Transform>());
         // The player must have the tag "Player" for this script to work.
         // No other object in the scene should have the tag "Player"
@@ -160,7 +163,7 @@ public class FenrirScript : MonoBehaviour
 
         Vector3 movementDirection = (target - transform.position).normalized;
 
-        transform.position += _speed * Time.deltaTime * movementDirection;
+        transform.position += currentSpeed * Time.deltaTime * movementDirection;
     }
 
     // Causes Fenrir to strafe using the strafe vector in relation to the target
@@ -220,6 +223,7 @@ public class FenrirScript : MonoBehaviour
 
     public void Spawn()
 	{
+        currentSpeed = _baseSpeed;
         _pauseTimer = _pauseLength;
         _currentState = State.Chasing;
         SetActive(true);

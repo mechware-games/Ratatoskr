@@ -31,7 +31,7 @@ public class FenrirInteractions : Interactable
 
     private void Start()
     {
-        fenrirBaseSpeed = fenrir._speed;
+        fenrirBaseSpeed = fenrir.currentSpeed;
 
         child = GetComponentInChildren(typeof(FenrirInteractableChild)) as FenrirInteractableChild;
     }
@@ -52,11 +52,11 @@ public class FenrirInteractions : Interactable
 
         if (child.isFenrirInsideMe)
         {
-            fenrir._speed = fenrirNewSpeed;
+            fenrir.currentSpeed = fenrirNewSpeed;
         }
         else
         {
-            fenrir._speed = fenrirBaseSpeed;
+            fenrir.currentSpeed = fenrirBaseSpeed;
         }
     }
 

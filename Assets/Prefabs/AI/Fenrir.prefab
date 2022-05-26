@@ -6684,7 +6684,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2588388478883760072}
   - component: {fileID: 8290648774528776682}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Wolf_Body5
   m_TagString: Untagged
   m_Icon: {fileID: 0}

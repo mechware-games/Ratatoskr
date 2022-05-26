@@ -18,6 +18,10 @@ public class Movement : MonoBehaviour
     public float baseSpeed = 100f;
     public float maxSpeed = 250f;
 
+    [SerializeField]
+    [Range(0.1f, 1f)]
+    private float _speedDecayCoefficient = 0.3f;
+
     private float currentSpeed;
 
     [Tooltip("Determines the length of time needed to pass between chainable movement.")]
@@ -274,6 +278,14 @@ public class Movement : MonoBehaviour
 
                         rb.AddForce(moveDir.normalized * currentSpeed, ForceMode.Acceleration);
                     }
+					else
+					{
+                        if (rb.velocity.magnitude > maxSpeed && _playerState != State.NotGrounded)
+						{
+                            rb.velocity *= _speedDecayCoefficient;
+						}
+					}
+
                 }
                 break;
         }
