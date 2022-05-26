@@ -43,7 +43,7 @@ public class Interactable : MonoBehaviour
         Debug.Log("No Action has been assigned");
     }
 
-     public virtual void StopAction()
+    public virtual void StopAction()
     {
         Debug.Log("STOPPED ACTION:");
     }
