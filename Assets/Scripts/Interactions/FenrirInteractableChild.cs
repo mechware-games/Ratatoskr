@@ -27,7 +27,7 @@ public class FenrirInteractableChild : MonoBehaviour
         if (other.gameObject.CompareTag("Fenrir"))
         {
             isFenrirInsideMe = true;
-            fenrir._speed = fenrirSpeed;
+            fenrir.currentSpeed = fenrirSpeed;
             Debug.Log("FENRIR HAS ENTERED ME " + isFenrirInsideMe);
         }
     }
@@ -38,7 +38,7 @@ public class FenrirInteractableChild : MonoBehaviour
         {
             Debug.Log("FENRIR HAS LEFT ME " + isFenrirInsideMe);
             isFenrirInsideMe = false;
-            fenrir._speed = fenrirBaseSpeed;
+            fenrir.currentSpeed = fenrirBaseSpeed;
         }
     }
 }
