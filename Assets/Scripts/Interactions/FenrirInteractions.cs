@@ -5,7 +5,6 @@ using UnityEngine;
 public class FenrirInteractions : Interactable
 {
     //get outerradius
-    public FenrirScript fenrir;
     public float aoeRadius;
     public float aoeBaseRadius;
     public float aoeTimeToGrow;
@@ -19,21 +18,13 @@ public class FenrirInteractions : Interactable
     private bool isShrinking = false;
 
     [Header("Fenrir Effects")]
-    [SerializeField] private bool fenrirSlow;
     [SerializeField] private float fenrirNewSpeed;
-
-    [SerializeField] private bool fenrirDeactivate;
-
-    [SerializeField] private bool fenrirDeactivates;
-
 
     private FenrirInteractableChild child;
 
     private void Start()
     {
-        fenrirBaseSpeed = fenrir._speed;
-
-        child = GetComponentInChildren(typeof(FenrirInteractableChild)) as FenrirInteractableChild;
+        child = GetComponentInChildren<FenrirInteractableChild>();
     }
 
     public override void Action()
@@ -42,22 +33,12 @@ public class FenrirInteractions : Interactable
         {
             StartCoroutine(GrowArea());
         }
-
     }
 
     private void Update()
     {
         range.radius = radius;
         GetInput();
-
-        if (child.isFenrirInsideMe)
-        {
-            fenrir._speed = fenrirNewSpeed;
-        }
-        else
-        {
-            fenrir._speed = fenrirBaseSpeed;
-        }
     }
 
     IEnumerator GrowArea()
@@ -77,8 +58,6 @@ public class FenrirInteractions : Interactable
             {
                 isGrowing = false;
             }
-            Debug.Log("transform x: " + child.transform.localScale.x);
-            Debug.Log("scaleUp: " + scaleUp);
         }
         yield return new WaitForSeconds(aoeTimeToGrow);
 
