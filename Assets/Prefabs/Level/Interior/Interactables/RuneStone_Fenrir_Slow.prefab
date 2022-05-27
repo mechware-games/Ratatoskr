@@ -114,18 +114,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db504eff74e5c9e45a3acb1c03838204, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 12
+  radius: 25
   range: {fileID: 0}
   inRange: 0
-  fenrir: {fileID: 0}
   aoeRadius: 40
   aoeBaseRadius: 1
-  aoeTimeToGrow: 0.1
-  aoeMaxTimeActive: 7
-  fenrirSlow: 0
-  fenrirNewSpeed: 2
-  fenrirDeactivate: 0
-  fenrirDeactivates: 0
+  aoeGrowth: 20
+  aoeMaxTimeActive: 0.5
 --- !u!64 &7037075774149310908
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -600,4 +595,4 @@ MonoBehaviour:
   isFenrirInsideMe: 0
   sphere: {fileID: 9178957921106710745}
   blank: 0
-  fenrir: {fileID: 0}
+  fenrirSpeed: 3
