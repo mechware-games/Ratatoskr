@@ -10,8 +10,8 @@ public class FenrirScript : MonoBehaviour
     #region CoreValues
     [Header("Core Values")]
     [SerializeField]
-    [Range(0.1f, 20f)]
-    private float _baseSpeed = 15f;
+    [Range(0.1f, 50f)]
+    private float _baseSpeed = 30f;
     public float currentSpeed;
     
 
@@ -48,6 +48,12 @@ public class FenrirScript : MonoBehaviour
     [Tooltip("Maximum distance Fenrir can spawn from the player.")]
     [Range(5f, 50f)]
     private float _maxFenrirSpawnRange = 10f;
+
+    [SerializeField]
+    [Tooltip("Ammount of time before Fenrir checks the player's current location")]
+    [Range(0.01f, 5f)]
+    private float _fenrirCheckPositionTimerLength = 0.3f;
+    private float _fenrirCheckPositionTimer = 0f;
 	#endregion
 
 	#region Offsets
@@ -98,18 +104,25 @@ public class FenrirScript : MonoBehaviour
         // No other object in the scene should have the tag "Player"
         _player = GameObject.FindGameObjectWithTag("Player").transform;
         _currentState = State.Chasing;
+        _playerSpottedLocation = _player.position;
     }
 #endregion
+
+    public float GetBaseSpeed()
+	{
+        return _baseSpeed;
+	}
 
 	// Update is called once per frame
 	void Update()
     {
-        transform.LookAt(_playerSpottedLocation);
+        transform.LookAt(_player.position);
         if (GetActive())
         {
             switch (_currentState)
             {
                 case State.Chasing:
+                    SetPlayerLastKnownPosition();
                     MoveTowardsLastKnownPlayerLocation();
                     _chaseTimer -= Time.deltaTime;
                     if (_chaseTimer < 0)
@@ -142,10 +155,18 @@ public class FenrirScript : MonoBehaviour
 		}
 	}
 
+    void SetPlayerLastKnownPosition()
+	{
+        _fenrirCheckPositionTimer += Time.deltaTime;
+        if (_fenrirCheckPositionTimer > _fenrirCheckPositionTimerLength)
+		{
+            _fenrirCheckPositionTimer = 0;
+            _playerSpottedLocation = _player.position;
+        }
+    }
+
     void MoveTowardsLastKnownPlayerLocation()
-    {
-        _playerSpottedLocation = _player.position;
-        
+    {     
         float distanceFromPlayer = (_player.position - transform.position).magnitude;
         Vector3 target;
 
