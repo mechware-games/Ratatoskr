@@ -19,7 +19,8 @@ public class FenrirInteractableChild : MonoBehaviour
     {
         fenrirHimself = GameObject.FindWithTag("Fenrir");
         fenrir = fenrirHimself.GetComponent<FenrirScript>();
-        fenrirBaseSpeed = fenrirSpeed;
+        fenrirBaseSpeed = fenrir.GetBaseSpeed();
+        Debug.Log($"Fenrir's base speed is: {fenrirBaseSpeed} alalalalaalalal");
     }
 
     private void OnTriggerEnter(Collider other)

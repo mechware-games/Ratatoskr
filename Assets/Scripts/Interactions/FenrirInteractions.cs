@@ -7,18 +7,14 @@ public class FenrirInteractions : Interactable
     //get outerradius
     public float aoeRadius;
     public float aoeBaseRadius;
-    public float aoeTimeToGrow;
+    public float aoeGrowth;
+    private float aoeTimeToGrowTimer = 0f;
 
     public float aoeMaxTimeActive;
-
-    private float fenrirBaseSpeed;
 
     private bool isActive = false;
     private bool isGrowing = false;
     private bool isShrinking = false;
-
-    [Header("Fenrir Effects")]
-    [SerializeField] private float fenrirNewSpeed;
 
     private FenrirInteractableChild child;
 
@@ -31,6 +27,7 @@ public class FenrirInteractions : Interactable
     {
         if (!isActive)
         {
+            aoeTimeToGrowTimer = 0f;
             StartCoroutine(GrowArea());
         }
     }
@@ -43,15 +40,12 @@ public class FenrirInteractions : Interactable
 
     IEnumerator GrowArea()
     {
-        float scaleUp = Mathf.Lerp(aoeBaseRadius, aoeRadius, aoeTimeToGrow);
-        float scaleDown = Mathf.Lerp(aoeRadius, aoeBaseRadius, aoeTimeToGrow);
-
         isActive = true;
         isGrowing = true;
 
         while (isGrowing)
         {
-            child.transform.localScale += new Vector3(scaleUp, scaleUp, scaleUp) * Time.deltaTime;
+            child.transform.localScale += new Vector3(aoeGrowth, aoeGrowth, aoeGrowth) * Time.deltaTime;
             yield return null;
 
             if(child.transform.localScale.x >= aoeRadius)
@@ -59,7 +53,6 @@ public class FenrirInteractions : Interactable
                 isGrowing = false;
             }
         }
-        yield return new WaitForSeconds(aoeTimeToGrow);
 
         Debug.Log("we are fully grown");
         isGrowing = false;
@@ -71,7 +64,8 @@ public class FenrirInteractions : Interactable
 
         while (isShrinking)
         {
-            child.transform.localScale -= new Vector3(scaleUp, scaleUp, scaleUp) * Time.deltaTime;
+            aoeTimeToGrowTimer += Time.deltaTime;
+            child.transform.localScale -= new Vector3(aoeGrowth, aoeGrowth, aoeGrowth) * Time.deltaTime;
             yield return null;
 
             if (child.transform.localScale.x <= aoeBaseRadius)
@@ -79,9 +73,6 @@ public class FenrirInteractions : Interactable
                 isShrinking = false;
             }
         }
-        yield return new WaitForSeconds(aoeTimeToGrow);
-
-        yield return new WaitForSeconds(2);
         isActive = false;
     }
 }
