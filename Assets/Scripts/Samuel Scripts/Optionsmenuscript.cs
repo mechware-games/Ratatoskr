@@ -14,9 +14,12 @@ public class Optionsmenuscript : MonoBehaviour
 
     public TMP_Dropdown textureDropdown;
     public TMP_Dropdown qualityDropdown;
+
+
     public TMP_Dropdown aaDropdown;
     public Slider Audio;
     public AudioMixer MasterMix;
+
     public TMP_Dropdown Resolution;
 
     [SerializeField] private GameObject FirstButtonMain;
