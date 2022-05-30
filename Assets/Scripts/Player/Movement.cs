@@ -119,6 +119,14 @@ public class Movement : MonoBehaviour
         currentJumpForwardForce = baseForwardForce;
     }
 
+    public bool CheckGrounded()
+	{
+        if (_playerState == State.Grounded)
+		{
+            return true;
+		}
+        return false;
+    }
     private void Update()
     {
         if (cam == tppcam)
@@ -141,7 +149,7 @@ public class Movement : MonoBehaviour
         {
             case State.Grounded:
                 {
-					if (!Physics.CheckSphere(groundCheck.position, groundDist, groundMask))
+					if (!CheckGrounded())
 					{
                         _playerState = State.NotGrounded;
 					}
