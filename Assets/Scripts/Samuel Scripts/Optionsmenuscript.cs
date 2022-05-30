@@ -4,18 +4,22 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class Optionsmenuscript : MonoBehaviour
 {
     Resolution[] resolutions;
     public GameObject OptionsMenu;
     public GameObject MainMenu;
+
     public TMP_Dropdown textureDropdown;
     public TMP_Dropdown qualityDropdown;
     public TMP_Dropdown aaDropdown;
     public Slider Audio;
     public AudioMixer MasterMix;
     public TMP_Dropdown Resolution;
+
+    [SerializeField] private GameObject FirstButtonMain;
 
     private void Start()
     {
@@ -41,7 +45,6 @@ public class Optionsmenuscript : MonoBehaviour
         Resolution.AddOptions(options);
         Resolution.value = currentResolution;
         Resolution.RefreshShownValue();
-
     }
 
 
@@ -61,12 +64,14 @@ public class Optionsmenuscript : MonoBehaviour
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
-
     public void Back()
     {
         OptionsMenu.SetActive(false);
         MainMenu.SetActive(true);
+        GameObject.Find("EventSystem").GetComponent<EventSystem>().SetSelectedGameObject(FirstButtonMain, null);
     }
+
+
     public void SetFullscreen(bool isFullscreen)
     {
         Screen.fullScreen = isFullscreen;
@@ -76,17 +81,18 @@ public class Optionsmenuscript : MonoBehaviour
         Debug.Log("texture quality is " + QualitySettings.masterTextureLimit);
         Debug.Log(textureDropdown.value);
     }
-    
+   
+
+
+
     public void MasterVolume(float masterLevel)
     {
         MasterMix.SetFloat("Master", Mathf.Log10(masterLevel) * 20);
     }
-
     public void SetMusicLvl (float musicLvl)
     {
         MasterMix.SetFloat("Music", Mathf.Log10(musicLvl) * 20);
     }
-
     public void SetSFXLevel(float sfxlevel)
     {
         MasterMix.SetFloat("Sound Effects", Mathf.Log10(sfxlevel) * 20);
