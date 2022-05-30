@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Floating Platform
+  m_Name: Floating Platform Inactive
   m_Shader: {fileID: -6465566751694194690, guid: 7b5d23140dc8e8743a98184e6bf0997d,
     type: 3}
   m_ShaderKeywords: _SURFACE_TYPE_TRANSPARENT
