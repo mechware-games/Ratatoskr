@@ -127,6 +127,8 @@ public class CheckPointManager : MonoBehaviour
 				{
                     _checkPointStatuses[index].activated = false;
                     _checkPointStatuses[index].timer = _checkpointResetTimerLength;
+                    DeactivateAll();
+                    _puzzleProgress = 0;
                 }
 			}
 			else
