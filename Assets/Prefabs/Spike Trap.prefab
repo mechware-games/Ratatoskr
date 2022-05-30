@@ -205,7 +205,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2816490837321976049}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Spike Trap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -594,6 +594,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 10
+  anim: {fileID: 0}
 --- !u!65 &5494967643277320494
 BoxCollider:
   m_ObjectHideFlags: 0

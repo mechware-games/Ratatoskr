@@ -21,7 +21,7 @@ public class AnimationScipt : MonoBehaviour
     [SerializeField] private float IDonno;
 
     //public float speed = 2f;
-    
+
     // Update is called once per frame.
     void Start()
     {
@@ -48,11 +48,11 @@ public class AnimationScipt : MonoBehaviour
         //animation calls
         anim.SetFloat("Forwards", Input.GetAxis("Vertical"));
         anim.SetFloat("Turning", Input.GetAxis("Horizontal"));
-       // anim.speed = speed;
-        
+        // anim.speed = speed;
+
     }
     private void JumpingAndFalling()
-    { 
+    {
         //Jumping animation
         anim.SetFloat("Jumping", Input.GetAxis("Jump"));
         //Falling animation, needs to be set so when he is on the floor it doesn't play but if he is in the air it plays.
