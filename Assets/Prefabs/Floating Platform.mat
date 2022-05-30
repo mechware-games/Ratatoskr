@@ -65,7 +65,7 @@ Material:
     - _ZWrite: 0
     - _ZWriteControl: 0
     m_Colors:
-    - _Color: {r: 1.6603774, g: 1.6603774, b: 0.8693485, a: 0.5529412}
+    - _Color: {r: 5.056603, g: 5.056603, b: 1.5619873, a: 0.5529412}
     - _NoiseSpeed: {r: 1, g: 1, b: 0, a: 0}
     - _NoiseTiling: {r: 3, g: 50, b: 0, a: 0}
   m_BuildTextureStacks: []
