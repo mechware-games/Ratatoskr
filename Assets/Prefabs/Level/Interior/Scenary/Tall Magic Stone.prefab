@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8746429586836043236}
   - component: {fileID: 6810982053967085870}
   - component: {fileID: 8000033505667010347}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tall Magic Stone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 5279606029402906711}
   - component: {fileID: 5279606029402906710}
   - component: {fileID: 5279606029402906709}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
