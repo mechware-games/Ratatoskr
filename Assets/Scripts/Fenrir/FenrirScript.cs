@@ -16,7 +16,7 @@ public class FenrirScript : MonoBehaviour
     
 
     [SerializeField]
-    [Range(1f, 10f)]
+    [Range(1f, 30f)]
     public float _chaseLength;
     public float _chaseTimer;
 
