@@ -39,22 +39,52 @@ public class AnimationScipt : MonoBehaviour
         Dead();
     }
     private void run()
-    {
-        //Squirrel walking animation. need to figure out player velocity.
-        MovingForBack = Input.GetAxis("Vertical");
-        MovingLeftRight = Input.GetAxis("Horizontal");
-        JumpAndFall = Input.GetAxis("Jump");
-        TestingMoreThings = Player.transform.position.y;
-        //animation calls
-        anim.SetFloat("Forwards", Input.GetAxis("Vertical"));
-        anim.SetFloat("Turning", Input.GetAxis("Horizontal"));
-        // anim.speed = speed;
+    { if (Player.GetComponent<Movement>().CheckGrounded())
+        {
+            //Squirrel walking animation. need to figure out player velocity.
+            MovingForBack = Input.GetAxis("Vertical");
+            MovingLeftRight = Input.GetAxis("Horizontal");
+            JumpAndFall = Input.GetAxis("Jump");
+            TestingMoreThings = Player.transform.position.y;
+            //animation calls
+            float vert = Mathf.Abs(Input.GetAxis("Vertical"));
+            float horz = Mathf.Abs(Input.GetAxis("Horizontal"));
 
+            if (vert > 0.05f)
+            {
+                float speed = vert * 3f;
+                if (speed < 1f) { speed = 1f; }
+                anim.SetFloat("Forwards", 1f);
+                anim.speed = speed;
+            }
+            else
+            {
+                anim.SetFloat("Forwards", 0f);
+            }
+
+            if (horz > 0.05f)
+            {
+                float speed = horz * 3f;
+                if (speed < 1f) { speed = 1f; }
+                anim.SetFloat("Turning", 1f);
+                anim.speed = speed;
+            }
+            else
+            {
+                anim.SetFloat("Turning", 0f);
+            }
+
+            // anim.SetFloat("Forwards", Input.GetAxis("Vertical"));
+            // anim.SetFloat("Turning", Input.GetAxis("Horizontal"));
+            anim.speed = 1;
+        }
     }
     private void JumpingAndFalling()
     {
+        anim.SetBool("Falling", !Player.GetComponent<Movement>().CheckGrounded());
         //Jumping animation
         anim.SetFloat("Jumping", Input.GetAxis("Jump"));
+        anim.speed = 2f;
         //Falling animation, needs to be set so when he is on the floor it doesn't play but if he is in the air it plays.
         if (TestingMoreThings < IDonno)
         {
@@ -66,15 +96,6 @@ public class AnimationScipt : MonoBehaviour
             IsGrounded = false;
             IDonno = TestingMoreThings;
         }
-        if (IsGrounded == true)
-        {
-            anim.SetBool("Falling", IsGrounded);
-        }
-        else
-        {
-            anim.SetBool("Falling", IsGrounded);
-        }
-
     }
     private void Dead()
     {

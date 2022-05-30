@@ -253,7 +253,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2692274684747394555}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.7378337, y: 4.037, z: 13.173828}
+  m_LocalPosition: {x: 2.0047874, y: 4.0370007, z: 13.512428}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -293,7 +293,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.5074627, y: 1}
+    m_SensorSize: {x: 2.0688336, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -686,7 +686,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7441138009147997426}
-  m_LocalRotation: {x: -0.017346842, y: 0.9821479, z: -0.115597695, w: -0.14738326}
+  m_LocalRotation: {x: -0.0093319025, y: 0.98992956, z: -0.11722878, w: -0.07880254}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -731,7 +731,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.5074627, y: 1}
+    m_SensorSize: {x: 2.0688336, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -891,7 +891,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7924629922082886922}
-  m_LocalRotation: {x: -0.020017736, y: 0.97988915, z: -0.13339628, w: -0.14704432}
+  m_LocalRotation: {x: -0.010759957, y: 0.98763996, z: -0.13516825, w: -0.07862027}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -936,7 +936,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.5074627, y: 1}
+    m_SensorSize: {x: 2.0688336, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1046,9 +1046,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7059550f6f5e65445bca4d9f0679e809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 50
-  maxSpeed: 100
-  _ActionTimerLength: 0.3
+  baseSpeed: 80
+  maxSpeed: 20
+  _speedDecayCoefficient: 0.7
+  _ActionTimerLength: 0.1
   baseJumpForce: 30
   baseForwardForce: 10
   groundDist: 0.4
@@ -1068,10 +1069,10 @@ MonoBehaviour:
   MainCamTransform: {fileID: 0}
   orientation: {fileID: 8110555185583622385}
   groundCheck: {fileID: 8110555185532266356}
-  _DownForceModifierCap: 3
-  _gravityIncreaseRate: 1.5
+  _DownForceModifierCap: 4
+  _gravityIncreaseRate: 2
   _currentGravityModifier: 1
-  _gravityModifierTimer: 0.3
+  _gravityModifierTimer: 0.15
   _currentGravityModifierTimer: 0
   groundMask:
     serializedVersion: 2
@@ -1138,8 +1139,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8895580122849441810}
-  m_LocalRotation: {x: 0.0000000025897005, y: 0.99072546, z: -0.13587919, w: 0.000000019237257}
-  m_LocalPosition: {x: -1.5561501e-14, y: 4.037, z: 13.647003}
+  m_LocalRotation: {x: -0.010759963, y: 0.98763996, z: -0.13516827, w: -0.07862028}
+  m_LocalPosition: {x: 2.0047874, y: 4.0370007, z: 13.512428}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1288,7 +1289,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9068065690227489832}
-  m_LocalRotation: {x: -0.022689095, y: 0.97730064, z: -0.15119788, w: -0.14665592}
+  m_LocalRotation: {x: -0.0121882465, y: 0.98501796, z: -0.15311056, w: -0.07841157}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1333,7 +1334,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.5074627, y: 1}
+    m_SensorSize: {x: 2.0688336, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1636,9 +1637,7 @@ MonoBehaviour:
   Dying: 0
   Falling: 0
   IsGrounded: 0
-  player: {fileID: 0}
+  Player: {fileID: 0}
   GroundCheck: {fileID: 0}
   TestingMoreThings: 0
   IDonno: 0
-  defaultSpeed: 1
-  runningSpeed: 2

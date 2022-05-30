@@ -876,7 +876,7 @@
         "a": 0.0
     },
     "isMainColor": false,
-    "m_ColorMode": 0
+    "m_ColorMode": 1
 }
 
 {
@@ -1052,7 +1052,7 @@
         "m_Id": "95c6667fc8574c10885e0bb4d94329fc"
     },
     "m_AllowMaterialOverride": true,
-    "m_SurfaceType": 0,
+    "m_SurfaceType": 1,
     "m_ZTestMode": 4,
     "m_ZWriteControl": 0,
     "m_AlphaMode": 0,

@@ -7,14 +7,16 @@ public class FenrirScript : MonoBehaviour
 {
     private Transform _player;
 
-	#region CoreValues
-	[Header("Core Values")]
+    #region CoreValues
+    [Header("Core Values")]
     [SerializeField]
-    [Range(0.1f, 20f)]
-    public float _speed;
+    [Range(0.1f, 50f)]
+    private float _baseSpeed = 30f;
+    public float currentSpeed;
+    
 
     [SerializeField]
-    [Range(1f, 10f)]
+    [Range(1f, 30f)]
     public float _chaseLength;
     public float _chaseTimer;
 
@@ -46,6 +48,22 @@ public class FenrirScript : MonoBehaviour
     [Tooltip("Maximum distance Fenrir can spawn from the player.")]
     [Range(5f, 50f)]
     private float _maxFenrirSpawnRange = 10f;
+
+    [SerializeField]
+    [Tooltip("Ammount of time before Fenrir checks the player's current location")]
+    [Range(0.01f, 5f)]
+    private float _fenrirCheckPositionTimerLength = 0.3f;
+    private float _fenrirCheckPositionTimer = 0f;
+
+    [SerializeField]
+    [Tooltip("Fenrir Pause time after failing to catch the player (When Fenrir is really close to the player).")]
+    [Range(0.1f, 3f)]
+    private float _fenrirPauseTimerLength = 0.5f;
+    private float _fenrirPauseTimer = 0f;
+
+    [SerializeField]
+    [Range(0.1f, 10f)]
+    private float _fenrirPauseTriggerRadius;
 	#endregion
 
 	#region Offsets
@@ -58,7 +76,8 @@ public class FenrirScript : MonoBehaviour
     #endregion
 
     #region State
-    private enum State { Chasing, Despawned };
+    private enum State { Chasing, Despawned, Waiting };
+    [SerializeField]
     private State _currentState = State.Chasing;
     #endregion
 
@@ -75,6 +94,7 @@ public class FenrirScript : MonoBehaviour
     private Vector3 _playerSpottedLocation;
 	#endregion
 
+
 	#region needsCleaning
 	// Start is called before the first frame update
 	void Start()
@@ -90,29 +110,59 @@ public class FenrirScript : MonoBehaviour
 
 	private void OnEnable()
     {
+        currentSpeed = _baseSpeed;
         _children = new List<Transform>(transform.GetComponentsInChildren<Transform>());
         // The player must have the tag "Player" for this script to work.
         // No other object in the scene should have the tag "Player"
         _player = GameObject.FindGameObjectWithTag("Player").transform;
         _currentState = State.Chasing;
+        _playerSpottedLocation = _player.position;
     }
 #endregion
+
+    public float GetBaseSpeed()
+	{
+        return _baseSpeed;
+	}
+
+    private void CheckFenrirDistance()
+	{
+        float magnitude = (_playerSpottedLocation - transform.position).magnitude;
+
+        if (magnitude < _fenrirPauseTriggerRadius)
+		{
+            _currentState = State.Waiting;
+		}
+	}
 
 	// Update is called once per frame
 	void Update()
     {
-        transform.LookAt(_playerSpottedLocation);
+        transform.LookAt(_player.position);
         if (GetActive())
         {
             switch (_currentState)
             {
+                case State.Waiting:
+                    SetPlayerLastKnownPosition();
+                    _fenrirPauseTimer += Time.deltaTime;
+                    if (_fenrirPauseTimer > _fenrirPauseTimerLength)
+                    {
+                        Debug.Log("Timer Triggered");
+                        _currentState = State.Chasing;
+                        _fenrirPauseTimer = 0;
+                    }
+                    break;
                 case State.Chasing:
+                    SetPlayerLastKnownPosition();
                     MoveTowardsLastKnownPlayerLocation();
+
                     _chaseTimer -= Time.deltaTime;
                     if (_chaseTimer < 0)
                     {
                         Despawn();
                     };
+                    CheckFenrirDistance();
                     break;
                 case State.Despawned:
                     _pauseTimer -= Time.deltaTime;
@@ -139,10 +189,18 @@ public class FenrirScript : MonoBehaviour
 		}
 	}
 
+    void SetPlayerLastKnownPosition()
+	{
+        _fenrirCheckPositionTimer += Time.deltaTime;
+        if (_fenrirCheckPositionTimer > _fenrirCheckPositionTimerLength)
+		{
+            _fenrirCheckPositionTimer = 0;
+            _playerSpottedLocation = _player.position;
+        }
+    }
+
     void MoveTowardsLastKnownPlayerLocation()
-    {
-        _playerSpottedLocation = _player.position;
-        
+    {     
         float distanceFromPlayer = (_player.position - transform.position).magnitude;
         Vector3 target;
 
@@ -160,7 +218,7 @@ public class FenrirScript : MonoBehaviour
 
         Vector3 movementDirection = (target - transform.position).normalized;
 
-        transform.position += _speed * Time.deltaTime * movementDirection;
+        transform.position += currentSpeed * Time.deltaTime * movementDirection;
     }
 
     // Causes Fenrir to strafe using the strafe vector in relation to the target
@@ -220,6 +278,7 @@ public class FenrirScript : MonoBehaviour
 
     public void Spawn()
 	{
+        currentSpeed = _baseSpeed;
         _pauseTimer = _pauseLength;
         _currentState = State.Chasing;
         SetActive(true);
