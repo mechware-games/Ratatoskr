@@ -54,6 +54,16 @@ public class FenrirScript : MonoBehaviour
     [Range(0.01f, 5f)]
     private float _fenrirCheckPositionTimerLength = 0.3f;
     private float _fenrirCheckPositionTimer = 0f;
+
+    [SerializeField]
+    [Tooltip("Fenrir Pause time after failing to catch the player (When Fenrir is really close to the player).")]
+    [Range(0.1f, 3f)]
+    private float _fenrirPauseTimerLength = 0.5f;
+    private float _fenrirPauseTimer = 0f;
+
+    [SerializeField]
+    [Range(0.1f, 10f)]
+    private float _fenrirPauseTriggerRadius;
 	#endregion
 
 	#region Offsets
@@ -66,7 +76,8 @@ public class FenrirScript : MonoBehaviour
     #endregion
 
     #region State
-    private enum State { Chasing, Despawned };
+    private enum State { Chasing, Despawned, Waiting };
+    [SerializeField]
     private State _currentState = State.Chasing;
     #endregion
 
@@ -82,6 +93,7 @@ public class FenrirScript : MonoBehaviour
 
     private Vector3 _playerSpottedLocation;
 	#endregion
+
 
 	#region needsCleaning
 	// Start is called before the first frame update
@@ -113,6 +125,16 @@ public class FenrirScript : MonoBehaviour
         return _baseSpeed;
 	}
 
+    private void CheckFenrirDistance()
+	{
+        float magnitude = (_playerSpottedLocation - transform.position).magnitude;
+
+        if (magnitude < _fenrirPauseTriggerRadius)
+		{
+            _currentState = State.Waiting;
+		}
+	}
+
 	// Update is called once per frame
 	void Update()
     {
@@ -121,14 +143,26 @@ public class FenrirScript : MonoBehaviour
         {
             switch (_currentState)
             {
+                case State.Waiting:
+                    SetPlayerLastKnownPosition();
+                    _fenrirPauseTimer += Time.deltaTime;
+                    if (_fenrirPauseTimer > _fenrirPauseTimerLength)
+                    {
+                        Debug.Log("Timer Triggered");
+                        _currentState = State.Chasing;
+                        _fenrirPauseTimer = 0;
+                    }
+                    break;
                 case State.Chasing:
                     SetPlayerLastKnownPosition();
                     MoveTowardsLastKnownPlayerLocation();
+
                     _chaseTimer -= Time.deltaTime;
                     if (_chaseTimer < 0)
                     {
                         Despawn();
                     };
+                    CheckFenrirDistance();
                     break;
                 case State.Despawned:
                     _pauseTimer -= Time.deltaTime;
