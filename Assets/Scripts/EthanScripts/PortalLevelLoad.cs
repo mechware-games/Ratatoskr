@@ -14,6 +14,6 @@ public class PortalLevelLoad : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        scener.NextScene(level);
+        scener.LoadLevel(level);
     }
 }
