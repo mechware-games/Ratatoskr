@@ -82,18 +82,24 @@ public class AnimationScipt : MonoBehaviour
 
         }
 
-//        if (Player.GetComponent<Movement>().CheckWallRun())
-//        {
-//            anim.SetBool("WallRunning", true);
-//            anim.SetFloat("Wall Running", 1f);
-//            //anim.SetBool("WallSwap", Swap());
-//        }
-//        else
-//        {
-//            anim.SetBool("WallRunning", false);
-//            anim.SetFloat("Wall Running", 0f);
-//            //anim.SetBool("WallSwap", Swap());
-//        }
+        if (Player.GetComponent<Movement>().CheckWallRun())
+        {
+            anim.SetBool("WallRunning", true);
+            anim.SetFloat("Wall Running", 1f);
+            if (Player.GetComponent<Movement>().CheckWallRight())
+            {
+                Player.transform.localScale = new Vector3(-1, 1, 1);
+            }
+            else
+            {
+                Player.transform.localScale = new Vector3(1, 1, 1);
+            }
+        }
+        else
+        {
+            anim.SetBool("WallRunning", false);
+            anim.SetFloat("Wall Running", 0f);
+        }
     }
 
     private void JumpingAndFalling()
@@ -109,10 +115,22 @@ public class AnimationScipt : MonoBehaviour
             testingThingsIDunno = false;
         }
 
+        float temp;
+        bool hasJumped;
+
+        if (Input.GetAxis("Jump") > 0 && !Player.GetComponent<Movement>().CheckGrounded())
+        {
+            temp = 1f;
+        }
+        else
+        {
+            temp = 0f;
+        }
+
 
         anim.SetBool("Falling", testingThingsIDunno);
         //Jumping animation
-        anim.SetFloat("Jumping", Input.GetAxis("Jump"));
+        anim.SetFloat("Jumping", temp);
         anim.speed = 2f;
         //Falling animation, needs to be set so when he is on the floor it doesn't play but if he is in the air it plays.
         if (TestingMoreThings < IDonno)
@@ -137,10 +155,5 @@ public class AnimationScipt : MonoBehaviour
         {
             anim.SetBool("Dying", Dying);
         }
-    }
-
-    private bool Swap() // wall left = false, wall right = true
-    {
-        return !Player.GetComponent<Movement>().CheckWallLeft();
     }
 }

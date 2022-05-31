@@ -1046,7 +1046,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7059550f6f5e65445bca4d9f0679e809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 80
+  isWallRunning: 0
+  publicWallRight: 0
+  publicWallLeft: 0
+  baseSpeed: 60
   maxSpeed: 20
   _speedDecayCoefficient: 0.7
   _ActionTimerLength: 0.1
@@ -1641,3 +1644,4 @@ MonoBehaviour:
   GroundCheck: {fileID: 0}
   TestingMoreThings: 0
   IDonno: 0
+  wallSwap: 0
