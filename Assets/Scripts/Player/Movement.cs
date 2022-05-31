@@ -145,15 +145,17 @@ public class Movement : MonoBehaviour
     {
         if (publicWallLeft)
         {
-            Debug.Log("wall on left");
             return true;
         }
-        else if (publicWallRight)
+        return false;
+    }
+    public bool CheckWallRight()
+    {
+        if (publicWallRight)
         {
-            return false;
-            Debug.Log("wall on right");
+            return true;
         }
-            return false;
+        else return false;
     }
 
     private void Update()
@@ -198,7 +200,7 @@ public class Movement : MonoBehaviour
                     {
                         _wallJumped = false;
                         //if (Input.GetKeyDown(KeyCode.Space))
-                        if (Input.GetButton("Jump"))
+                        if (Input.GetButtonDown("Jump"))
                         {
                             Jump();
                             _playerState = State.NotGrounded;
@@ -230,7 +232,7 @@ public class Movement : MonoBehaviour
             case State.Wallrunning:
 				{
                     //if (Input.GetKeyDown(KeyCode.Space))
-                    if(Input.GetButton("Jump"))
+                    if(Input.GetButtonDown("Jump"))
                     {
                         Jump();
                         _playerState = State.NotGrounded;
@@ -350,6 +352,10 @@ public class Movement : MonoBehaviour
                         // Wallrun Jump
                         bool isWallRight = Physics.Raycast(transform.position, transform.right, _wallHorizontalActivationDistance, wallMask);
                         bool isWallLeft = Physics.Raycast(transform.position, -transform.right, _wallHorizontalActivationDistance, wallMask);
+
+                        publicWallRight = isWallRight;
+                        publicWallLeft = isWallLeft;
+
                         rb.AddForce(Vector3.up * _wallKickUpForce, ForceMode.Impulse);
                         if (isWallRight)
                         {
@@ -376,6 +382,8 @@ public class Movement : MonoBehaviour
         bool isWallLeft = Physics.Raycast(transform.position, -transform.right, _wallHorizontalActivationDistance, wallMask);
         bool isWallFront = Physics.Raycast(transform.position, transform.forward, _wallRunForwardActivationDistance, wallMask);
 
+        publicWallRight = isWallRight;
+        publicWallLeft = isWallLeft;
         return isWallRight || isWallLeft || isWallFront;
     }
     /*private (RaycastHit, RaycastHit, RaycastHit) GetWallRunChecks()
