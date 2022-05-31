@@ -11,6 +11,7 @@ public class Movement : MonoBehaviour
         Wallrunning,
         Rolling
     }
+    [SerializeField]
     private State _playerState;
 
     public bool isWallRunning = false;
@@ -231,6 +232,7 @@ public class Movement : MonoBehaviour
                         if (WallCheck() && (rb.velocity.x < _minWallrunSpeed || rb.velocity.x > -_minWallrunSpeed))
 						{
                             _playerState = State.Wallrunning;
+                            _wallJumped = false;
                         }
                         // Resets the action timer if it goes over the length of the timer
                         _ActionTimer = 0;
@@ -308,7 +310,7 @@ public class Movement : MonoBehaviour
                     _currentGravityModifierTimer += Time.deltaTime; 
                     if (_currentGravityModifierTimer > _gravityModifierTimer)
 					{
-                        if (_currentGravityModifier < _DownForceModifierCap)
+                        if (_currentGravityModifier <= _DownForceModifierCap)
 						{
                             _currentGravityModifier += Time.deltaTime * _gravityIncreaseRate;  
 						}
