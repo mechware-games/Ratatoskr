@@ -25,6 +25,9 @@ public class FenrirScript : MonoBehaviour
     private float _pauseLength;
     private float _pauseTimer;
 
+    [Header("Boss Fight Shit")]
+    private float health = 60f;
+
     #endregion
 
     #region Contraints
