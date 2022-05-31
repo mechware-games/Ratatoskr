@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3306125578007922700}
   - component: {fileID: 1895571408297248681}
   - component: {fileID: 4443534883396072291}
-  - component: {fileID: 251705750405599031}
   m_Layer: 0
   m_Name: rubble 1
   m_TagString: Untagged
@@ -84,16 +83,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &251705750405599031
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2786152701406122678}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 543.3037, y: 167.96672, z: 412.46262}
-  m_Center: {x: 0, y: -16.647125, z: 0}
