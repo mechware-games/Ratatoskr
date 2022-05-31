@@ -13,7 +13,7 @@ public class ChangeSceneScript : MonoBehaviour
     public Slider slider;
     public TMP_Text progressText;
 
-    public void NextScene()
+    public void NextScene(int nextscene)
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(nextscene);
