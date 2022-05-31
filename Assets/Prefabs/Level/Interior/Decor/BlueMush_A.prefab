@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3828036147484229945}
   - component: {fileID: 193708717494505116}
   - component: {fileID: 2689992875126094422}
+  - component: {fileID: 2936200035376839127}
   m_Layer: 0
   m_Name: BlueMush_A
   m_TagString: Untagged
@@ -84,3 +85,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2936200035376839127
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4491278726571973507}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.4778367, y: 3.5033154, z: 1.4670174}
+  m_Center: {x: -0.0761736, y: 1.7516577, z: 0.11061677}
