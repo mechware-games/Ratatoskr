@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.014906707, g: 0.032454807, b: 0.04064743, a: 1}
+  m_IndirectSpecularColor: {r: 0.061190777, g: 0.1332108, b: 0.16683483, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -571,10 +571,15 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 615732734586992206, guid: 4aa0f621b65de2a4a85d25653e52ae8b,
+    - target: {fileID: 876344363797781388, guid: 4aa0f621b65de2a4a85d25653e52ae8b,
         type: 3}
-      propertyPath: m_PreserveAspect
-      value: 1
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 876344363797781388, guid: 4aa0f621b65de2a4a85d25653e52ae8b,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 876344363797781388, guid: 4aa0f621b65de2a4a85d25653e52ae8b,
         type: 3}
@@ -645,6 +650,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6449822425738707564, guid: 4aa0f621b65de2a4a85d25653e52ae8b,
+        type: 3}
+      propertyPath: nextscene
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6805689733566508223, guid: 4aa0f621b65de2a4a85d25653e52ae8b,
         type: 3}
@@ -720,6 +730,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: ChangeSceneScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7558964017535138699, guid: 4aa0f621b65de2a4a85d25653e52ae8b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7558964017578606570, guid: 4aa0f621b65de2a4a85d25653e52ae8b,
         type: 3}
@@ -990,6 +1005,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7588648285283239283, guid: 4aa0f621b65de2a4a85d25653e52ae8b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8058019686587176814, guid: 4aa0f621b65de2a4a85d25653e52ae8b,
         type: 3}

@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level5_topFloor.unity
     guid: 883890431deb48a488df5d3c96fde232
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: 826e748f8f88da84a8ecd12b1f511688
+  - enabled: 1
+    path: Assets/Scenes/[Level 1].unity
+    guid: 6fc3b85b5c0b3034c9f19aed3c0541f6
   m_configObjects: {}

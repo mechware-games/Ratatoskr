@@ -435,7 +435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0816931792b91a34185c2f29eda6ada1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextscene: Level5_topFloor
+  nextscene: Tutorial
   loadingScreen: {fileID: 0}
   slider: {fileID: 0}
   progressText: {fileID: 0}
