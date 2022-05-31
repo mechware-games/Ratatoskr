@@ -1063,7 +1063,7 @@ MonoBehaviour:
   _minWallrunSpeed: 10
   _wallKickOffForce: 20
   _wallKickUpForce: 35
-  _wallHorizontalActivationDistance: 2
+  _wallHorizontalActivationDistance: 3
   _wallRunForwardActivationDistance: 1.7
   _wallJumped: 0
   _debugMode: 1
@@ -1087,6 +1087,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   CameraSmooth: 0.1
+  _animationWallCheckSize: 2
 --- !u!114 &6351963227034360805
 MonoBehaviour:
   m_ObjectHideFlags: 0
