@@ -306,8 +306,9 @@ public class FenrirScript : MonoBehaviour
 	{
         if (other.tag == "Player")
 		{
-            FindObjectOfType<Player>().Death();
+            SetActive(false);
             Despawn();
+            FindObjectOfType<Player>().Death();
         }
 	}
 }
