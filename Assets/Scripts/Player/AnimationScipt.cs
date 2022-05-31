@@ -36,12 +36,41 @@ public class AnimationScipt : MonoBehaviour
     }
     void Update()
     {
-        run();
+        bool wallRunning = false;
+        if (Player.GetComponent<Movement>().CheckWallRun() && !Player.GetComponent<Movement>().CheckGrounded())
+        {
+            wallRunning = true;
+        }
+        else
+        {
+            wallRunning = false;
+        }
+
+        if (wallRunning)
+        {
+            anim.SetBool("WallRunning", true);
+            anim.SetFloat("Wall Running", 2f);
+            if (Player.GetComponent<Movement>().CheckWallRight())
+            {
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
+            else
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+        }
+        else
+        {
+            anim.SetBool("WallRunning", false);
+            anim.SetFloat("Wall Running", 0f);
+            run();
+        }
+
         JumpingAndFalling();
         Dead();
     }
     private void run()
-    { if (Player.GetComponent<Movement>().CheckGrounded())
+    { if (Player.GetComponent<Movement>().CheckGrounded() && !Player.GetComponent<Movement>().CheckNearWall())
         {
             //Squirrel walking animation. need to figure out player velocity.
             MovingForBack = Input.GetAxis("Vertical");
@@ -84,16 +113,7 @@ public class AnimationScipt : MonoBehaviour
 
         if (Player.GetComponent<Movement>().CheckWallRun())
         {
-            anim.SetBool("WallRunning", true);
-            anim.SetFloat("Wall Running", 1f);
-            if (Player.GetComponent<Movement>().CheckWallRight())
-            {
-                Player.transform.localScale = new Vector3(-1, 1, 1);
-            }
-            else
-            {
-                Player.transform.localScale = new Vector3(1, 1, 1);
-            }
+           
         }
         else
         {
@@ -106,14 +126,7 @@ public class AnimationScipt : MonoBehaviour
     {
         bool testingThingsIDunno = false;
 
-        if(Player.GetComponent<Movement>().CheckWallRun() && !Player.GetComponent<Movement>().CheckGrounded())
-        {
-            testingThingsIDunno = true;
-        }
-        else
-        {
-            testingThingsIDunno = false;
-        }
+        
 
         float temp;
         bool hasJumped;
@@ -122,38 +135,25 @@ public class AnimationScipt : MonoBehaviour
         {
             temp = 1f;
         }
+        else if (!Player.GetComponent<Movement>().CheckGrounded())
+        {
+            testingThingsIDunno = true;
+            temp = 0f;
+        }
         else
         {
             temp = 0f;
         }
-
+        
 
         anim.SetBool("Falling", testingThingsIDunno);
         //Jumping animation
         anim.SetFloat("Jumping", temp);
         anim.speed = 2f;
-        //Falling animation, needs to be set so when he is on the floor it doesn't play but if he is in the air it plays.
-        if (TestingMoreThings < IDonno)
-        {
-            IsGrounded = true;
-            IDonno = TestingMoreThings;
-        }
-        else
-        {
-            IsGrounded = false;
-            IDonno = TestingMoreThings;
-        }
     }
     private void Dead()
     {
         //Dying, need to tie this bool to character contacting wolf
-        if (Dying == true)
-        {
-            anim.SetBool("Dying", Dying);
-        }
-        else
-        {
-            anim.SetBool("Dying", Dying);
-        }
+        anim.SetBool("Dying", Dying);
     }
 }
