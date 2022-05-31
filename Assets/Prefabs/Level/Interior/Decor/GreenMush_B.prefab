@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1425157726486578820}
   - component: {fileID: 2623618308664838433}
   - component: {fileID: 255581178977664491}
+  - component: {fileID: 6809493107620470734}
   m_Layer: 0
   m_Name: GreenMush_B
   m_TagString: Untagged
@@ -84,3 +85,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6809493107620470734
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769067799261649982}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5634221, y: 3.646368, z: 1.2835253}
+  m_Center: {x: -0.6563582, y: 1.8231838, z: -0.514854}

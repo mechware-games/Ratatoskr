@@ -21,7 +21,7 @@ public class FenrirScript : MonoBehaviour
     public float _chaseTimer;
 
     [SerializeField]
-    [Range(1f,5f)]
+    [Range(1f,20f)]
     private float _pauseLength;
     private float _pauseTimer;
 
@@ -310,7 +310,6 @@ public class FenrirScript : MonoBehaviour
         if (other.tag == "Player")
 		{
             FindObjectOfType<Player>().Death();
-            Despawn();
         }
 	}
 }

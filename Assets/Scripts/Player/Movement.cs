@@ -66,7 +66,7 @@ public class Movement : MonoBehaviour
 
 
     [SerializeField]
-    [Range(0.1f, 3f)]
+    [Range(0.1f, 10f)]
     private float _wallHorizontalActivationDistance = 0.3f;
 
     [SerializeField]
@@ -112,6 +112,8 @@ public class Movement : MonoBehaviour
     private Rigidbody rb;
     float turnSmoothVelocity;
     public float CameraSmooth = 0.1f;
+    [SerializeField]
+    private float _animationWallCheckSize = 2f;
     #endregion
 
     private void Awake()
@@ -139,9 +141,15 @@ public class Movement : MonoBehaviour
             return true;
         }
         return false;
+	}
+
+	public bool CheckNearWall()
+	{
+        return Physics.CheckSphere(groundCheck.position, _animationWallCheckSize, wallMask);
     }
 
-    public bool CheckWallLeft()
+
+	public bool CheckWallLeft()
     {
         if (publicWallLeft)
         {
@@ -261,8 +269,8 @@ public class Movement : MonoBehaviour
     private void DebugMode()
     {
         Debug.DrawLine(transform.position, transform.position + transform.right * _wallHorizontalActivationDistance, Color.red);
-        Debug.DrawLine(transform.position, transform.position + -transform.right * _wallHorizontalActivationDistance, Color.red);
-        Debug.DrawLine(transform.position, transform.position + transform.forward * _wallRunForwardActivationDistance, Color.red);
+        Debug.DrawLine(transform.position, transform.position + -transform.right * _wallHorizontalActivationDistance, Color.green);
+        Debug.DrawLine(transform.position, transform.position + transform.forward * _wallRunForwardActivationDistance, Color.blue);
     }
 
     private void Move()

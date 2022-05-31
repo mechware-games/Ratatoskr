@@ -27,6 +27,9 @@ public class Player : MonoBehaviour
 
     public void Death()
     {
+        FenrirScript fenrir = GameObject.Find("Fenrir").GetComponent<FenrirScript>();
+        fenrir.SetActive(false);
+        fenrir.Despawn();
         transform.position = LastCheckpoint;
         gameOverScreen.Show();
         Time.timeScale = 0;
