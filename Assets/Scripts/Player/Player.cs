@@ -11,9 +11,18 @@ public class Player : MonoBehaviour
     private bool Dying = true;
     Animator anim;
 
+    private GameObject fenrir;
+    [SerializeField] private GameObject acornCanvas;
+
     private void Start()
     {
         anim = GetComponent(typeof(Animator)) as Animator;
+        fenrir = GameObject.Find("Fenrir");
+    }
+
+    private void Update()
+    {
+        isFenrirAfterYou();
     }
 
     public void Death()
@@ -32,6 +41,18 @@ public class Player : MonoBehaviour
         else
         {
             anim.SetBool("Dying", Dying);
+        }
+    }
+
+    public void isFenrirAfterYou()
+    {
+        if(fenrir.GetComponent<FenrirScript>().GetActive())
+        {
+            acornCanvas.SetActive(true);
+        }
+        else
+        {
+            acornCanvas.SetActive(false);
         }
     }
 }
