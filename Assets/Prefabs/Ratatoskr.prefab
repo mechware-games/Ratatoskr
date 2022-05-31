@@ -1055,7 +1055,7 @@ MonoBehaviour:
   _ActionTimerLength: 0.1
   baseJumpForce: 30
   baseForwardForce: 10
-  groundDist: 1.5
+  groundDist: 2
   _MaxWallrunForce: 70
   _CurrentWallrunForce: 0
   _wallRunDecay: 100
