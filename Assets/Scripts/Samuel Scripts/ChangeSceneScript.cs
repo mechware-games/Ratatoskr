@@ -6,9 +6,6 @@ using TMPro;
 
 public class ChangeSceneScript : MonoBehaviour
 {
-    [SerializeField]
-    string nextscene;
-
     public GameObject loadingScreen;
     public Slider slider;
     public TMP_Text progressText;
@@ -36,5 +33,9 @@ public class ChangeSceneScript : MonoBehaviour
 
             yield return null;
         }
+
+        yield return new WaitForSeconds(10);
+        Debug.Log("WAITED 2S");
+        loadingScreen.SetActive(false);
     }
 }
