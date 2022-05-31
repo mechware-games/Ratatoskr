@@ -409,10 +409,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb41ba8b53ed6d0468f63c3ac1649acd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zoomPercent: 1
-  zoomSensitivity: 0.5
-  minZoom: 0.75
-  maxZoom: 2
+  zoomPercent: 1.5
+  zoomSensitivity: 2
+  minZoom: 0.5
+  maxZoom: 4
 --- !u!1 &4458585706977996419
 GameObject:
   m_ObjectHideFlags: 0
@@ -1069,10 +1069,10 @@ MonoBehaviour:
   MainCamTransform: {fileID: 0}
   orientation: {fileID: 8110555185583622385}
   groundCheck: {fileID: 8110555185532266356}
-  _DownForceModifierCap: 4
-  _gravityIncreaseRate: 2
+  _DownForceModifierCap: 5
+  _gravityIncreaseRate: 2.5
   _currentGravityModifier: 1
-  _gravityModifierTimer: 0.15
+  _gravityModifierTimer: 0.1
   _currentGravityModifierTimer: 0
   groundMask:
     serializedVersion: 2
