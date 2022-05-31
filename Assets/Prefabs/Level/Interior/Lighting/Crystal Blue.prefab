@@ -46,13 +46,13 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.31372547, g: 1, b: 0.92055273, a: 1}
-  m_Intensity: 50
+  m_Intensity: 20
   m_Range: 30
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7dad9f066062614fb7c0b2302e9e514, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _initialIntensity: 0
+  _initialIntensity: 10
   _resetTimerMax: 3
   _resetTimerMin: 1
   _lightingRandomTimerLength: 0.5
