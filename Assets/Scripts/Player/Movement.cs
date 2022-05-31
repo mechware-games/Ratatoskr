@@ -13,6 +13,11 @@ public class Movement : MonoBehaviour
     }
     private State _playerState;
 
+    public bool isWallRunning = false;
+    public bool publicWallRight;
+    public bool publicWallLeft;
+
+
     #region Settings
     [Header("Movement")]
     public float baseSpeed = 100f;
@@ -127,6 +132,30 @@ public class Movement : MonoBehaviour
 		}
         return false;
     }
+    public bool CheckWallRun()
+    {
+        if(_playerState == State.Wallrunning)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public bool CheckWallLeft()
+    {
+        if (publicWallLeft)
+        {
+            Debug.Log("wall on left");
+            return true;
+        }
+        else if (publicWallRight)
+        {
+            return false;
+            Debug.Log("wall on right");
+        }
+            return false;
+    }
+
     private void Update()
     {
         if (cam == tppcam)
@@ -143,6 +172,17 @@ public class Movement : MonoBehaviour
 		{
             _CurrentWallrunForce += (Time.deltaTime * _wallRunRegen);
 		}
+
+        if (_playerState == State.Wallrunning)
+        {
+            isWallRunning = true;
+            Debug.Log("MV  WALL RUNNING IS TRUE");
+        }
+        else
+        {
+            isWallRunning = false;
+            Debug.Log("MV  WALL RUNNING IS FALSE");
+        }
 
         // Input and State Handling
         switch (_playerState)
