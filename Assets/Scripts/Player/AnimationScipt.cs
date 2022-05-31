@@ -20,6 +20,8 @@ public class AnimationScipt : MonoBehaviour
     [SerializeField] private float TestingMoreThings;
     [SerializeField] private float IDonno;
 
+    [SerializeField] private bool wallSwap;
+
     //public float speed = 2f;
 
     // Update is called once per frame.
@@ -77,11 +79,38 @@ public class AnimationScipt : MonoBehaviour
             // anim.SetFloat("Forwards", Input.GetAxis("Vertical"));
             // anim.SetFloat("Turning", Input.GetAxis("Horizontal"));
             anim.speed = 1;
+
         }
+
+//        if (Player.GetComponent<Movement>().CheckWallRun())
+//        {
+//            anim.SetBool("WallRunning", true);
+//            anim.SetFloat("Wall Running", 1f);
+//            //anim.SetBool("WallSwap", Swap());
+//        }
+//        else
+//        {
+//            anim.SetBool("WallRunning", false);
+//            anim.SetFloat("Wall Running", 0f);
+//            //anim.SetBool("WallSwap", Swap());
+//        }
     }
+
     private void JumpingAndFalling()
     {
-        anim.SetBool("Falling", !Player.GetComponent<Movement>().CheckGrounded());
+        bool testingThingsIDunno = false;
+
+        if(Player.GetComponent<Movement>().CheckWallRun() && !Player.GetComponent<Movement>().CheckGrounded())
+        {
+            testingThingsIDunno = true;
+        }
+        else
+        {
+            testingThingsIDunno = false;
+        }
+
+
+        anim.SetBool("Falling", testingThingsIDunno);
         //Jumping animation
         anim.SetFloat("Jumping", Input.GetAxis("Jump"));
         anim.speed = 2f;
@@ -110,4 +139,8 @@ public class AnimationScipt : MonoBehaviour
         }
     }
 
+    private bool Swap() // wall left = false, wall right = true
+    {
+        return !Player.GetComponent<Movement>().CheckWallLeft();
+    }
 }
