@@ -11,6 +11,7 @@ public class Optionsmenuscript : MonoBehaviour
     Resolution[] resolutions;
     public GameObject OptionsMenu;
     public GameObject MainMenu;
+    public GameObject PauseMenu;
 
     public TMP_Dropdown textureDropdown;
     public TMP_Dropdown qualityDropdown;
@@ -49,8 +50,6 @@ public class Optionsmenuscript : MonoBehaviour
         Resolution.value = currentResolution;
         Resolution.RefreshShownValue();
     }
-
-
     public void SetAntiAliasing(int aaIndex)
     {
         QualitySettings.antiAliasing = aaIndex;
@@ -73,8 +72,12 @@ public class Optionsmenuscript : MonoBehaviour
         MainMenu.SetActive(true);
         GameObject.Find("EventSystem").GetComponent<EventSystem>().SetSelectedGameObject(FirstButtonMain, null);
     }
-
-
+    public void BackPause()
+    {
+        OptionsMenu.SetActive(false);
+        PauseMenu.SetActive(true);
+        GameObject.Find("EventSystem").GetComponent<EventSystem>().SetSelectedGameObject(FirstButtonMain, null);
+    }
     public void SetFullscreen(bool isFullscreen)
     {
         Screen.fullScreen = isFullscreen;
@@ -84,10 +87,6 @@ public class Optionsmenuscript : MonoBehaviour
         Debug.Log("texture quality is " + QualitySettings.masterTextureLimit);
         Debug.Log(textureDropdown.value);
     }
-   
-
-
-
     public void MasterVolume(float masterLevel)
     {
         MasterMix.SetFloat("Master", Mathf.Log10(masterLevel) * 20);
