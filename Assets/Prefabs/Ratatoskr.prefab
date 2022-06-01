@@ -1046,6 +1046,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7059550f6f5e65445bca4d9f0679e809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerState: 0
   isWallRunning: 0
   publicWallRight: 0
   publicWallLeft: 0
@@ -1116,6 +1117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverScreen: {fileID: 0}
   LastCheckpoint: {x: 0, y: 0, z: 0}
+  acornCanvas: {fileID: 0}
 --- !u!1 &8895580122849441810
 GameObject:
   m_ObjectHideFlags: 0
@@ -1354,6 +1356,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8110555185583622385}
     m_Modifications:
+    - target: {fileID: 1637027704466326211, guid: f2b49f2ce509afa488f3d3d1c4d0bec8,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1637027704466326211, guid: f2b49f2ce509afa488f3d3d1c4d0bec8,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1637027704466326211, guid: f2b49f2ce509afa488f3d3d1c4d0bec8,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1637027704466326211, guid: f2b49f2ce509afa488f3d3d1c4d0bec8,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1637027704466326211, guid: f2b49f2ce509afa488f3d3d1c4d0bec8,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1637027704466326211, guid: f2b49f2ce509afa488f3d3d1c4d0bec8,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -103.24118
+      objectReference: {fileID: 0}
     - target: {fileID: 8973913873960509781, guid: f2b49f2ce509afa488f3d3d1c4d0bec8,
         type: 3}
       propertyPath: m_Pivot.x
