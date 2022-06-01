@@ -11,16 +11,26 @@ public class ObjectivePickUp : MonoBehaviour
     [SerializeField]
     private bool goldenAcorn;
 
+    [SerializeField] private AudioSource sound;
+
+
+    private void Start()
+    {
+        //sound = GetComponent<AudioSource>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         //Destroy(pickUp);
         if (acorn)
         {
+            sound.Play();
             Destroy(gameObject);
             MasterObjective.acorns += 1f;
         }
         if (goldenAcorn)
         {
+            sound.Play();
             Destroy(gameObject);
             MasterObjective.goldenAcorns += 1f;
         }
