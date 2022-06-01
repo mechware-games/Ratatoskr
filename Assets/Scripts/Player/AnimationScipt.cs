@@ -70,7 +70,10 @@ public class AnimationScipt : MonoBehaviour
         Dead();
     }
     private void run()
-    { if (Player.GetComponent<Movement>().CheckGrounded() && !Player.GetComponent<Movement>().CheckNearWall())
+    {
+        float vert = Mathf.Abs(Input.GetAxis("Vertical"));
+        float horz = Mathf.Abs(Input.GetAxis("Horizontal"));
+        if (Player.GetComponent<Movement>().CheckGrounded() && !Player.GetComponent<Movement>().CheckNearWall())
         {
             //Squirrel walking animation. need to figure out player velocity.
             MovingForBack = Input.GetAxis("Vertical");
@@ -78,8 +81,6 @@ public class AnimationScipt : MonoBehaviour
             JumpAndFall = Input.GetAxis("Jump");
             TestingMoreThings = Player.transform.position.y;
             //animation calls
-            float vert = Mathf.Abs(Input.GetAxis("Vertical"));
-            float horz = Mathf.Abs(Input.GetAxis("Horizontal"));
 
             if (vert > 0.05f)
             {
@@ -108,17 +109,11 @@ public class AnimationScipt : MonoBehaviour
             // anim.SetFloat("Forwards", Input.GetAxis("Vertical"));
             // anim.SetFloat("Turning", Input.GetAxis("Horizontal"));
             anim.speed = 1;
-
         }
-
-        if (Player.GetComponent<Movement>().CheckWallRun())
-        {
-           
-        }
-        else
-        {
-            anim.SetBool("WallRunning", false);
-            anim.SetFloat("Wall Running", 0f);
+    else if(!Player.GetComponent<Movement>().CheckGrounded() && ( vert < 0.05f || horz < 0.05f))
+		{
+            anim.SetFloat("Forwards", 0f);
+            anim.SetFloat("Turning", 0f);
         }
     }
 
@@ -131,18 +126,12 @@ public class AnimationScipt : MonoBehaviour
         float temp;
         bool hasJumped;
 
-        if (Input.GetAxis("Jump") > 0 && !Player.GetComponent<Movement>().CheckGrounded())
-        {
-            temp = 1f;
-        }
-        else if (!Player.GetComponent<Movement>().CheckGrounded())
+        temp = 0f;
+
+        if (!Player.GetComponent<Movement>().CheckGrounded())
         {
             testingThingsIDunno = true;
-            temp = 0f;
-        }
-        else
-        {
-            temp = 0f;
+            temp = 1f;
         }
         
 
