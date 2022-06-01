@@ -12,6 +12,8 @@ public class TutorialText : Interactable
     public TMP_Text tutTex;
     public GameObject canvas;
 
+    public AudioSource sound;
+
     private void Start()
     {
         texts = new Queue<string>();
@@ -26,6 +28,7 @@ public class TutorialText : Interactable
     public override void Action()
     {
         DisplayNextSentence();
+        sound.Play();
     }
 
     public void DisplayNextSentence()
