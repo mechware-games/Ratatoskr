@@ -129,7 +129,7 @@ public class Movement : MonoBehaviour
 
     public bool CheckGrounded()
 	{
-        if (_playerState == State.Grounded)
+        if (Physics.CheckSphere(groundCheck.position, groundDist, groundMask))
 		{
             return true;
 		}
