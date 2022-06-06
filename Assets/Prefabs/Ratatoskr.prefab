@@ -293,7 +293,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0990477, y: 1}
+    m_SensorSize: {x: 1.8958334, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -609,7 +609,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0990477, y: 1}
+    m_SensorSize: {x: 1.8958334, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -814,7 +814,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0990477, y: 1}
+    m_SensorSize: {x: 1.8958334, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -933,7 +933,7 @@ MonoBehaviour:
   _ActionTimerLength: 0.1
   baseJumpForce: 30
   baseForwardForce: 10
-  groundDist: 2
+  groundDist: 0.5
   _MaxWallrunForce: 70
   _CurrentWallrunForce: 0
   _wallRunDecay: 100
@@ -951,7 +951,7 @@ MonoBehaviour:
   orientation: {fileID: 8110555185583622385}
   groundCheck: {fileID: 8110555185532266356}
   _DownForceModifierCap: 5
-  _gravityIncreaseRate: 2.5
+  _gravityIncreaseRate: 3
   _currentGravityModifier: 1
   _gravityModifierTimer: 0.1
   _currentGravityModifierTimer: 0
@@ -1022,8 +1022,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8895580122849441810}
-  m_LocalRotation: {x: -0.03040977, y: 0.9603569, z: -0.116057485, w: -0.25163588}
-  m_LocalPosition: {x: -38.110477, y: -11.80698, z: -15.355827}
+  m_LocalRotation: {x: -0.009501925, y: 0.9896183, z: -0.120181, w: -0.07824265}
+  m_LocalPosition: {x: 2.201847, y: 4, z: 14.837517}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1217,7 +1217,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0990477, y: 1}
+    m_SensorSize: {x: 1.8958334, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
