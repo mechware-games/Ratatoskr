@@ -22792,11 +22792,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4687525496690467, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.18853186
+      value: -0.18853183
       objectReference: {fileID: 0}
     - target: {fileID: 4687525496690467, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.022863002
+      value: -0.022862997
       objectReference: {fileID: 0}
     - target: {fileID: 4687525496690467, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7, type: 3}
       propertyPath: m_LocalRotation.y
@@ -22804,7 +22804,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4687525496690467, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.11819573
+      value: -0.11819574
       objectReference: {fileID: 0}
     - target: {fileID: 651586014365042728, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
         type: 3}
@@ -22881,35 +22881,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fenrir Icon
       objectReference: {fileID: 0}
-    - target: {fileID: 3597101860629711175, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
-        type: 3}
-      propertyPath: groundDist
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3597101860629711175, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
-        type: 3}
-      propertyPath: _gravityIncreaseRate
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3597101860629711175, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
-        type: 3}
-      propertyPath: _wallHorizontalActivationDistance
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 3947374103325812418, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
         type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.6013514
+      value: 1.8958334
       objectReference: {fileID: 0}
     - target: {fileID: 7085190597301259291, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
         type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.6013514
+      value: 1.8958334
       objectReference: {fileID: 0}
     - target: {fileID: 7424159205554131522, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
         type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.6013514
+      value: 1.8958334
       objectReference: {fileID: 0}
     - target: {fileID: 8110555185583622385, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
         type: 3}
@@ -22984,7 +22969,7 @@ PrefabInstance:
     - target: {fileID: 8193894225869131949, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.019438995
+      value: -0.019438993
       objectReference: {fileID: 0}
     - target: {fileID: 8193894225869131949, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
         type: 3}
@@ -22994,7 +22979,7 @@ PrefabInstance:
     - target: {fileID: 8193894225869131949, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.10049453
+      value: -0.10049452
       objectReference: {fileID: 0}
     - target: {fileID: 8993922019335956604, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
         type: 3}
@@ -23014,12 +22999,12 @@ PrefabInstance:
     - target: {fileID: 8993922019335956604, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.18853182
+      value: -0.1885318
       objectReference: {fileID: 0}
     - target: {fileID: 8993922019335956604, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.022863014
+      value: -0.022863008
       objectReference: {fileID: 0}
     - target: {fileID: 8993922019335956604, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
         type: 3}
@@ -23029,7 +23014,7 @@ PrefabInstance:
     - target: {fileID: 8993922019335956604, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.118195735
+      value: -0.11819575
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7, type: 3}
