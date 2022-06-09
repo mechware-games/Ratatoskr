@@ -95,9 +95,10 @@ public class FenrirScript : MonoBehaviour
     private bool _isActive;
 
     private Vector3 _playerSpottedLocation;
-	#endregion
+    #endregion
 
-
+    [SerializeField]
+    private AudioSource _fenrirGrowl;
 	#region needsCleaning
 	// Start is called before the first frame update
 	void Start()
@@ -153,6 +154,7 @@ public class FenrirScript : MonoBehaviour
                     {
                         Debug.Log("Timer Triggered");
                         _currentState = State.Chasing;
+                        if (Random.Range(0f, 100f) >70f) { _fenrirGrowl.Play(); }
                         _fenrirPauseTimer = 0;
                     }
                     break;
