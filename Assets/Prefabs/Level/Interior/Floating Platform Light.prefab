@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3285645363707108305}
   - component: {fileID: 8684511301173409106}
   - component: {fileID: 4866211958567671446}
-  - component: {fileID: 8914472776905337788}
   m_Layer: 0
   m_Name: Floating Platform Light
   m_TagString: Untagged
@@ -116,19 +115,3 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
---- !u!114 &8914472776905337788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4745525660732671491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7dad9f066062614fb7c0b2302e9e514, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _initialIntensity: 10
-  _resetTimerMax: 10
-  _resetTimerMin: 5
-  _lightingRandomTimerLength: 1

@@ -293,7 +293,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0990477, y: 1}
+    m_SensorSize: {x: 2.578261, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -933,7 +933,7 @@ MonoBehaviour:
   _ActionTimerLength: 0.1
   baseJumpForce: 30
   baseForwardForce: 10
-  groundDist: 2
+  groundDist: 0.5
   _MaxWallrunForce: 70
   _CurrentWallrunForce: 0
   _wallRunDecay: 100
