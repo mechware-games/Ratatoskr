@@ -73,6 +73,7 @@ public class FenrirInteractions : Interactable
                 isShrinking = false;
             }
         }
+
         isActive = false;
     }
 }
