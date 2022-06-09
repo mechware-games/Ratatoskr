@@ -228,7 +228,7 @@ public class Movement : MonoBehaviour
                         {
                             float downforce = Mathf.Abs(((_currentGravityModifier * Physics.gravity) + Physics.gravity).y);
                             Debug.Log($"Vertical velocity: {downforce}");
-                            if (Mathf.Abs(downforce) > 100)
+                            if (Mathf.Abs(downforce) > 150)
                             {
                                 _playerState = State.Grounded;
                                 GetComponent<Player>().Death();
