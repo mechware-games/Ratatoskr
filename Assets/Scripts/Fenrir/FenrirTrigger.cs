@@ -48,7 +48,6 @@ public class FenrirTrigger : MonoBehaviour
 			{
                 _fenrir.GetComponent<FenrirScript>().SetActive(_set);
                 _fenrir.GetComponent<FenrirScript>().Despawn();
-
             }
 
 		}
