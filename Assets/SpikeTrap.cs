@@ -36,11 +36,6 @@ public class SpikeTrap : MonoBehaviour
         StartCoroutine(Pewpew());
     }
 
-    private void Update()
-    {
-        Debug.Log(trapActive);
-    }
-
     IEnumerator Pewpew()
     {
         while (true)
