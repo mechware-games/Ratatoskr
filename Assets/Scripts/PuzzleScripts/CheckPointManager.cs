@@ -46,6 +46,13 @@ public class CheckPointManager : MonoBehaviour
     [SerializeField]
     private bool _CompletedPuzzle;
     // Start is called before the first frame update
+
+    [SerializeField]
+    private AudioSource _failedAudio;
+
+    [SerializeField]
+    private AudioSource _successAudio;
+
     void OnEnable()
     {
         _CompletedPuzzle = false;
@@ -147,11 +154,13 @@ public class CheckPointManager : MonoBehaviour
                 return false;
 			}      
 		}
+        _successAudio.Play();
         return true;
     }
 
     private void DeactivateAll()
 	{
+        _failedAudio.Play();
         for (int i = 0; i < _checkPoints.Count; i++)
 		{
             _checkPointStatuses[i].timer = _checkpointResetTimerLength;
