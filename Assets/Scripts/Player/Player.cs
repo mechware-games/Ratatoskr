@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
         FenrirScript fenrir = GameObject.Find("Fenrir").GetComponent<FenrirScript>();
         fenrir.SetActive(false);
         fenrir.Despawn();
-        transform.position = LastCheckpoint;
+        transform.position = LastCheckpoint + new Vector3(0, 0.5f,0);
         gameOverScreen.Show();
         Time.timeScale = 0;
         Cursor.visible = true;

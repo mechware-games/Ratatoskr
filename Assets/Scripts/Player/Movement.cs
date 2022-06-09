@@ -71,7 +71,7 @@ public class Movement : MonoBehaviour
     private float _wallHorizontalActivationDistance = 0.3f;
 
     [SerializeField]
-    [Range(0.1f, 3f)]
+    [Range(0.1f, 10f)]
     private float _wallRunForwardActivationDistance = 0.3f;
 
     [SerializeField]
@@ -89,10 +89,10 @@ public class Movement : MonoBehaviour
 
     [Header("Down Force")]
     [SerializeField]
-    [Range(1f, 5f)]
+    [Range(1f, 20f)]
     private float _DownForceModifierCap = 2f;
     [SerializeField]
-    [Range(1f, 3f)]
+    [Range(1f, 10f)]
     private float _gravityIncreaseRate = 1f;
     [SerializeField]
     private float _currentGravityModifier = 1f;
@@ -224,11 +224,18 @@ public class Movement : MonoBehaviour
                     _ActionTimer += Time.deltaTime;
                     if (_ActionTimer > _ActionTimerLength)
                     {
-                        if (Physics.CheckSphere(groundCheck.position, groundDist, groundMask))
+                        if (CheckGrounded())
                         {
+                            float downforce = Mathf.Abs(((_currentGravityModifier * Physics.gravity) + Physics.gravity).y);
+                            Debug.Log($"Vertical velocity: {downforce}");
+                            if (Mathf.Abs(downforce) > 100)
+                            {
+                                _playerState = State.Grounded;
+                                GetComponent<Player>().Death();
+                                _currentGravityModifier = 0;
+                            }
                             _playerState = State.Grounded;
                         }
-
                         if (WallCheck() && (rb.velocity.x < _minWallrunSpeed || rb.velocity.x > -_minWallrunSpeed))
 						{
                             _playerState = State.Wallrunning;
@@ -241,8 +248,9 @@ public class Movement : MonoBehaviour
                 break;
             case State.Wallrunning:
 				{
+                    _currentGravityModifier = 0;
                     //if (Input.GetKeyDown(KeyCode.Space))
-                    if(Input.GetButtonDown("Jump"))
+                    if (Input.GetButtonDown("Jump"))
                     {
                         Jump();
                         _playerState = State.NotGrounded;
