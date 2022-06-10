@@ -15,7 +15,7 @@ public class AcornTrackingScript : MonoBehaviour
     void Update()
     {
         int acorns = PlayerPrefs.GetInt("Acorns", 0);
-        int goldenAcorns = PlayerPrefs.GetInt("GoldenAcrons", 0);
+        int goldenAcorns = PlayerPrefs.GetInt("GoldenAcorns", 0);
         transform.GetComponent<TextMeshProUGUI>().SetText( $"Acorns: {acorns}\nGolden Acorns: {goldenAcorns}");
     }
 }
