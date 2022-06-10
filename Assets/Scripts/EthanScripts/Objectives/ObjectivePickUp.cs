@@ -13,8 +13,22 @@ public class ObjectivePickUp : MonoBehaviour
 
     [SerializeField] private AudioSource sound;
 
+    [SerializeField] private MeshRenderer acornMesh;
 
-    private void Start()
+    private float destroyTimer = 0f;
+    private float destroyTimerLength = 3f;
+
+    private bool despawning = false;
+
+
+	private void Update()
+	{
+        if (despawning)
+        {
+            RemoveFromGame();
+        }
+    }
+	private void Start()
     {
         //sound = GetComponent<AudioSource>();
     }
@@ -28,7 +42,7 @@ public class ObjectivePickUp : MonoBehaviour
             acorns += 1;
             PlayerPrefs.SetInt("Acorns", acorns);
             sound.Play();
-            Destroy(gameObject);
+            despawning = true;
             MasterObjective.acorns += 1f;
         }
         if (goldenAcorn)
@@ -37,8 +51,15 @@ public class ObjectivePickUp : MonoBehaviour
             goldenAcorns += 1;
             PlayerPrefs.SetInt("Acorns", goldenAcorns);
             sound.Play();
-            Destroy(gameObject);
+            despawning = true;
             MasterObjective.goldenAcorns += 1f;
         }
+    }
+    private void RemoveFromGame()
+    {
+        destroyTimer += Time.deltaTime;
+        acornMesh.enabled = false;
+        GetComponent<CapsuleCollider>().enabled = false;
+        if (destroyTimer > destroyTimerLength) { Destroy(gameObject); }
     }
 }
