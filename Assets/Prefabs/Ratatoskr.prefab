@@ -2428,7 +2428,7 @@ MonoBehaviour:
   gameOverScreen: {fileID: 0}
   LastCheckpoint: {x: 0, y: 0, z: 0}
   rate: 1.5
-  acornCanvas: {fileID: 4759445033123173861}
+  acornCanvas: {fileID: 3003031922619991716}
   deathMask: {fileID: 2744013531966216747}
 --- !u!1 &8143835654243240790
 GameObject:
@@ -3067,8 +3067,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 8973913873960509786, guid: f2b49f2ce509afa488f3d3d1c4d0bec8,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2b49f2ce509afa488f3d3d1c4d0bec8, type: 3}
+--- !u!1 &3003031922619991716 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1669046050972512792, guid: f2b49f2ce509afa488f3d3d1c4d0bec8,
+    type: 3}
+  m_PrefabInstance: {fileID: 4505091755398427836}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &4759445031064419370 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8973913873006971030, guid: f2b49f2ce509afa488f3d3d1c4d0bec8,
@@ -3081,12 +3092,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &4759445033123173861 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8973913873960509785, guid: f2b49f2ce509afa488f3d3d1c4d0bec8,
-    type: 3}
-  m_PrefabInstance: {fileID: 4505091755398427836}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &4759445033123173865 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8973913873960509781, guid: f2b49f2ce509afa488f3d3d1c4d0bec8,
