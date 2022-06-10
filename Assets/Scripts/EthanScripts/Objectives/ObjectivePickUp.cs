@@ -27,12 +27,14 @@ public class ObjectivePickUp : MonoBehaviour
             sound.Play();
             Destroy(gameObject);
             MasterObjective.acorns += 1f;
+            globalValues.acorns += 1;
         }
         if (goldenAcorn)
         {
             sound.Play();
             Destroy(gameObject);
             MasterObjective.goldenAcorns += 1f;
+            globalValues.goldenAcorns += 1;
         }
     }
 }
