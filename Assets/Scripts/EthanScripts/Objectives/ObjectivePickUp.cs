@@ -24,12 +24,18 @@ public class ObjectivePickUp : MonoBehaviour
         //Destroy(pickUp);
         if (acorn)
         {
+            int acorns = PlayerPrefs.GetInt("Acorns", 0);
+            acorns += 1;
+            PlayerPrefs.SetInt("Acorns", acorns);
             sound.Play();
             Destroy(gameObject);
             MasterObjective.acorns += 1f;
         }
         if (goldenAcorn)
         {
+            int goldenAcorns = PlayerPrefs.GetInt("GoldenAcorns", 0);
+            goldenAcorns += 1;
+            PlayerPrefs.SetInt("Acorns", goldenAcorns);
             sound.Play();
             Destroy(gameObject);
             MasterObjective.goldenAcorns += 1f;
