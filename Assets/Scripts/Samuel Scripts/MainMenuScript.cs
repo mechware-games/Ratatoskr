@@ -9,9 +9,11 @@ public class MainMenuScript : MonoBehaviour
 {
     public GameObject OptionsMenu;
     public GameObject MainMenu;
+    public GameObject SkinStoreMenu;
 
     [SerializeField] private GameObject FirstButtonMain;
     [SerializeField] private GameObject FirstButtonOptions;
+    [SerializeField] private GameObject FirstButtonStore;
 
     public void Quit()
     {
@@ -28,5 +30,12 @@ public class MainMenuScript : MonoBehaviour
         OptionsMenu.SetActive(true);
         MainMenu.SetActive(false);
         GameObject.Find("EventSystem").GetComponent<EventSystem>().SetSelectedGameObject(FirstButtonOptions, null);
+    }
+
+    public void SkinStore()
+    {
+        MainMenu.SetActive(false);
+        SkinStoreMenu.SetActive(true);
+        GameObject.Find("EventSystem").GetComponent<EventSystem>().SetSelectedGameObject(FirstButtonStore, null);
     }
 }

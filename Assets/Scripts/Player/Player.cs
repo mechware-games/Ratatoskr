@@ -6,26 +6,26 @@ public class Player : MonoBehaviour
 {
     public GameOverScreen gameOverScreen;
     public Vector3 LastCheckpoint;
-    Renderer rend;
-
-    private bool Dying = true;
-    Animator anim;
 
     private GameObject fenrir;
+
+    private bool hasDied = false;
+
+    private float maskMinSize = 0.01f;
+    private float maskMaxSize = 40f;
+    [SerializeField] private float rate = 3f;
+
     [SerializeField] private GameObject acornCanvas;
+    [SerializeField] private GameObject deathMask;
 
     private void Start()
     {
-        anim = GetComponent(typeof(Animator)) as Animator;
         fenrir = GameObject.Find("Fenrir");
     }
 
     private void Update()
     {
-        if (Input.GetButtonDown("Restart"))
-        {
-            Death();
-        }
+        Debug.Log("HasDied: " + hasDied);
         isFenrirAfterYou();
     }
 
@@ -34,21 +34,8 @@ public class Player : MonoBehaviour
         FenrirScript fenrir = GameObject.Find("Fenrir").GetComponent<FenrirScript>();
         fenrir.SetActive(false);
         fenrir.Despawn();
-        transform.position = LastCheckpoint + new Vector3(0, 0.5f,0);
-        gameOverScreen.Show();
-        Time.timeScale = 0;
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-        anim.Play("Death");
 
-        if (Dying == true)
-        {
-            anim.SetBool("Dying", Dying);
-        }
-        else
-        {
-            anim.SetBool("Dying", Dying);
-        }
+        StartCoroutine(DeathLoop());
     }
 
     public void isFenrirAfterYou()
@@ -60,6 +47,65 @@ public class Player : MonoBehaviour
         else
         {
             acornCanvas.SetActive(false);
+        }
+    }
+
+    public bool HasDied()
+    {
+        return hasDied;
+    }
+
+    public void SetHasDied(bool setting)
+    {
+        hasDied = setting;
+    }
+
+    private void MoveRat()
+    {
+        transform.position = LastCheckpoint;
+    }
+
+    IEnumerator DeathLoop()
+    {
+        SetHasDied(true);
+        yield return new WaitForSecondsRealtime(1f);
+        StartCoroutine(ShrinkUI());
+        yield return new WaitForSecondsRealtime(2.5f);
+        MoveRat();
+        yield return new WaitForSeconds(1);
+        StartCoroutine(GrowUI());
+        SetHasDied(false);
+        yield return null;
+    }
+    IEnumerator ShrinkUI() 
+    {
+        float scale = Mathf.Clamp(maskMaxSize, maskMinSize, maskMaxSize);
+        while(deathMask.transform.localScale.x > maskMinSize)
+        {
+            scale -= rate * Time.deltaTime;
+            deathMask.transform.localScale -= new Vector3(scale, scale, scale) * Time.deltaTime;
+            yield return null;
+            if (deathMask.transform.localScale.x < maskMinSize)
+            {
+                deathMask.transform.localScale = new Vector3(maskMinSize, maskMinSize, maskMinSize);
+            }
+            yield return null;
+        }
+    }
+    IEnumerator GrowUI()
+    {
+        float scale = Mathf.Clamp(maskMinSize, maskMaxSize, maskMinSize);
+
+        while (deathMask.transform.localScale.x < maskMaxSize)
+        {
+            scale += rate * Time.deltaTime;
+            deathMask.transform.localScale += new Vector3(scale, scale, scale) * Time.deltaTime;
+            yield return null;
+            if (deathMask.transform.localScale.x > maskMaxSize)
+            {
+                deathMask.transform.localScale = new Vector3(maskMaxSize, maskMaxSize, maskMaxSize);
+            }
+            yield return null;
         }
     }
 }

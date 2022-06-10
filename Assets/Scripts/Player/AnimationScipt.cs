@@ -22,9 +22,6 @@ public class AnimationScipt : MonoBehaviour
 
     [SerializeField] private bool wallSwap;
 
-    //public float speed = 2f;
-
-    // Update is called once per frame.
     void Start()
     {
         //gets the player
@@ -36,6 +33,7 @@ public class AnimationScipt : MonoBehaviour
     }
     void Update()
     {
+        Dead();
         bool wallRunning = false;
         if (Player.GetComponent<Movement>().CheckWallRun() && !Player.GetComponent<Movement>().CheckGrounded())
         {
@@ -45,6 +43,8 @@ public class AnimationScipt : MonoBehaviour
         {
             wallRunning = false;
         }
+
+
 
         if (wallRunning)
         {
@@ -66,8 +66,9 @@ public class AnimationScipt : MonoBehaviour
             run();
         }
 
+
+
         JumpingAndFalling();
-        Dead();
     }
     private void run()
     {
@@ -75,12 +76,10 @@ public class AnimationScipt : MonoBehaviour
         float horz = Mathf.Abs(Input.GetAxis("Horizontal"));
         if (Player.GetComponent<Movement>().CheckGrounded() && !Player.GetComponent<Movement>().CheckNearWall())
         {
-            //Squirrel walking animation. need to figure out player velocity.
             MovingForBack = Input.GetAxis("Vertical");
             MovingLeftRight = Input.GetAxis("Horizontal");
             JumpAndFall = Input.GetAxis("Jump");
             TestingMoreThings = Player.transform.position.y;
-            //animation calls
 
             if (vert > 0.05f)
             {
@@ -116,12 +115,9 @@ public class AnimationScipt : MonoBehaviour
             anim.SetFloat("Turning", 0f);
         }
     }
-
     private void JumpingAndFalling()
     {
         bool testingThingsIDunno = false;
-
-        
 
         float temp;
         bool hasJumped;
@@ -134,7 +130,6 @@ public class AnimationScipt : MonoBehaviour
             temp = 1f;
         }
         
-
         anim.SetBool("Falling", testingThingsIDunno);
         //Jumping animation
         anim.SetFloat("Jumping", temp);
@@ -142,7 +137,6 @@ public class AnimationScipt : MonoBehaviour
     }
     private void Dead()
     {
-        //Dying, need to tie this bool to character contacting wolf
-        anim.SetBool("Dying", Dying);
+        anim.SetBool("Dying", Player.GetComponent<Player>().HasDied());
     }
 }

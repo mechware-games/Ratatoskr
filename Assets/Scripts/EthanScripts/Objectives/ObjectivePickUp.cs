@@ -44,6 +44,7 @@ public class ObjectivePickUp : MonoBehaviour
             sound.Play();
             despawning = true;
             MasterObjective.acorns += 1f;
+            globalValues.acorns += 1;
         }
         if (goldenAcorn)
         {
@@ -53,6 +54,7 @@ public class ObjectivePickUp : MonoBehaviour
             sound.Play();
             despawning = true;
             MasterObjective.goldenAcorns += 1f;
+            globalValues.goldenAcorns += 1;
         }
     }
     private void RemoveFromGame()
