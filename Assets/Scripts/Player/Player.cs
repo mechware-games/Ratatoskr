@@ -22,6 +22,10 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetButtonDown("Restart"))
+        {
+            Death();
+        }
         isFenrirAfterYou();
     }
 
