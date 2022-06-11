@@ -1706,8 +1706,8 @@ MonoBehaviour:
   _zSpawnMinDistance: 6
   _maxFenrirSpawnRange: 10
   _fenrirCheckPositionTimerLength: 5
-  _fenrirPauseTimerLength: 2
-  _fenrirPauseTriggerRadius: 3
+  _fenrirPauseTimerLength: 1.5
+  _fenrirPauseTriggerRadius: 1
   _chasePositionOffset: {x: 0, y: 3, z: 0}
   _fenrirStrafeVector: {x: 0, y: 3, z: 0}
   _currentState: 0
