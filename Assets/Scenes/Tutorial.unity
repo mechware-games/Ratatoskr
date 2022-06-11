@@ -23891,12 +23891,12 @@ PrefabInstance:
     - target: {fileID: 2170454070929551873, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.0329956
+      value: 0.032995563
       objectReference: {fileID: 0}
     - target: {fileID: 2170454070929551873, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0043133046
+      value: 0.0043133
       objectReference: {fileID: 0}
     - target: {fileID: 2170454070929551873, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
         type: 3}
@@ -23906,7 +23906,7 @@ PrefabInstance:
     - target: {fileID: 2170454070929551873, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.12954903
+      value: -0.12954904
       objectReference: {fileID: 0}
     - target: {fileID: 2783853472298579570, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
         type: 3}
@@ -23937,11 +23937,6 @@ PrefabInstance:
         type: 3}
       propertyPath: groundDist
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3597101860629711175, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
-        type: 3}
-      propertyPath: _DownForceModifierCap
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3854235061583292656, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
         type: 3}

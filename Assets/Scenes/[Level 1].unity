@@ -33571,12 +33571,12 @@ PrefabInstance:
     - target: {fileID: 2170454070929551873, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.1669347
+      value: -0.16693474
       objectReference: {fileID: 0}
     - target: {fileID: 2170454070929551873, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.021817679
+      value: -0.021817686
       objectReference: {fileID: 0}
     - target: {fileID: 2170454070929551873, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
         type: 3}
@@ -33586,13 +33586,8 @@ PrefabInstance:
     - target: {fileID: 2170454070929551873, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.12774402
+      value: -0.127744
       objectReference: {fileID: 0}
-    - target: {fileID: 2386912095835285534, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
-        type: 3}
-      propertyPath: acornCanvas
-      value: 
-      objectReference: {fileID: 1489552030}
     - target: {fileID: 2783853472298579570, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -33622,16 +33617,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fenrir Icon
-      objectReference: {fileID: 0}
-    - target: {fileID: 3597101860629711175, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
-        type: 3}
-      propertyPath: _gravityIncreaseRate
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3597101860629711175, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
-        type: 3}
-      propertyPath: _DownForceModifierCap
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3947374103325812418, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
         type: 3}
@@ -33721,7 +33706,7 @@ PrefabInstance:
     - target: {fileID: 8193894225869131949, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.16761708
+      value: -0.16761707
       objectReference: {fileID: 0}
     - target: {fileID: 8193894225869131949, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
         type: 3}
@@ -59182,12 +59167,6 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 10ebd116e7cce1a42a792210277ad393, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9db3721276e5ed40af357b600429ced, type: 3}
---- !u!1 &1489552030 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3003031922619991716, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
-    type: 3}
-  m_PrefabInstance: {fileID: 926323049}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1491257885
 PrefabInstance:
   m_ObjectHideFlags: 0
