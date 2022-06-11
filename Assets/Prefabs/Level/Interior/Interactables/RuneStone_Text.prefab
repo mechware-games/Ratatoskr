@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1286509588369778409}
   - component: {fileID: 8410890586163437991}
   - component: {fileID: 2711250261311679628}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Text (TMP) (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,7 +188,7 @@ GameObject:
   - component: {fileID: 7649642580239118362}
   - component: {fileID: 5992781978423418058}
   - component: {fileID: 5877114728391474280}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RuneStone_Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -419,7 +419,7 @@ GameObject:
   - component: {fileID: 9044134105789404976}
   - component: {fileID: 9044134105789404978}
   - component: {fileID: 9044134105789404977}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -697,6 +697,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: InteractionCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3103533261931985098, guid: ae651a8b8051f2748b87cfabbd433aab,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4503074976495882992, guid: ae651a8b8051f2748b87cfabbd433aab,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7813764605844925419, guid: ae651a8b8051f2748b87cfabbd433aab,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae651a8b8051f2748b87cfabbd433aab, type: 3}
