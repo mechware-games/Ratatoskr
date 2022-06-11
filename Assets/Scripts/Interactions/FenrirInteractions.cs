@@ -16,6 +16,8 @@ public class FenrirInteractions : Interactable
     private bool isGrowing = false;
     private bool isShrinking = false;
 
+    public AudioSource audio;
+
     private FenrirInteractableChild child;
 
     private void Start()
@@ -28,6 +30,7 @@ public class FenrirInteractions : Interactable
         if (!isActive)
         {
             aoeTimeToGrowTimer = 0f;
+            audio.Play();
             StartCoroutine(GrowArea());
         }
     }
