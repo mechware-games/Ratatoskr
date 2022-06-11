@@ -33,47 +33,51 @@ public class AnimationScipt : MonoBehaviour
     }
     void Update()
     {
-        Dead();
-        bool wallRunning = false;
-        if (Player.GetComponent<Movement>().CheckWallRun() && !Player.GetComponent<Movement>().CheckGrounded())
-        {
-            wallRunning = true;
-        }
-        else
-        {
-            wallRunning = false;
-        }
+        if (!Player.GetComponent<Player>().HasDied()){
 
-
-
-        if (wallRunning)
-        {
-            anim.SetBool("WallRunning", true);
-            anim.SetFloat("Wall Running", 2f);
-            if (Player.GetComponent<Movement>().CheckWallRight())
+            bool wallRunning = false;
+            if (Player.GetComponent<Movement>().CheckWallRun() && !Player.GetComponent<Movement>().CheckGrounded())
             {
-                transform.localScale = new Vector3(-1, 1, 1);
+                wallRunning = true;
             }
             else
             {
-                transform.localScale = new Vector3(1, 1, 1);
+                wallRunning = false;
             }
+
+            if (wallRunning)
+            {
+                anim.SetBool("WallRunning", true);
+                anim.SetFloat("Wall Running", 2f);
+                if (Player.GetComponent<Movement>().CheckWallRight())
+                {
+                    transform.localScale = new Vector3(-1, 1, 1);
+                }
+                else
+                {
+                    transform.localScale = new Vector3(1, 1, 1);
+                }
+            }
+            else
+            {
+                anim.SetBool("WallRunning", false);
+                anim.SetFloat("Wall Running", 0f);
+                run();
+            }
+            JumpingAndFalling(); 
         }
-        else
-        {
-            anim.SetBool("WallRunning", false);
-            anim.SetFloat("Wall Running", 0f);
-            run();
-        }
-
-
-
-        JumpingAndFalling();
+        Dead();
     }
     private void run()
     {
-        float vert = Mathf.Abs(Input.GetAxis("Vertical"));
-        float horz = Mathf.Abs(Input.GetAxis("Horizontal"));
+        float vert = 0;
+        float horz = 0;
+        if (!Player.GetComponent<Player>().HasDied()) 
+        {
+           vert = Mathf.Abs(Input.GetAxis("Vertical"));
+           horz = Mathf.Abs(Input.GetAxis("Horizontal"));
+        
+
         if (Player.GetComponent<Movement>().CheckGrounded() && !Player.GetComponent<Movement>().CheckNearWall())
         {
             MovingForBack = Input.GetAxis("Vertical");
@@ -108,12 +112,14 @@ public class AnimationScipt : MonoBehaviour
             // anim.SetFloat("Forwards", Input.GetAxis("Vertical"));
             // anim.SetFloat("Turning", Input.GetAxis("Horizontal"));
             anim.speed = 1;
-        }
+            }
+
     else if(!Player.GetComponent<Movement>().CheckGrounded() && ( vert < 0.05f || horz < 0.05f))
 		{
             anim.SetFloat("Forwards", 0f);
             anim.SetFloat("Turning", 0f);
         }
+    }
     }
     private void JumpingAndFalling()
     {

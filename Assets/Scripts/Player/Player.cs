@@ -17,14 +17,21 @@ public class Player : MonoBehaviour
 
     [SerializeField] private GameObject acornCanvas;
     [SerializeField] private GameObject deathMask;
+    [SerializeField] private Movement movementController;
 
     private void Start()
     {
         fenrir = GameObject.Find("Fenrir");
+        movementController = GameObject.Find("Ratatoskr").GetComponent<Movement>();
     }
 
     private void Update()
     {
+        if (Input.GetButtonDown("Restart"))
+        {
+            Death();
+        }
+
         Debug.Log("HasDied: " + hasDied);
         isFenrirAfterYou();
     }
@@ -34,6 +41,7 @@ public class Player : MonoBehaviour
         FenrirScript fenrir = GameObject.Find("Fenrir").GetComponent<FenrirScript>();
         fenrir.SetActive(false);
         fenrir.Despawn();
+        movementController.KillPlayer();
 
         StartCoroutine(DeathLoop());
     }
@@ -72,9 +80,12 @@ public class Player : MonoBehaviour
         StartCoroutine(ShrinkUI());
         yield return new WaitForSecondsRealtime(2.5f);
         MoveRat();
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.8f);
         StartCoroutine(GrowUI());
         SetHasDied(false);
+        yield return new WaitForSeconds(0.3f);
+        movementController.RevivePlayer();
+
         yield return null;
     }
     IEnumerator ShrinkUI() 
