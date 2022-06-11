@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject acornCanvas;
     [SerializeField] private GameObject deathMask;
     [SerializeField] private Movement movementController;
+    public bool restarting = false;
 
     private void Start()
     {
@@ -29,7 +30,12 @@ public class Player : MonoBehaviour
     {
         if (Input.GetButtonDown("Restart"))
         {
-            Death();
+            FenrirScript fenrir = GameObject.Find("Fenrir").GetComponent<FenrirScript>();
+            fenrir.SetActive(false);
+            fenrir.Despawn();
+            movementController.KillPlayer();
+            restarting = true;
+            StartCoroutine(RestartLoop());
         }
 
         Debug.Log("HasDied: " + hasDied);
@@ -42,7 +48,6 @@ public class Player : MonoBehaviour
         fenrir.SetActive(false);
         fenrir.Despawn();
         movementController.KillPlayer();
-
         StartCoroutine(DeathLoop());
     }
 
@@ -86,6 +91,22 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         movementController.RevivePlayer();
 
+        yield return null;
+    }
+
+    IEnumerator RestartLoop()
+    {
+        SetHasDied(false);
+        StartCoroutine(ShrinkUI());
+        yield return new WaitForSecondsRealtime(2.5f);
+        SetHasDied(true);
+        MoveRat();
+        yield return new WaitForSeconds(0.8f);
+        StartCoroutine(GrowUI());
+        SetHasDied(false);
+        yield return new WaitForSeconds(0.3f);
+        movementController.RevivePlayer();
+        restarting = false;
         yield return null;
     }
     IEnumerator ShrinkUI() 

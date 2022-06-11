@@ -33,7 +33,8 @@ public class AnimationScipt : MonoBehaviour
     }
     void Update()
     {
-        if (!Player.GetComponent<Player>().HasDied()){
+        if (!Player.GetComponent<Player>().HasDied() && !Player.GetComponent<Player>().restarting)
+        {
 
             bool wallRunning = false;
             if (Player.GetComponent<Movement>().CheckWallRun() && !Player.GetComponent<Movement>().CheckGrounded())
