@@ -9,7 +9,8 @@ public class Movement : MonoBehaviour
         Grounded,
         NotGrounded,
         Wallrunning,
-        Rolling
+        Rolling,
+        Dead
     }
     [SerializeField]
     private State _playerState;
@@ -117,6 +118,26 @@ public class Movement : MonoBehaviour
     private float _animationWallCheckSize = 2f;
     #endregion
 
+    private Vector3 _startFallPosition;
+    private Vector3 _endFallPosition;
+
+    public AudioSource landAudio;
+    public AudioSource walkAudio;
+
+
+    private void StartWalkSound()
+	{
+        if (!walkAudio.isPlaying)
+        {
+            walkAudio.loop = true;
+            walkAudio.Play(0);
+        }
+	}
+
+    private void StopWalkSound()
+	{
+        walkAudio.Stop();
+	}
     private void Awake()
     {
         rb = gameObject.GetComponent<Rigidbody>();
@@ -126,6 +147,16 @@ public class Movement : MonoBehaviour
         currentJumpForce = baseJumpForce;
         currentJumpForwardForce = baseForwardForce;
     }
+
+    public void RevivePlayer()
+	{
+        _playerState = State.Grounded;
+	}
+
+    public void KillPlayer()
+	{
+        _playerState = State.Dead;
+	}
 
     public bool CheckGrounded()
 	{
@@ -202,6 +233,7 @@ public class Movement : MonoBehaviour
                 {
 					if (!CheckGrounded())
 					{
+                        _startFallPosition = rb.position;
                         _playerState = State.NotGrounded;
 					}
                     _ActionTimer += Time.deltaTime;
@@ -213,6 +245,7 @@ public class Movement : MonoBehaviour
                         {
                             Jump();
                             _playerState = State.NotGrounded;
+                            _startFallPosition = rb.position;
                             _ActionTimer = 0;
                         }
                     }
@@ -226,13 +259,16 @@ public class Movement : MonoBehaviour
                     {
                         if (CheckGrounded())
                         {
+                            _endFallPosition = rb.position;
                             float downforce = Mathf.Abs(((_currentGravityModifier * Physics.gravity) + Physics.gravity).y);
-                            Debug.Log($"Vertical velocity: {downforce}");
-                            if (Mathf.Abs(downforce) > 120)
+                            Debug.Log($"Start fall position: {_startFallPosition.y}\nEnd fall position: {_endFallPosition.y}\nMagnitude:{_startFallPosition.y - _endFallPosition.y}");
+                            if (_startFallPosition.y- _endFallPosition.y > 20)
                             {
-                                _playerState = State.Grounded;
+                                _playerState = State.Dead;
                                 GetComponent<Player>().Death();
+                                KillPlayer();
                                 _currentGravityModifier = 0;
+                                break;
                             }
                             _playerState = State.Grounded;
                         }
@@ -254,6 +290,7 @@ public class Movement : MonoBehaviour
                     {
                         Jump();
                         _playerState = State.NotGrounded;
+                        _startFallPosition = rb.position;
                     }
                     if (Physics.CheckSphere(groundCheck.position, groundDist, groundMask))
                     {
@@ -263,6 +300,12 @@ public class Movement : MonoBehaviour
                     if(_CurrentWallrunForce >= 0)
 					{
                         _CurrentWallrunForce -= (Time.deltaTime * _wallRunDecay);
+					}
+
+                    if(!WallCheck())
+					{
+                        _playerState = State.NotGrounded;
+                        _startFallPosition = rb.position;
 					}
                 }
                 break;
@@ -287,8 +330,12 @@ public class Movement : MonoBehaviour
     {
         switch (_playerState)
         {
+            case State.Dead:
+                StopWalkSound();
+                break;
             case State.Wallrunning:
 				{
+                    StopWalkSound();
                     if (WallCheck())
                     {
                         float hor = Input.GetAxisRaw("Horizontal");
@@ -310,11 +357,13 @@ public class Movement : MonoBehaviour
                     else
                     {
                         _playerState = State.NotGrounded;
+                        _startFallPosition = rb.position;
                     }
                 }
                 break;
                 case State.NotGrounded:
 			        {
+                    StopWalkSound();
                     _currentGravityModifierTimer += Time.deltaTime; 
                     if (_currentGravityModifierTimer > _gravityModifierTimer)
 					{
@@ -327,6 +376,7 @@ public class Movement : MonoBehaviour
                         goto default;
 			        }
             case State.Grounded:
+
                 _currentGravityModifier = 0;
                 _currentGravityModifierTimer = 0;
                 goto default;
@@ -339,6 +389,7 @@ public class Movement : MonoBehaviour
                     Vector3 dir = new Vector3(hor, 0, ver).normalized;
                     if (dir.magnitude >= 0.1f)
                     {
+                        StartWalkSound();
                         float targetAngle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
                         float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, CameraSmooth);
                         transform.rotation = Quaternion.Euler(0f, angle, 0f);
@@ -348,11 +399,13 @@ public class Movement : MonoBehaviour
                     }
 					else
 					{
-                        if (rb.velocity.magnitude > maxSpeed && _playerState != State.NotGrounded)
+                        StopWalkSound();
+                        if (_playerState != State.NotGrounded)
 						{
                             rb.velocity *= _speedDecayCoefficient;
 						}
 					}
+                    
 
                 }
                 break;
