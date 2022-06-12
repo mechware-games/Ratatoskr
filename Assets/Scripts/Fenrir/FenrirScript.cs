@@ -103,13 +103,13 @@ public class FenrirScript : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
-        _pauseTimer = _pauseLength;
-        _chaseTimer = _chaseLength;
-        _LastDistanceFromPlayer = (_player.position - transform.position).magnitude;
         if (!GetActive())
         {
             Despawn();
         }
+        _pauseTimer = _pauseLength;
+        _chaseTimer = _chaseLength;
+        _LastDistanceFromPlayer = (_player.position - transform.position).magnitude;
     }
 
 	private void OnEnable()
@@ -118,7 +118,6 @@ public class FenrirScript : MonoBehaviour
         _children = new List<Transform>(transform.GetComponentsInChildren<Transform>());
         // The player must have the tag "Player" for this script to work.
         // No other object in the scene should have the tag "Player"
-        _player = GameObject.FindGameObjectWithTag("Player").transform;
         _currentState = State.Chasing;
         _playerSpottedLocation = _player.position;
     }
@@ -142,6 +141,13 @@ public class FenrirScript : MonoBehaviour
 	// Update is called once per frame
 	void Update()
     {
+        if(_player == null)
+        {
+            _player = GameObject.FindGameObjectWithTag("Player").transform;
+            _playerSpottedLocation = _player.position;
+            _LastDistanceFromPlayer = (_player.position - transform.position).magnitude;
+        }
+
         transform.LookAt(_player.position);
         if (GetActive())
         {
