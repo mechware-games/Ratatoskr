@@ -1696,18 +1696,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fc105f46ee2db8419f8a7978970c57e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baseSpeed: 20
+  _baseSpeed: 30
   currentSpeed: 0
-  _chaseLength: 7
+  _chaseLength: 20
   _chaseTimer: 0
-  _pauseLength: 3
+  _pauseLength: 10
   _xSpawnMinDistance: 6
   _ySpawnMinDistance: 12
   _zSpawnMinDistance: 6
   _maxFenrirSpawnRange: 10
-  _fenrirCheckPositionTimerLength: 2
+  _fenrirCheckPositionTimerLength: 5
   _fenrirPauseTimerLength: 1.5
-  _fenrirPauseTriggerRadius: 5
+  _fenrirPauseTriggerRadius: 1
   _chasePositionOffset: {x: 0, y: 3, z: 0}
   _fenrirStrafeVector: {x: 0, y: 3, z: 0}
   _currentState: 0

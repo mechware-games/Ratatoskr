@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] private GameObject acornCanvas;
     [SerializeField] private GameObject deathMask;
+    [SerializeField] private Movement movementController;
+    public bool restarting = false;
     [SerializeField] private AudioSource deathSound;
 
     private void OnEnable()
@@ -29,10 +31,21 @@ public class Player : MonoBehaviour
         fenrir = GameObject.Find("Fenrir");
         deathSound = GetComponent<AudioSource>();
         anim.Rebind();
+        movementController = GameObject.Find("Ratatoskr").GetComponent<Movement>();
     }
 
     private void Update()
     {
+        if (Input.GetButtonDown("Restart"))
+        {
+            FenrirScript fenrir = GameObject.Find("Fenrir").GetComponent<FenrirScript>();
+            fenrir.SetActive(false);
+            fenrir.Despawn();
+            movementController.KillPlayer();
+            restarting = true;
+            StartCoroutine(RestartLoop());
+        }
+
         Debug.Log("HasDied: " + hasDied);
         isFenrirAfterYou();
     }
@@ -42,7 +55,7 @@ public class Player : MonoBehaviour
         FenrirScript fenrir = GameObject.Find("Fenrir").GetComponent<FenrirScript>();
         fenrir.SetActive(false);
         fenrir.Despawn();
-
+        movementController.KillPlayer();
         StartCoroutine(DeathLoop());
     }
 
@@ -81,10 +94,29 @@ public class Player : MonoBehaviour
         StartCoroutine(ShrinkUI());
         yield return new WaitForSecondsRealtime(2.5f);
         MoveRat();
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.8f);
         StartCoroutine(GrowUI());
         yield return new WaitForSeconds(1.5f);
         SetHasDied(false);
+        yield return new WaitForSeconds(0.3f);
+        movementController.RevivePlayer();
+
+        yield return null;
+    }
+
+    IEnumerator RestartLoop()
+    {
+        SetHasDied(false);
+        StartCoroutine(ShrinkUI());
+        yield return new WaitForSecondsRealtime(2.5f);
+        SetHasDied(true);
+        MoveRat();
+        yield return new WaitForSeconds(0.8f);
+        StartCoroutine(GrowUI());
+        SetHasDied(false);
+        yield return new WaitForSeconds(0.3f);
+        movementController.RevivePlayer();
+        restarting = false;
         yield return null;
     }
     IEnumerator ShrinkUI() 

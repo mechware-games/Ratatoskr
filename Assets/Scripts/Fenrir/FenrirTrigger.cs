@@ -11,6 +11,8 @@ public class FenrirTrigger : MonoBehaviour
     [Tooltip("Determines whether Fenrir will be activated or deactivated by this script")]
     private bool _set = true;
 
+    [SerializeField] AudioSource _audio;
+
     private GameObject _fenrir;
 
     // Start is called before the first frame update
@@ -35,8 +37,7 @@ public class FenrirTrigger : MonoBehaviour
                if (fenrirActive)
 				{
                     _fenrir.GetComponent<FenrirScript>().Despawn();
-                    _fenrir.GetComponent<FenrirScript>().SetActive(false);
-
+                    _fenrir.GetComponent<FenrirScript>().SetActive(false);                  
                 }
 				else
 				{
@@ -48,6 +49,7 @@ public class FenrirTrigger : MonoBehaviour
 			{
                 _fenrir.GetComponent<FenrirScript>().SetActive(_set);
                 _fenrir.GetComponent<FenrirScript>().Despawn();
+                _audio.Play();
             }
 
 		}

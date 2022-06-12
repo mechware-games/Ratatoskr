@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1790130378760816839}
   - component: {fileID: 3420494418344642402}
   - component: {fileID: 620650970257519528}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RuneStone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 4672334194666642436}
   - component: {fileID: 4672334194666642438}
   - component: {fileID: 4672334194666642437}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 3092311992170407166}
   - component: {fileID: 8015019035605182155}
   - component: {fileID: 1109989780177232980}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Text (TMP) (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
