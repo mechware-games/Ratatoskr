@@ -38,4 +38,11 @@ public class MainMenuScript : MonoBehaviour
         SkinStoreMenu.SetActive(true);
         GameObject.Find("EventSystem").GetComponent<EventSystem>().SetSelectedGameObject(FirstButtonStore, null);
     }
+
+    public void BackSkinStore()
+    {
+        MainMenu.SetActive(true);
+        SkinStoreMenu.SetActive(false);
+        GameObject.Find("EventSystem").GetComponent<EventSystem>().SetSelectedGameObject(FirstButtonMain, null);
+    }
 }
