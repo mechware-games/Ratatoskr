@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     private GameObject fenrir;
 
     private bool hasDied = false;
+    private Animator anim;
 
     private float maskMinSize = 0.01f;
     private float maskMaxSize = 40f;
@@ -17,10 +18,17 @@ public class Player : MonoBehaviour
 
     [SerializeField] private GameObject acornCanvas;
     [SerializeField] private GameObject deathMask;
+    [SerializeField] private AudioSource deathSound;
 
+    private void OnEnable()
+    {
+        anim = GetComponentInChildren<Animator>();
+    }
     private void Start()
     {
         fenrir = GameObject.Find("Fenrir");
+        deathSound = GetComponent<AudioSource>();
+        anim.Rebind();
     }
 
     private void Update()
@@ -68,12 +76,14 @@ public class Player : MonoBehaviour
     IEnumerator DeathLoop()
     {
         SetHasDied(true);
+        deathSound.Play();
         yield return new WaitForSecondsRealtime(1f);
         StartCoroutine(ShrinkUI());
         yield return new WaitForSecondsRealtime(2.5f);
         MoveRat();
         yield return new WaitForSeconds(1);
         StartCoroutine(GrowUI());
+        yield return new WaitForSeconds(1.5f);
         SetHasDied(false);
         yield return null;
     }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class SkinStore : MonoBehaviour
 {
@@ -10,62 +11,41 @@ public class SkinStore : MonoBehaviour
 
     [SerializeField] private int pinkCost = 0;
     [SerializeField] private int blueCost = 10;
-    [SerializeField] private int goldCost = 25;
+    [SerializeField] private int goldCost = 3;
 
+    [SerializeField] private TMP_Text cost;
+    [SerializeField] private TMP_Text costBlue;
+    [SerializeField] private TMP_Text costGold;
 
-    private PlayerSkins ratSkin;
+    [SerializeField] private GameObject goldcostcanvas;
+    [SerializeField] private GameObject bluecostcanvas;
+
+    [SerializeField] private GameObject blueSelect;
+    [SerializeField] private GameObject pinkSelect;
+    [SerializeField] private GameObject goldSelect;
+
 
     private void Start()
     {
-        ratSkin = GameObject.FindGameObjectWithTag("PlayerSkin").GetComponent<PlayerSkins>();
+        cost.text = pinkCost.ToString();
+        costBlue.text = blueCost.ToString();
+        costGold.text = goldCost.ToString();
+    }
+
+    private void Update()
+    {
+        Debug.Log("Acorns: " + PlayerPrefs.GetInt("Acorns"));
     }
 
     public void BuyBlue()
     {
         if (isBlueUnlocked == false)
         {
-            if (globalValues.acorns >= blueCost)
+            if (PlayerPrefs.GetInt("Acorns") >= blueCost)
             {
-                globalValues.acorns -= blueCost;
+                PlayerPrefs.SetInt("Acorns", PlayerPrefs.GetInt("Acorns") - blueCost);
                 isBlueUnlocked = true;
-            }
-            else
-            {
-                // PURCHASE DENIED
-            }
-        }
-        else
-        {
-            ratSkin.SetActiveSkin(ratSkin.blueSkin);
-        }
-    }
-    public void BuyPink()
-    {
-        if (isPinkUnlocked == false)
-        {
-            if (globalValues.acorns >= pinkCost)
-            {
-                globalValues.acorns -= pinkCost;
-                isGoldUnlocked = true;
-            }
-            else
-            {
-                
-            }
-        }
-        else
-        {
-            ratSkin.SetActiveSkin(ratSkin.normalSkin);
-        }
-    }
-    public void BuyGold()
-    {
-        if (isGoldUnlocked == false)
-        {
-            if(globalValues.acorns >= goldCost)
-            {
-                globalValues.acorns -= goldCost;
-                isGoldUnlocked = true;
+                GameObject.Find("SkinManager").GetComponent<SkinManager>().SetRat(2);
             }
             else
             {
@@ -74,7 +54,49 @@ public class SkinStore : MonoBehaviour
         }
         else
         {
-            ratSkin.SetActiveSkin(ratSkin.goldSkin);
+            GameObject.Find("SkinManager").GetComponent<SkinManager>().SetRat(2);
+        }
+    }
+    public void BuyPink()
+    {
+        if (isPinkUnlocked == false)
+        {
+            if (PlayerPrefs.GetInt("Acorns") >= pinkCost)
+            {
+                PlayerPrefs.SetInt("Acorns", PlayerPrefs.GetInt("Acorns") - pinkCost);
+                isPinkUnlocked = true;
+
+                GameObject.Find("SkinManager").GetComponent<SkinManager>().SetRat(1);
+            }
+            else
+            {
+                Debug.Log("You can't afford this skin!");
+            }
+        }
+        else
+        {
+            GameObject.Find("SkinManager").GetComponent<SkinManager>().SetRat(1);
+        }
+    }
+    public void BuyGold()
+    {
+        if (isGoldUnlocked == false)
+        {
+            if(PlayerPrefs.GetInt("GoldenAcorns") >= goldCost)
+            {
+                PlayerPrefs.SetInt("GoldenAcorns", PlayerPrefs.GetInt("GoldenAcorns") - goldCost);
+                isGoldUnlocked = true;
+
+                GameObject.Find("SkinManager").GetComponent<SkinManager>().SetRat(3);
+            }
+            else
+            {
+                Debug.Log("You can't afford this skin!");
+            }
+        }
+        else
+        {
+            GameObject.Find("SkinManager").GetComponent<SkinManager>().SetRat(3);
         }
     }
 }
