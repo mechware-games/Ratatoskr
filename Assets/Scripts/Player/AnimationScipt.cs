@@ -36,7 +36,6 @@ public class AnimationScipt : MonoBehaviour
     {
         if (Player != null)
         {
-            Debug.Log("PLAYERPLAYER " + Player);
             if (!Player.GetComponent<Player>().HasDied() && !Player.GetComponent<Player>().restarting)
             {
 
@@ -75,7 +74,6 @@ public class AnimationScipt : MonoBehaviour
         }
         else 
         {
-            Debug.Log("PLAYER IS NULL");
             GetPlayer();
         }
     }

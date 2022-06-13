@@ -38,8 +38,6 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Movement Controller: " + movementController);
-
         if (Input.GetButtonDown("Restart"))
         {
             FenrirScript fenrir = GameObject.Find("Fenrir").GetComponent<FenrirScript>();
@@ -49,8 +47,6 @@ public class Player : MonoBehaviour
             restarting = true;
             StartCoroutine(RestartLoop());
         }
-
-        Debug.Log("HasDied: " + hasDied);
         isFenrirAfterYou();
     }
 

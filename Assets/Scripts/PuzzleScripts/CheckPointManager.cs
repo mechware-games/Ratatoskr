@@ -71,14 +71,14 @@ public class CheckPointManager : MonoBehaviour
             while (_order.Contains(randomNum))
             {
                 randomNum = Random.Range(0, _checkPoints.Count);
-                Debug.Log(randomNum);
+                //Debug.Log(randomNum);
             }
 
             _checkPoints[randomNum].GetComponent<CheckPoint>().SetIndex(randomNum);
             _order.Add(randomNum); // Adds the number to the order list after confirming it isn't already in the list
 
 		}
-        Debug.Log($"The correct order: {_order[0]}{_order[1]}{_order[2]}");
+        //Debug.Log($"The correct order: {_order[0]}{_order[1]}{_order[2]}");
     }
 
     // Update is called once per frame

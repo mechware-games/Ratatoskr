@@ -273,7 +273,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.87058824, g: 0.87058824, b: 0.87058824, a: 1}
+    m_NormalColor: {r: 0.6862745, g: 0.6862745, b: 0.6862745, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 0.87058824, g: 0.87058824, b: 0.87058824, a: 1}
     m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
@@ -756,7 +756,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.87058824, g: 0.87058824, b: 0.87058824, a: 1}
+    m_NormalColor: {r: 0.6862745, g: 0.6862745, b: 0.6862745, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 0.87058824, g: 0.87058824, b: 0.87058824, a: 1}
     m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
@@ -779,14 +779,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7188327529594896630}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ChangeSceneScript, Assembly-CSharp
         m_MethodName: LoadLevel
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -905,7 +905,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.87058824, g: 0.87058824, b: 0.87058824, a: 1}
+    m_NormalColor: {r: 0.6862745, g: 0.6862745, b: 0.6862745, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 0.87058824, g: 0.87058824, b: 0.87058824, a: 1}
     m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
@@ -930,7 +930,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7558964017986045346}
         m_TargetAssemblyTypeName: MainMenuScript, Assembly-CSharp
-        m_MethodName: Quit
+        m_MethodName: SkinStore
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1175,7 +1175,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.87058824, g: 0.87058824, b: 0.87058824, a: 1}
+    m_NormalColor: {r: 0.6862745, g: 0.6862745, b: 0.6862745, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 0.87058824, g: 0.87058824, b: 0.87058824, a: 1}
     m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
@@ -1593,10 +1593,10 @@ MonoBehaviour:
   PauseMenu: {fileID: 0}
   textureDropdown: {fileID: 8420017175998877197}
   qualityDropdown: {fileID: 0}
+  Resolution: {fileID: 7558964018086205784}
   aaDropdown: {fileID: 0}
   Audio: {fileID: 7558964017578606570}
   MasterMix: {fileID: 24100000, guid: 14d004d210e7a9d4fa36be1bd5663513, type: 2}
-  Resolution: {fileID: 7558964018086205784}
   FirstButtonMain: {fileID: 7558964017535138421}
 --- !u!114 &7188327529594896630
 MonoBehaviour:
