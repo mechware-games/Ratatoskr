@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     private void OnEnable()
     {
         anim = GetComponentInChildren<Animator>();
+        movementController = GetComponent<Movement>();
     }
     private void Start()
     {
@@ -37,6 +38,8 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log("Movement Controller: " + movementController);
+
         if (Input.GetButtonDown("Restart"))
         {
             FenrirScript fenrir = GameObject.Find("Fenrir").GetComponent<FenrirScript>();
