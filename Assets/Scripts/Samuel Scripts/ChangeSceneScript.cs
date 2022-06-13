@@ -19,6 +19,7 @@ public class ChangeSceneScript : MonoBehaviour
     public void LoadLevel(int sceneIndex)
     {
         StartCoroutine(LoadAsync(sceneIndex));
+        Time.timeScale = 1;
     }
 
     IEnumerator LoadAsync(int sceneIndex)
