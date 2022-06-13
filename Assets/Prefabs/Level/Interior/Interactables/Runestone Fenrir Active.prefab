@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 141862528264699473}
   - component: {fileID: 1361047914273684569}
   - component: {fileID: 5954296072914293192}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Text (TMP) (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 368194122422575442}
   - component: {fileID: 368194122422575440}
   - component: {fileID: 368194122422575443}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -356,7 +356,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5218156449421207559}
   - component: {fileID: 8924772954290026610}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Fenrir Alert
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -475,7 +475,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &6221550398243254059
+--- !u!1 &4385192562940936914
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -483,13 +483,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6709435126889772433}
-  - component: {fileID: 7688603502943533620}
-  - component: {fileID: 5573098365296905982}
-  - component: {fileID: 3289619816716914654}
-  - component: {fileID: 3149579520373861032}
-  - component: {fileID: 2728174905558929800}
-  - component: {fileID: 8185485522361507198}
+  - component: {fileID: 8629897497423243304}
+  - component: {fileID: 1974796094935343673}
+  - component: {fileID: 3831265950572313136}
+  - component: {fileID: 5403770880550160233}
   m_Layer: 3
   m_Name: Runestone Fenrir Active
   m_TagString: Untagged
@@ -497,39 +494,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6709435126889772433
+--- !u!4 &8629897497423243304
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6221550398243254059}
+  m_GameObject: {fileID: 4385192562940936914}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.014759, y: 4.87, z: -46.35}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 368194122422575442}
-  - {fileID: 141862528264699473}
-  - {fileID: 5218156449421207559}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_Children: []
+  m_Father: {fileID: 6709435126889772433}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7688603502943533620
+--- !u!33 &1974796094935343673
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6221550398243254059}
+  m_GameObject: {fileID: 4385192562940936914}
   m_Mesh: {fileID: -5495902117074765545, guid: de39b418d007b334ea1477676ad10124, type: 3}
---- !u!23 &5573098365296905982
+--- !u!23 &3831265950572313136
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6221550398243254059}
+  m_GameObject: {fileID: 4385192562940936914}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -565,6 +559,68 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5403770880550160233
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4385192562940936914}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5495902117074765545, guid: de39b418d007b334ea1477676ad10124, type: 3}
+--- !u!1 &6221550398243254059
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6709435126889772433}
+  - component: {fileID: 7688603502943533620}
+  - component: {fileID: 3289619816716914654}
+  - component: {fileID: 3149579520373861032}
+  - component: {fileID: 2728174905558929800}
+  - component: {fileID: 8185485522361507198}
+  m_Layer: 0
+  m_Name: Runestone Fenrir Active
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6709435126889772433
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6221550398243254059}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -12.014759, y: 4.87, z: -46.35}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 368194122422575442}
+  - {fileID: 141862528264699473}
+  - {fileID: 5218156449421207559}
+  - {fileID: 8629897497423243304}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &7688603502943533620
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6221550398243254059}
+  m_Mesh: {fileID: -5495902117074765545, guid: de39b418d007b334ea1477676ad10124, type: 3}
 --- !u!135 &3289619816716914654
 SphereCollider:
   m_ObjectHideFlags: 0
