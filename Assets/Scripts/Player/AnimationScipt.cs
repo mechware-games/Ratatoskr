@@ -15,7 +15,7 @@ public class AnimationScipt : MonoBehaviour
     [SerializeField] private bool Dying;
     [SerializeField] private float Falling;
     [SerializeField] private bool IsGrounded;
-    [SerializeField] private GameObject Player = null;
+    [SerializeField] private GameObject Player;
     [SerializeField] Transform GroundCheck;
     [SerializeField] private float TestingMoreThings;
     [SerializeField] private float IDonno;
@@ -25,50 +25,62 @@ public class AnimationScipt : MonoBehaviour
     void Start()
     {
         //gets the player
-        if (Player == null)
-        {
-            Player = GameObject.FindGameObjectWithTag("Player");
-        }
         IDonno = TestingMoreThings;
+        Player = GameObject.FindGameObjectWithTag("Player");
     }
     void Update()
     {
-        if (!Player.GetComponent<Player>().HasDied() && !Player.GetComponent<Player>().restarting)
+        if (Player != null)
         {
+            Debug.Log("PLAYERPLAYER " + Player);
+            if (!Player.GetComponent<Player>().HasDied() && !Player.GetComponent<Player>().restarting)
+            {
 
-            bool wallRunning = false;
-            if (Player.GetComponent<Movement>().CheckWallRun() && !Player.GetComponent<Movement>().CheckGrounded())
-            {
-                wallRunning = true;
-            }
-            else
-            {
-                wallRunning = false;
-            }
-
-            if (wallRunning)
-            {
-                anim.SetBool("WallRunning", true);
-                anim.SetFloat("Wall Running", 2f);
-                if (Player.GetComponent<Movement>().CheckWallRight())
+                bool wallRunning = false;
+                if (Player.GetComponent<Movement>().CheckWallRun() && !Player.GetComponent<Movement>().CheckGrounded())
                 {
-                    transform.localScale = new Vector3(-1, 1, 1);
+                    wallRunning = true;
                 }
                 else
                 {
-                    transform.localScale = new Vector3(1, 1, 1);
+                    wallRunning = false;
                 }
+
+                if (wallRunning)
+                {
+                    anim.SetBool("WallRunning", true);
+                    anim.SetFloat("Wall Running", 2f);
+                    if (Player.GetComponent<Movement>().CheckWallRight())
+                    {
+                        transform.localScale = new Vector3(-1, 1, 1);
+                    }
+                    else
+                    {
+                        transform.localScale = new Vector3(1, 1, 1);
+                    }
+                }
+                else
+                {
+                    anim.SetBool("WallRunning", false);
+                    anim.SetFloat("Wall Running", 0f);
+                    run();
+                }
+                JumpingAndFalling();
             }
-            else
-            {
-                anim.SetBool("WallRunning", false);
-                anim.SetFloat("Wall Running", 0f);
-                run();
-            }
-            JumpingAndFalling(); 
+            Dead();
         }
-        Dead();
+        else 
+        {
+            Debug.Log("PLAYER IS NULL");
+            GetPlayer();
+        }
     }
+
+    private void GetPlayer()
+    {
+        Player = GameObject.FindGameObjectWithTag("Player");
+    }
+
     private void run()
     {
         float vert = 0;
