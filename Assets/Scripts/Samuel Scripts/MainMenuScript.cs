@@ -10,10 +10,12 @@ public class MainMenuScript : MonoBehaviour
     public GameObject OptionsMenu;
     public GameObject MainMenu;
     public GameObject SkinStoreMenu;
+    public GameObject LevelSelecter;
 
     [SerializeField] private GameObject FirstButtonMain;
     [SerializeField] private GameObject FirstButtonOptions;
     [SerializeField] private GameObject FirstButtonStore;
+    [SerializeField] private GameObject FirstButtonLevelSelect;
 
     public void Quit()
     {
@@ -43,6 +45,20 @@ public class MainMenuScript : MonoBehaviour
     {
         MainMenu.SetActive(true);
         SkinStoreMenu.SetActive(false);
+        GameObject.Find("EventSystem").GetComponent<EventSystem>().SetSelectedGameObject(FirstButtonMain, null);
+    }
+
+    public void LevelSelect()
+    {
+        MainMenu.SetActive(false);
+        LevelSelecter.SetActive(true);
+        GameObject.Find("EventSystem").GetComponent<EventSystem>().SetSelectedGameObject(FirstButtonLevelSelect, null);
+    }
+
+    public void BackLevelSelect()
+    {
+        MainMenu.SetActive(true);
+        LevelSelecter.SetActive(false);
         GameObject.Find("EventSystem").GetComponent<EventSystem>().SetSelectedGameObject(FirstButtonMain, null);
     }
 }
