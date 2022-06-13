@@ -6,7 +6,7 @@ using UnityEngine;
 public class AcornMagnet : MonoBehaviour
 {
     [SerializeField]
-    private float speed = 6f;
+    private float speed = 9f;
 
     Vector3 moveDirection = new Vector3(0,0,0);
 
