@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
     public bool restarting = false;
     [SerializeField] private AudioSource deathSound;
 
+    private GameObject[] contList;
+
     private void OnEnable()
     {
         anim = GetComponentInChildren<Animator>();
@@ -33,11 +35,17 @@ public class Player : MonoBehaviour
         fenrir = GameObject.Find("Fenrir");
         deathSound = GetComponent<AudioSource>();
         anim.Rebind();
-        movementController = GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>();
+        movementController = movementControl();
+
+        contList = GameObject.FindGameObjectsWithTag("Player");
     }
 
     private void Update()
     {
+        if (movementController == null)
+        {
+            movementControl();
+        }
         if (Input.GetButtonDown("Restart"))
         {
             FenrirScript fenrir = GameObject.Find("Fenrir").GetComponent<FenrirScript>();
@@ -57,6 +65,23 @@ public class Player : MonoBehaviour
         fenrir.Despawn();
         movementController.KillPlayer();
         StartCoroutine(DeathLoop());
+    }
+
+    private Movement movementControl()
+    {
+        for (int i = 0; i < contList.Length; i++)
+        {
+            if (contList[i].GetComponent<Movement>() != null)
+            {
+                return movementController = contList[i].GetComponent<Movement>();
+            }
+        }
+        return null;
+    }
+
+    public Transform GetPlayer()
+    {
+        return null;
     }
 
     public void isFenrirAfterYou()
@@ -103,7 +128,6 @@ public class Player : MonoBehaviour
         deathCanvas.SetActive(false);
         yield return null;
     }
-
     IEnumerator RestartLoop()
     {
         deathCanvas.SetActive(true);
