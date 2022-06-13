@@ -218,12 +218,10 @@ public class Movement : MonoBehaviour
         if (_playerState == State.Wallrunning)
         {
             isWallRunning = true;
-            Debug.Log("MV  WALL RUNNING IS TRUE");
         }
         else
         {
             isWallRunning = false;
-            Debug.Log("MV  WALL RUNNING IS FALSE");
         }
 
         // Input and State Handling
@@ -261,7 +259,7 @@ public class Movement : MonoBehaviour
                         {
                             _endFallPosition = rb.position;
                             float downforce = Mathf.Abs(((_currentGravityModifier * Physics.gravity) + Physics.gravity).y);
-                            Debug.Log($"Start fall position: {_startFallPosition.y}\nEnd fall position: {_endFallPosition.y}\nMagnitude:{_startFallPosition.y - _endFallPosition.y}");
+                            //Debug.Log($"Start fall position: {_startFallPosition.y}\nEnd fall position: {_endFallPosition.y}\nMagnitude:{_startFallPosition.y - _endFallPosition.y}");
                             if (_startFallPosition.y- _endFallPosition.y > 20)
                             {
                                 _playerState = State.Dead;
