@@ -16,6 +16,10 @@ public class AnimationScipt : MonoBehaviour
     [SerializeField] private float Falling;
     [SerializeField] private bool IsGrounded;
     [SerializeField] private GameObject Player;
+    [SerializeField] private GameObject[] playerList;
+
+    private GameObject temp;
+
     [SerializeField] Transform GroundCheck;
     [SerializeField] private float TestingMoreThings;
     [SerializeField] private float IDonno;
@@ -26,7 +30,7 @@ public class AnimationScipt : MonoBehaviour
     {
         //gets the player
         IDonno = TestingMoreThings;
-        Player = GameObject.FindGameObjectWithTag("Player");
+        playerList = GameObject.FindGameObjectsWithTag("Player");
     }
     void Update()
     {
@@ -78,7 +82,13 @@ public class AnimationScipt : MonoBehaviour
 
     private void GetPlayer()
     {
-        Player = GameObject.FindGameObjectWithTag("Player");
+        for (int i = 0; i < playerList.Length; i++)
+        {
+            if (playerList[i].GetComponent<Player>() != null)
+            {
+                Player = playerList[i];
+            }
+        }
     }
 
     private void run()
