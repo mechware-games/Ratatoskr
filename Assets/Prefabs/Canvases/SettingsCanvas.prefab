@@ -201,7 +201,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -2332,7 +2332,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &3781395255336160495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2362,14 +2362,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dab66ede9313354c9ab0fe0878bab5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OptionsMenu: {fileID: 0}
+  OptionsMenu: {fileID: 3781395255336160493}
   MainMenu: {fileID: 0}
+  PauseMenu: {fileID: 0}
   textureDropdown: {fileID: 0}
   qualityDropdown: {fileID: 0}
   aaDropdown: {fileID: 0}
   Audio: {fileID: 0}
   MasterMix: {fileID: 0}
-  Resolution: {fileID: 0}
+  Resolution: {fileID: 3781395255546710115}
   FirstButtonMain: {fileID: 0}
 --- !u!1 &3781395255353735991
 GameObject:
@@ -3265,7 +3266,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -4680,7 +4681,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
