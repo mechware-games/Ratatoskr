@@ -14,11 +14,12 @@ public class TutorialText : Interactable
 
     public AudioSource sound;
 
+    private bool active = true;
+
     private void Start()
     {
         texts = new Queue<string>();
         canvas.SetActive(false);
-
         foreach (string sentence in messages)
         {
             texts.Enqueue(sentence);
@@ -28,7 +29,11 @@ public class TutorialText : Interactable
     public override void Action()
     {
         DisplayNextSentence();
-        sound.Play();
+        if (active)
+        {
+            sound.Play();
+            active = false;
+        }
     }
 
     public void DisplayNextSentence()
@@ -54,6 +59,7 @@ public class TutorialText : Interactable
         {
             texts.Enqueue(sentence);
         }
+        active = true;
     }
 
     private void OnTriggerExit(Collider other)
