@@ -10,7 +10,7 @@ public class TutorialText : Interactable
     public string[] messages;
 
     public TMP_Text tutTex;
-    public GameObject canvas;
+    public GameObject bgcanvas;
 
     public AudioSource sound;
 
@@ -19,7 +19,7 @@ public class TutorialText : Interactable
     private void Start()
     {
         texts = new Queue<string>();
-        canvas.SetActive(false);
+        bgcanvas.SetActive(false);
         foreach (string sentence in messages)
         {
             texts.Enqueue(sentence);
@@ -41,11 +41,11 @@ public class TutorialText : Interactable
         if(texts.Count == 0)
         {
             EndText();
-            canvas.SetActive(false);
+            bgcanvas.SetActive(false);
             return;
         }
 
-        canvas.SetActive(true);
+        bgcanvas.SetActive(true);
         string text = texts.Dequeue();
         tutTex.text = text;
     }
@@ -54,7 +54,7 @@ public class TutorialText : Interactable
     {
         texts.Clear();
         tutTex.text = "";
-        canvas.SetActive(false);
+        bgcanvas.SetActive(false);
         foreach (string sentence in messages)
         {
             texts.Enqueue(sentence);

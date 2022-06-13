@@ -291,11 +291,13 @@ MonoBehaviour:
   radius: 12
   range: {fileID: 0}
   inRange: 0
+  interactionPrompt: {fileID: 4962045519249419852}
+  interactionCanvas: {fileID: 1270930885271460999}
   messages:
   - Hey loser this is the first message in the array and im going to test out the
     char limit because we dont want to overflow the text box now, do we? LMAO
   tutTex: {fileID: 4242733138137635059}
-  canvas: {fileID: 1270930885271460999}
+  bgcanvas: {fileID: 6251742183273336742}
   sound: {fileID: 5877114728391474280}
 --- !u!64 &5992781978423418058
 MeshCollider:
@@ -739,3 +741,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &4962045519249419852 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9110234467411364353, guid: ae651a8b8051f2748b87cfabbd433aab,
+    type: 3}
+  m_PrefabInstance: {fileID: 4229645202630714445}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6251742183273336742 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7813764605844925419, guid: ae651a8b8051f2748b87cfabbd433aab,
+    type: 3}
+  m_PrefabInstance: {fileID: 4229645202630714445}
+  m_PrefabAsset: {fileID: 0}
