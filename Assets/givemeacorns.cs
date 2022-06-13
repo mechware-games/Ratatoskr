@@ -6,7 +6,7 @@ public class givemeacorns : MonoBehaviour
 {
     void Start()
     {
-        PlayerPrefs.SetInt("Acorns", 100);
-        PlayerPrefs.SetInt("GoldenAcorns", 100);
+        PlayerPrefs.SetInt("Acorns", 99);
+        PlayerPrefs.SetInt("GoldenAcorns", 99);
     }
 }
