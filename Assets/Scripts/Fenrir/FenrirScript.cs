@@ -102,6 +102,7 @@ public class FenrirScript : MonoBehaviour
     private bool _isActive;
 
     private Vector3 _playerSpottedLocation;
+    [SerializeField] private GameObject[] playerList;
     #endregion
 
     [SerializeField]
@@ -110,6 +111,9 @@ public class FenrirScript : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
+        playerList = GameObject.FindGameObjectsWithTag("Player");
+        _player = GetPlayer();
+
         _pauseTimer = _pauseLength;
         _chaseTimer = _chaseLength;
         _LastDistanceFromPlayer = (_player.position - transform.position).magnitude;
@@ -117,17 +121,17 @@ public class FenrirScript : MonoBehaviour
         {
             Despawn();
         }
+        _playerSpottedLocation = _player.position;
     }
 
-	private void OnEnable()
+    private void OnEnable()
     {
         currentSpeed = _baseSpeed;
         _children = new List<Transform>(transform.GetComponentsInChildren<Transform>());
         // The player must have the tag "Player" for this script to work.
         // No other object in the scene should have the tag "Player"
-        _player = GameObject.FindGameObjectWithTag("Player").transform;
+
         _currentState = State.Waiting;
-        _playerSpottedLocation = _player.position;
     }
 #endregion
 
@@ -150,48 +154,70 @@ public class FenrirScript : MonoBehaviour
 	// Update is called once per frame
 	void Update()
     {
-        transform.LookAt(_player.position);
-        if (GetActive())
+        Debug.Log("Fenrir Player = " + _player);
+        Debug.Log("Fenrir PlayerList size: " + playerList.Length);
+
+        if (_player != null)
         {
-            _chaseTimer -= Time.deltaTime;
-            if (_chaseTimer < 0)
+            transform.LookAt(_player.position);
+            if (GetActive())
             {
-                Despawn();
+                _chaseTimer -= Time.deltaTime;
+                if (_chaseTimer < 0)
+                {
+                    Despawn();
+                }
+                switch (_currentState)
+                {
+                    case State.Waiting:
+                        _fenrirPauseTimer += Time.deltaTime;
+                        if (_fenrirPauseTimer > _fenrirPauseTimerLength)
+                        {
+                            SetPlayerLastKnownPosition();
+                            _currentState = State.Chasing;
+                            if (Random.Range(0f, 100f) > 70f) { _fenrirGrowl.Play(); }
+                            _fenrirPauseTimer = 0;
+                            _fenrirCheckPositionTimer = 0;
+                        }
+                        break;
+                    case State.Chasing:
+                        _fenrirCheckPositionTimer += Time.deltaTime;
+                        CheckFenrirDistance();
+                        if (_fenrirCheckPositionTimer > _fenrirCheckPositionTimerLength)
+                        {
+                            SetPlayerLastKnownPosition();
+                            _fenrirCheckPositionTimer = 0;
+                            _fenrirPauseTimer = 0;
+                            _currentState = State.Waiting;
+                        }
+                        MoveTowardsLastKnownPlayerLocation();
+                        break;
+                    case State.Despawned:
+                        _pauseTimer -= Time.deltaTime;
+                        if (_pauseTimer < 0) { Spawn(); }
+                        break;
+                }
             }
-            switch (_currentState)
-            {
-                case State.Waiting:
-                    _fenrirPauseTimer += Time.deltaTime;
-                    if (_fenrirPauseTimer > _fenrirPauseTimerLength)
-                    {
-                        SetPlayerLastKnownPosition();
-                        _currentState = State.Chasing;
-                        if (Random.Range(0f, 100f) >70f) { _fenrirGrowl.Play(); }
-                        _fenrirPauseTimer = 0;
-                        _fenrirCheckPositionTimer = 0;
-                    }
-                    break;
-                case State.Chasing:
-                    _fenrirCheckPositionTimer += Time.deltaTime;
-                    CheckFenrirDistance();
-                    if (_fenrirCheckPositionTimer > _fenrirCheckPositionTimerLength)
-                    {
-                        SetPlayerLastKnownPosition();
-                        _fenrirCheckPositionTimer = 0;
-                        _fenrirPauseTimer = 0;
-                        _currentState = State.Waiting;
-                    }
-                    MoveTowardsLastKnownPlayerLocation();
-                    break;
-                case State.Despawned:
-                    _pauseTimer -= Time.deltaTime;
-                    if (_pauseTimer < 0) { Spawn();}
-                    break;
-            }
+        }
+        else
+        {
+            GetPlayer();
         }
     }
 
-    public void SetActive(bool tf)
+    public Transform GetPlayer()
+    {
+        for (int i = 0; i < playerList.Length; i++)
+        {
+            if (playerList[i].GetComponent<Player>() != null)
+            {
+                return _player = playerList[i].transform;
+            }
+        }
+        return null;
+    }
+
+        public void SetActive(bool tf)
     {
         _isActive = tf;
     }
