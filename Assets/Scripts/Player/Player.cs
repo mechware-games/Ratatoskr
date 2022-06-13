@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
         fenrir = GameObject.Find("Fenrir");
         deathSound = GetComponent<AudioSource>();
         anim.Rebind();
-        //movementController = GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>();
+        movementController = GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>();
     }
 
     private void Update()
@@ -92,14 +92,13 @@ public class Player : MonoBehaviour
         deathCanvas.SetActive(true);
         SetHasDied(true);
         deathSound.Play();
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSeconds(0.5f);
         StartCoroutine(ShrinkUI());
         yield return new WaitForSecondsRealtime(2.5f);
         MoveRat();
+        SetHasDied(false);
         yield return new WaitForSeconds(0.8f);
         StartCoroutine(GrowUI());
-        yield return new WaitForSeconds(1.5f);
-        SetHasDied(false);
         yield return new WaitForSeconds(0.3f);
         movementController.RevivePlayer();
         deathCanvas.SetActive(false);
