@@ -728,7 +728,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2692274684747394555}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.5135884, y: 4, z: 14.582687}
+  m_LocalPosition: {x: 3.513588, y: 4, z: 14.582687}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1851,7 +1851,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7441138009147997426}
-  m_LocalRotation: {x: -0.0103831375, y: 0.98944, z: -0.092390195, w: -0.11119678}
+  m_LocalRotation: {x: -0.010383151, y: 0.98944, z: -0.09239024, w: -0.11119685}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2202,7 +2202,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7924629922082886922}
-  m_LocalRotation: {x: -0.012398704, y: 0.9876011, z: -0.11032487, w: -0.11099015}
+  m_LocalRotation: {x: -0.012398711, y: 0.9876011, z: -0.11032491, w: -0.11099018}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2401,6 +2401,9 @@ MonoBehaviour:
     m_Bits: 64
   CameraSmooth: 0.1
   _animationWallCheckSize: 2
+  landAudio: {fileID: 0}
+  walkAudio: {fileID: 1052660383262164711, guid: 284a8bbf4bdc2d94ca0d79aa3c998ae7,
+    type: 3}
 --- !u!114 &6351963227034360805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2431,7 +2434,10 @@ MonoBehaviour:
   LastCheckpoint: {x: 0, y: 0, z: 0}
   rate: 1.5
   acornCanvas: {fileID: 3003031922619991716}
+  deathCanvas: {fileID: 6271822388881646678}
   deathMask: {fileID: 2744013531966216747}
+  movementController: {fileID: 0}
+  restarting: 0
   deathSound: {fileID: 0}
 --- !u!82 &3325466905038216879
 AudioSource:
@@ -2750,8 +2756,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8895580122849441810}
-  m_LocalRotation: {x: -0.012398701, y: 0.9876011, z: -0.11032487, w: -0.11099015}
-  m_LocalPosition: {x: 3.5135884, y: 4, z: 14.582687}
+  m_LocalRotation: {x: -0.012398709, y: 0.9876011, z: -0.11032491, w: -0.11099017}
+  m_LocalPosition: {x: 3.513588, y: 4, z: 14.582687}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2966,7 +2972,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9068065690227489832}
-  m_LocalRotation: {x: -0.014415506, y: 0.98543096, z: -0.12827058, w: -0.11074625}
+  m_LocalRotation: {x: -0.014415515, y: 0.98543096, z: -0.12827063, w: -0.110746294}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3342,6 +3348,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeathCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 4208071251376842352, guid: 642e9bc20a01108419cf0f809678ac5c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 642e9bc20a01108419cf0f809678ac5c, type: 3}
 --- !u!1 &2744013531966216747 stripped
@@ -3353,6 +3364,12 @@ GameObject:
 --- !u!224 &5287452938322548040 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2598332707573847918, guid: 642e9bc20a01108419cf0f809678ac5c,
+    type: 3}
+  m_PrefabInstance: {fileID: 7885785056042041894}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6271822388881646678 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4208071251376842352, guid: 642e9bc20a01108419cf0f809678ac5c,
     type: 3}
   m_PrefabInstance: {fileID: 7885785056042041894}
   m_PrefabAsset: {fileID: 0}
