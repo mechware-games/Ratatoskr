@@ -27,7 +27,7 @@ public class AnimationScipt : MonoBehaviour
         //gets the player
         if (Player == null)
         {
-            Player = GameObject.Find("Ratatoskr");
+            Player = GameObject.FindGameObjectWithTag("Player");
         }
         IDonno = TestingMoreThings;
     }
