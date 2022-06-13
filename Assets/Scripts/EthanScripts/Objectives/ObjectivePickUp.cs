@@ -35,7 +35,6 @@ public class ObjectivePickUp : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //Destroy(pickUp);
         if (acorn)
         {
             int acorns = PlayerPrefs.GetInt("Acorns", 0);
@@ -44,17 +43,15 @@ public class ObjectivePickUp : MonoBehaviour
             sound.Play();
             despawning = true;
             MasterObjective.acorns += 1f;
-            globalValues.acorns += 1;
         }
         if (goldenAcorn)
         {
             int goldenAcorns = PlayerPrefs.GetInt("GoldenAcorns", 0);
             goldenAcorns += 1;
-            PlayerPrefs.SetInt("Acorns", goldenAcorns);
+            PlayerPrefs.SetInt("GoldenAcorns", goldenAcorns);
             sound.Play();
             despawning = true;
             MasterObjective.goldenAcorns += 1f;
-            globalValues.goldenAcorns += 1;
         }
     }
     private void RemoveFromGame()
