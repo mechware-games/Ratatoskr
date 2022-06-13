@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 663706848052276755}
   - component: {fileID: 3253366759869402469}
   - component: {fileID: 6375463886607527334}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ACTUALBRICKS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,5 +95,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.08651443, y: 0.03990562, z: 0.0076646404}
-  m_Center: {x: 0, y: 0.000023549423, z: 0}
+  m_Size: {x: 0.08651443, y: 0.08, z: 0.0076646404}
+  m_Center: {x: 0, y: 0.02, z: 0}

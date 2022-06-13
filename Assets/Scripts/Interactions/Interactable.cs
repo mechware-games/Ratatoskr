@@ -11,6 +11,8 @@ public class Interactable : MonoBehaviour
     public GameObject interactionPrompt;
     public GameObject interactionCanvas;
 
+    [SerializeField] public Pause pause;
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
@@ -20,6 +22,7 @@ public class Interactable : MonoBehaviour
     private void Awake()
     {
         range = GetComponent<SphereCollider>();
+        pause = GameObject.FindGameObjectWithTag("PauseMenu").GetComponent<Pause>();
     }
 
     private void Start()
@@ -29,12 +32,20 @@ public class Interactable : MonoBehaviour
 
     private void Update()
     {
-        range.radius = radius;
-        GetInput();
-        if (inRange)
+        if (pause.paused == false)
         {
-            interactionCanvas.SetActive(true);
-            interactionPrompt.SetActive(true);
+            range.radius = radius;
+            GetInput();
+            if (inRange)
+            {
+                interactionCanvas.SetActive(true);
+                interactionPrompt.SetActive(true);
+            }
+            else
+            {
+                interactionCanvas.SetActive(false);
+                interactionPrompt.SetActive(false);
+            }
         }
         else
         {
