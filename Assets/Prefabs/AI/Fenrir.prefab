@@ -1698,17 +1698,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _baseSpeed: 30
   currentSpeed: 0
-  _chaseLength: 20
+  _chaseLength: 30
   _chaseTimer: 0
-  _pauseLength: 10
+  _pauseLength: 7
   _xSpawnMinDistance: 6
   _ySpawnMinDistance: 12
   _zSpawnMinDistance: 6
   _maxFenrirSpawnRange: 10
-  _fenrirCheckPositionTimerLength: 5
-  _fenrirPauseTimerLength: 1.5
-  _fenrirPauseTriggerRadius: 1
-  _chasePositionOffset: {x: 0, y: 3, z: 0}
+  _minFenrirSpawnRange: 5
+  _fenrirCheckPositionTimerLength: 4
+  _fenrirPauseTimerLength: 1
+  _fenrirPauseTriggerRadius: 2
+  _chasePositionOffset: {x: 0, y: 5, z: 0}
   _fenrirStrafeVector: {x: 0, y: 3, z: 0}
   _currentState: 0
   _isActive: 0

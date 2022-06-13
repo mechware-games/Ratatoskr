@@ -10,11 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1790130378760816839}
   - component: {fileID: 3420494418344642402}
-  - component: {fileID: 620650970257519528}
   - component: {fileID: 2595994846973096129}
   - component: {fileID: 447841217915290475}
   - component: {fileID: 7037075774149310908}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: RuneStone_Fenrir_Slow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,6 +36,7 @@ Transform:
   - {fileID: 8778901410365323164}
   - {fileID: 6806499336472471246}
   - {fileID: 3256455407908239237}
+  - {fileID: 1225791449303603705}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -48,48 +48,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1413007358780297853}
   m_Mesh: {fileID: -5495902117074765545, guid: de39b418d007b334ea1477676ad10124, type: 3}
---- !u!23 &620650970257519528
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1413007358780297853}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 7ddcaaec80d446a48a808c7e51e7634e, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!135 &2595994846973096129
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -147,7 +105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3256455407908239237}
   - component: {fileID: 3297342764748642399}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: ForceField Audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,7 +235,7 @@ GameObject:
   - component: {fileID: 4672334194666642436}
   - component: {fileID: 4672334194666642438}
   - component: {fileID: 4672334194666642437}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -439,6 +397,104 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 4672334194666642438}
   m_maskType: 0
+--- !u!1 &5629678069336694381
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1225791449303603705}
+  - component: {fileID: 7749371376206776991}
+  - component: {fileID: 7633832151346209075}
+  - component: {fileID: 2010776214017848597}
+  m_Layer: 0
+  m_Name: RuneStone_Fenrir_Slow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1225791449303603705
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5629678069336694381}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1790130378760816839}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &7749371376206776991
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5629678069336694381}
+  m_Mesh: {fileID: -5495902117074765545, guid: de39b418d007b334ea1477676ad10124, type: 3}
+--- !u!23 &7633832151346209075
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5629678069336694381}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 7ddcaaec80d446a48a808c7e51e7634e, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2010776214017848597
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5629678069336694381}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5495902117074765545, guid: de39b418d007b334ea1477676ad10124, type: 3}
 --- !u!1 &7633080882550461785
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,7 +506,7 @@ GameObject:
   - component: {fileID: 6806499336472471246}
   - component: {fileID: 1341434755686408410}
   - component: {fileID: 7228906518325534655}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Text (TMP) (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -625,7 +681,7 @@ GameObject:
   - component: {fileID: 170437803267850055}
   - component: {fileID: 6540257115236705948}
   - component: {fileID: 1002515900090747766}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: FenrirRadius
   m_TagString: Untagged
   m_Icon: {fileID: 0}

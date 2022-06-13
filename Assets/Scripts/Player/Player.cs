@@ -108,6 +108,7 @@ public class Player : MonoBehaviour
 
     IEnumerator RestartLoop()
     {
+        deathCanvas.SetActive(true);
         SetHasDied(false);
         StartCoroutine(ShrinkUI());
         yield return new WaitForSecondsRealtime(2.5f);
@@ -119,6 +120,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         movementController.RevivePlayer();
         restarting = false;
+        deathCanvas.SetActive(false);
         yield return null;
     }
     IEnumerator ShrinkUI() 

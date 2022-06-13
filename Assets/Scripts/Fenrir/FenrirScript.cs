@@ -52,6 +52,13 @@ public class FenrirScript : MonoBehaviour
     [Range(5f, 50f)]
     private float _maxFenrirSpawnRange = 10f;
 
+
+    [SerializeField]
+    [Tooltip("Minimum distance Fenrir can spawn from the player.")]
+    [Range(5f, 50f)]
+    private float _minFenrirSpawnRange = 5f;
+
+
     [SerializeField]
     [Tooltip("Ammount of time before Fenrir checks the player's current location")]
     [Range(0.01f, 5f)]
@@ -118,7 +125,8 @@ public class FenrirScript : MonoBehaviour
         _children = new List<Transform>(transform.GetComponentsInChildren<Transform>());
         // The player must have the tag "Player" for this script to work.
         // No other object in the scene should have the tag "Player"
-        _currentState = State.Chasing;
+        _player = GameObject.FindGameObjectWithTag("Player").transform;
+        _currentState = State.Waiting;
         _playerSpottedLocation = _player.position;
     }
 #endregion
@@ -130,12 +138,13 @@ public class FenrirScript : MonoBehaviour
 
     private void CheckFenrirDistance()
 	{
-        float magnitude = (_playerSpottedLocation - transform.position).magnitude;
+        float distance = Vector3.Distance(_playerSpottedLocation, transform.position);
 
-        if (magnitude < _fenrirPauseTriggerRadius)
+        if (distance < _fenrirPauseTriggerRadius)
 		{
             _currentState = State.Waiting;
-		}
+            _fenrirPauseTimer = 0;
+        }
 	}
 
 	// Update is called once per frame
@@ -151,29 +160,35 @@ public class FenrirScript : MonoBehaviour
         transform.LookAt(_player.position);
         if (GetActive())
         {
+            _chaseTimer -= Time.deltaTime;
+            if (_chaseTimer < 0)
+            {
+                Despawn();
+            }
             switch (_currentState)
             {
                 case State.Waiting:
-                    SetPlayerLastKnownPosition();
                     _fenrirPauseTimer += Time.deltaTime;
                     if (_fenrirPauseTimer > _fenrirPauseTimerLength)
                     {
-                        Debug.Log("Timer Triggered");
+                        SetPlayerLastKnownPosition();
                         _currentState = State.Chasing;
                         if (Random.Range(0f, 100f) >70f) { _fenrirGrowl.Play(); }
                         _fenrirPauseTimer = 0;
+                        _fenrirCheckPositionTimer = 0;
                     }
                     break;
                 case State.Chasing:
-                    SetPlayerLastKnownPosition();
-                    MoveTowardsLastKnownPlayerLocation();
-
-                    _chaseTimer -= Time.deltaTime;
-                    if (_chaseTimer < 0)
-                    {
-                        Despawn();
-                    };
+                    _fenrirCheckPositionTimer += Time.deltaTime;
                     CheckFenrirDistance();
+                    if (_fenrirCheckPositionTimer > _fenrirCheckPositionTimerLength)
+                    {
+                        SetPlayerLastKnownPosition();
+                        _fenrirCheckPositionTimer = 0;
+                        _fenrirPauseTimer = 0;
+                        _currentState = State.Waiting;
+                    }
+                    MoveTowardsLastKnownPlayerLocation();
                     break;
                 case State.Despawned:
                     _pauseTimer -= Time.deltaTime;
@@ -201,35 +216,34 @@ public class FenrirScript : MonoBehaviour
 	}
 
     void SetPlayerLastKnownPosition()
-	{
-        _fenrirCheckPositionTimer += Time.deltaTime;
-        if (_fenrirCheckPositionTimer > _fenrirCheckPositionTimerLength)
-		{
-            _fenrirCheckPositionTimer = 0;
+	{       
             _playerSpottedLocation = _player.position;
-        }
     }
 
     void MoveTowardsLastKnownPlayerLocation()
-    {     
-        float distanceFromPlayer = (_player.position - transform.position).magnitude;
-        Vector3 target;
+    {
+        float distance = Vector3.Distance(_playerSpottedLocation, transform.position);
+        if (distance > _fenrirPauseTriggerRadius + 1f)
+        {
+            float distanceFromPlayer = (_player.position - transform.position).magnitude;
+            Vector3 target;
 
-        // Causes Fenrir to target the player more directly when they are within 5 units of the player
-        if (distanceFromPlayer < 5)
-		{
-            target = _playerSpottedLocation;
+            // Causes Fenrir to target the player more directly when they are within 5 units of the player
+            if (distanceFromPlayer < 5)
+            {
+                target = _playerSpottedLocation;
+            }
+            else
+            {
+                target = _playerSpottedLocation + _chasePositionOffset;
+                // Causes Fenrir to strafe if they're not directly targeting the player
+                FenrirStrafe(target);
+            }
+
+            Vector3 movementDirection = (target - transform.position).normalized;
+
+            transform.position += currentSpeed * Time.deltaTime * movementDirection;
         }
-		else
-		{
-            target = _playerSpottedLocation + _chasePositionOffset;
-            // Causes Fenrir to strafe if they're not directly targeting the player
-            FenrirStrafe(target); 
-		}
-
-        Vector3 movementDirection = (target - transform.position).normalized;
-
-        transform.position += currentSpeed * Time.deltaTime * movementDirection;
     }
 
     // Causes Fenrir to strafe using the strafe vector in relation to the target
@@ -302,15 +316,18 @@ public class FenrirScript : MonoBehaviour
             _LastDistanceFromPlayer = _maxFenrirSpawnRange;
 		}
 
+        if (_LastDistanceFromPlayer < _minFenrirSpawnRange)
+		{
+            _LastDistanceFromPlayer = _minFenrirSpawnRange;
+		}
         SetSpawnLocation();
 	}
 
     void SetSpawnLocation()
 	{
         Vector3 spawningVector = GetSpawningDirection() * _LastDistanceFromPlayer;
-        spawningVector = GetOffSetVector(_player.position, spawningVector);
-        Vector3 spawnLocation = _player.position + spawningVector;
-        transform.position = spawnLocation;
+
+        transform.position = _player.position + spawningVector + new Vector3(0,5,0);
     }
 
 	private void OnTriggerEnter(Collider other)
