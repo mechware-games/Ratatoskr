@@ -78,6 +78,10 @@ public class Optionsmenuscript : MonoBehaviour
         PauseMenu.SetActive(true);
         GameObject.Find("EventSystem").GetComponent<EventSystem>().SetSelectedGameObject(FirstButtonMain, null);
     }
+    public void BackLevelSelect()
+    {
+
+    }
     public void SetFullscreen(bool isFullscreen)
     {
         Screen.fullScreen = isFullscreen;

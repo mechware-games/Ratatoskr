@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
     public class Pause : MonoBehaviour
     {
-        bool paused;
+        public bool paused;
         public GameObject PauseMenu;
         public GameObject OptionsMenu;
 
