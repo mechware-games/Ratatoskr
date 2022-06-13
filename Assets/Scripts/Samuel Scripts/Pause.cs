@@ -48,6 +48,7 @@ using UnityEngine.EventSystems;
     {
         OptionsMenu.SetActive(true);
         PauseMenu.SetActive(false);
+
         GameObject.Find("EventSystem").GetComponent<EventSystem>().SetSelectedGameObject(FirstButtonOptions, null);
     }
 }
