@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
         fenrir = GameObject.Find("Fenrir");
         deathSound = GetComponent<AudioSource>();
         anim.Rebind();
-        movementController = GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>();
+        //movementController = GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>();
     }
 
     private void Update()

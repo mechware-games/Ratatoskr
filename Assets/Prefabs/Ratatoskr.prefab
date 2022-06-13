@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &611385539080423594
 Transform:
   m_ObjectHideFlags: 0
@@ -885,7 +885,7 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 611385539080423594}
+  m_LookAt: {fileID: 7351240251880770751}
   m_Follow: {fileID: 8110555185532266356}
   m_CommonLens: 1
   m_Lens:
@@ -989,7 +989,7 @@ MonoBehaviour:
   m_IgnoreTag: Player
   m_TransparentLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   m_MinimumDistanceFromTarget: 0.1
   m_AvoidObstacles: 1
   m_DistanceLimit: 0
@@ -1980,7 +1980,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7441138009147997426}
-  m_LocalRotation: {x: 0.0014620553, y: 0.9955611, z: -0.09278937, w: 0.015686767}
+  m_LocalRotation: {x: 0.0015622112, y: 0.99545026, z: -0.09381701, w: 0.01657592}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2237,9 +2237,10 @@ GameObject:
   - component: {fileID: 7351240251880770751}
   - component: {fileID: 8999470358336288650}
   - component: {fileID: 2433114715847609793}
+  - component: {fileID: 6862837890605002026}
   m_Layer: 0
   m_Name: Squirrel_Main_Idle
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2307,6 +2308,19 @@ MonoBehaviour:
   TestingMoreThings: 0
   IDonno: 0
   wallSwap: 0
+--- !u!135 &6862837890605002026
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7876525972338005509}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &7924629922082886922
 GameObject:
   m_ObjectHideFlags: 3
@@ -2331,7 +2345,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7924629922082886922}
-  m_LocalRotation: {x: 0.0017463948, y: 0.993714, z: -0.11083502, w: 0.015657658}
+  m_LocalRotation: {x: 0.0018626675, y: 0.99358445, z: -0.11186049, w: 0.016544873}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2565,7 +2579,7 @@ MonoBehaviour:
   acornCanvas: {fileID: 3003031922619991716}
   deathCanvas: {fileID: 6271822388881646678}
   deathMask: {fileID: 2744013531966216747}
-  movementController: {fileID: 0}
+  movementController: {fileID: 3597101860629711175}
   restarting: 0
   deathSound: {fileID: 0}
 --- !u!82 &3325466905038216879
@@ -2885,7 +2899,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8895580122849441810}
-  m_LocalRotation: {x: 0.0017463953, y: 0.993714, z: -0.11083503, w: 0.015657656}
+  m_LocalRotation: {x: 0.0018626682, y: 0.99358445, z: -0.11186051, w: 0.016544873}
   m_LocalPosition: {x: -0.49941254, y: 4, z: 14.991684}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3101,7 +3115,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9068065690227489832}
-  m_LocalRotation: {x: 0.0020309088, y: 0.9915335, z: -0.12889184, w: 0.0156232845}
+  m_LocalRotation: {x: 0.0021633022, y: 0.9913854, z: -0.12991478, w: 0.016508253}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
