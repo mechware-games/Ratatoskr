@@ -36,20 +36,30 @@ public class SkinStore : MonoBehaviour
         goldSelect.SetActive(false);
     }
 
+
+
     private void Update()
     {
         Debug.Log("Acorns: " + PlayerPrefs.GetInt("Acorns"));
-        Debug.Log("gOLDEN aCORNS: " + PlayerPrefs.GetInt("GoldenAcorns"));
+        Debug.Log("Golden Acorns: " + PlayerPrefs.GetInt("GoldenAcorns"));
+
+        Debug.Log("Is Blue Unlocked?: " + PlayerPrefs.GetInt("BlueUnlocked"));
+        Debug.Log("Is Pink Unlocked?: " + PlayerPrefs.GetInt("PinkUnlocked"));
+        Debug.Log("Is Gold Unlocked?: " + PlayerPrefs.GetInt("GoldUnlocked"));
+
+        if(PlayerPrefs.GetInt("BlueUnlocked") == 1) { bluecostcanvas.SetActive(false); } else { bluecostcanvas.SetActive(true); }
+        if(PlayerPrefs.GetInt("GoldUnlocked") == 1) { goldcostcanvas.SetActive(false); } else { goldcostcanvas.SetActive(true); }
     }
 
     public void BuyBlue()
     {
-        if (isBlueUnlocked == false)
+        if (PlayerPrefs.GetInt("BlueUnlocked") != 1)
         {
             if (PlayerPrefs.GetInt("Acorns") >= blueCost)
             {
                 PlayerPrefs.SetInt("Acorns", PlayerPrefs.GetInt("Acorns") - blueCost);
-                isBlueUnlocked = true;
+                PlayerPrefs.SetInt("BlueUnlocked", 1); // isBlueUnlocked = true;
+
                 GameObject.Find("SkinManager").GetComponent<SkinManager>().SetRat(2);
                 blueSelect.SetActive(true);
                 pinkSelect.SetActive(false);
@@ -73,12 +83,12 @@ public class SkinStore : MonoBehaviour
     }
     public void BuyPink()
     {
-        if (isPinkUnlocked == false)
+        if (PlayerPrefs.GetInt("PinkUnlocked") != 1)
         {
             if (PlayerPrefs.GetInt("Acorns") >= pinkCost)
             {
                 PlayerPrefs.SetInt("Acorns", PlayerPrefs.GetInt("Acorns") - pinkCost);
-                isPinkUnlocked = true;
+                PlayerPrefs.SetInt("PinkUnlocked", 1); // isPinkUnlocked = true;
 
                 GameObject.Find("SkinManager").GetComponent<SkinManager>().SetRat(1);
                 blueSelect.SetActive(false);
@@ -102,12 +112,12 @@ public class SkinStore : MonoBehaviour
     }
     public void BuyGold()
     {
-        if (isGoldUnlocked == false)
+        if (PlayerPrefs.GetInt("GoldUnlocked") != 1)
         {
             if(PlayerPrefs.GetInt("GoldenAcorns") >= goldCost)
             {
                 PlayerPrefs.SetInt("GoldenAcorns", PlayerPrefs.GetInt("GoldenAcorns") - goldCost);
-                isGoldUnlocked = true;
+                PlayerPrefs.SetInt("GoldUnlocked", 1);  //isGoldUnlocked = true;
 
                 GameObject.Find("SkinManager").GetComponent<SkinManager>().SetRat(3);
 

@@ -19,6 +19,7 @@ public class Optionsmenuscript : MonoBehaviour
 
     public TMP_Dropdown aaDropdown;
     public Slider Audio;
+
     public AudioMixer MasterMix;
 
     public TMP_Dropdown Resolution;
@@ -87,10 +88,12 @@ public class Optionsmenuscript : MonoBehaviour
         Debug.Log("texture quality is " + QualitySettings.masterTextureLimit);
         Debug.Log(textureDropdown.value);
     }
+
     public void MasterVolume(float masterLevel)
     {
         MasterMix.SetFloat("Master", Mathf.Log10(masterLevel) * 20);
     }
+
     public void SetMusicLvl (float musicLvl)
     {
         MasterMix.SetFloat("Music", Mathf.Log10(musicLvl) * 20);

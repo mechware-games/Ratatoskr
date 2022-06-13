@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class givemeacorns : MonoBehaviour
 {
+    public int acorns = 99;
+    public int gacorns = 99; 
+
     void Start()
     {
-        PlayerPrefs.SetInt("Acorns", 99);
-        PlayerPrefs.SetInt("GoldenAcorns", 99);
+        PlayerPrefs.SetInt("Acorns", acorns);
+        PlayerPrefs.SetInt("GoldenAcorns", gacorns);
     }
 }
