@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 5342195165050696193}
   m_Layer: 5
   m_Name: PauseMenuCanvas
-  m_TagString: Untagged
+  m_TagString: PauseMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -251,6 +251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a8d5b78a597e9d4d98acedfbed4ffdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paused: 0
   PauseMenu: {fileID: 3310100971778686524}
   OptionsMenu: {fileID: 1673076275553495437}
   FirstButtonOptions: {fileID: 9107084847238379870}

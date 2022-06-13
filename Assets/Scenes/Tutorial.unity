@@ -45881,6 +45881,12 @@ Transform:
   m_Father: {fileID: 1557773870}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1422677321 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6251742183273336742, guid: 6df1d00b41adf6c4fa14beeec40cf26a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1257140449}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1425009511
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -49049,6 +49055,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c786160100fc52c42ae696fe79a32026,
     type: 3}
   m_PrefabInstance: {fileID: 522713557}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1503584909 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4962045519249419852, guid: 6df1d00b41adf6c4fa14beeec40cf26a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1257140449}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1506857401
 PrefabInstance:
@@ -65085,6 +65097,16 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3310100970868544161, guid: 1730d8843cdebb241bd14cc540457095,
+        type: 3}
+      propertyPath: InteractionBG
+      value: 
+      objectReference: {fileID: 1422677321}
+    - target: {fileID: 3310100970868544161, guid: 1730d8843cdebb241bd14cc540457095,
+        type: 3}
+      propertyPath: InteractionPrompt
+      value: 
+      objectReference: {fileID: 1503584909}
     - target: {fileID: 3310100970868544187, guid: 1730d8843cdebb241bd14cc540457095,
         type: 3}
       propertyPath: m_Name
