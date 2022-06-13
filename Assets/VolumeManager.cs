@@ -15,4 +15,14 @@ public class VolumeManager : MonoBehaviour
         musicSlider.value = PlayerPrefs.GetFloat("Music", musicSlider.value);
         sfxSlider.value = PlayerPrefs.GetFloat("Sound Effects", sfxSlider.value);
     }
+
+    public void ResetPlayerPrefs()
+    {
+        PlayerPrefs.SetInt("Acorns", 0);
+        PlayerPrefs.SetInt("GoldenAcorns", 0);
+
+        PlayerPrefs.SetInt("BlueUnlocked", 0);
+        PlayerPrefs.SetInt("PinkUnlocked", 0);
+        PlayerPrefs.SetInt("GoldUnlocked", 0);
+    }
 }
