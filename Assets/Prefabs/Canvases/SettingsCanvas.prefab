@@ -123,6 +123,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3033425259477602559}
   - component: {fileID: 4185258622549440693}
+  - component: {fileID: 5646359035722073821}
   m_Layer: 5
   m_Name: Sound effects slider
   m_TagString: Untagged
@@ -204,19 +205,23 @@ MonoBehaviour:
   m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Optionsmenuscript, Assembly-CSharp
-        m_MethodName: SetSFXLevel
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &5646359035722073821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550145135054644158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bd4e9167719f1647b6ad732ffc1250d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeParam: Sound Effects
+  slider: {fileID: 4185258622549440693}
+  mixer: {fileID: 24100000, guid: 14d004d210e7a9d4fa36be1bd5663513, type: 2}
+  multiplier: 30
 --- !u!1 &1553734781527996539
 GameObject:
   m_ObjectHideFlags: 0
@@ -2367,10 +2372,10 @@ MonoBehaviour:
   PauseMenu: {fileID: 0}
   textureDropdown: {fileID: 0}
   qualityDropdown: {fileID: 0}
+  Resolution: {fileID: 3781395255546710115}
   aaDropdown: {fileID: 0}
   Audio: {fileID: 0}
   MasterMix: {fileID: 0}
-  Resolution: {fileID: 3781395255546710115}
   FirstButtonMain: {fileID: 0}
 --- !u!1 &3781395255353735991
 GameObject:
@@ -3188,6 +3193,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3781395256523763408}
   - component: {fileID: 3781395256523763409}
+  - component: {fileID: 91441187437580699}
   m_Layer: 5
   m_Name: Master Volume Slider
   m_TagString: Untagged
@@ -3269,19 +3275,23 @@ MonoBehaviour:
   m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11500000, guid: 8dab66ede9313354c9ab0fe0878bab5f, type: 3}
-        m_TargetAssemblyTypeName: Optionsmenuscript, Assembly-CSharp
-        m_MethodName: MasterVolume
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &91441187437580699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3781395256523763439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bd4e9167719f1647b6ad732ffc1250d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeParam: Master
+  slider: {fileID: 3781395256523763409}
+  mixer: {fileID: 24100000, guid: 14d004d210e7a9d4fa36be1bd5663513, type: 2}
+  multiplier: 30
 --- !u!1 &4041883242601232966
 GameObject:
   m_ObjectHideFlags: 0
@@ -4603,6 +4613,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3071505726827391839}
   - component: {fileID: 6533108718796428767}
+  - component: {fileID: 2345998657252348221}
   m_Layer: 5
   m_Name: Music
   m_TagString: Untagged
@@ -4684,20 +4695,23 @@ MonoBehaviour:
   m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7558964017986045347, guid: 4aa0f621b65de2a4a85d25653e52ae8b,
-          type: 3}
-        m_TargetAssemblyTypeName: Optionsmenuscript, Assembly-CSharp
-        m_MethodName: SetMusicLvl
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &2345998657252348221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8790984320359577059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bd4e9167719f1647b6ad732ffc1250d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeParam: Music
+  slider: {fileID: 6533108718796428767}
+  mixer: {fileID: 24100000, guid: 14d004d210e7a9d4fa36be1bd5663513, type: 2}
+  multiplier: 30
 --- !u!1 &9116092281136017277
 GameObject:
   m_ObjectHideFlags: 0

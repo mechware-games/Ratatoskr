@@ -15,14 +15,11 @@ public class Optionsmenuscript : MonoBehaviour
 
     public TMP_Dropdown textureDropdown;
     public TMP_Dropdown qualityDropdown;
-
-
-    public TMP_Dropdown aaDropdown;
-    public Slider Audio;
-
-    public AudioMixer MasterMix;
-
     public TMP_Dropdown Resolution;
+    public TMP_Dropdown aaDropdown;
+
+    public Slider Audio;
+    public AudioMixer MasterMix;
 
     [SerializeField] private GameObject FirstButtonMain;
 
@@ -51,6 +48,7 @@ public class Optionsmenuscript : MonoBehaviour
         Resolution.value = currentResolution;
         Resolution.RefreshShownValue();
     }
+
     public void SetAntiAliasing(int aaIndex)
     {
         QualitySettings.antiAliasing = aaIndex;
@@ -67,6 +65,7 @@ public class Optionsmenuscript : MonoBehaviour
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
+
     public void Back()
     {
         OptionsMenu.SetActive(false);
@@ -89,21 +88,21 @@ public class Optionsmenuscript : MonoBehaviour
         Debug.Log(textureDropdown.value);
     }
 
-    public void MasterVolume(float masterLevel)
-    {
-        MasterMix.SetFloat("Master", Mathf.Log10(masterLevel) * 20);
-    }
-
-    public void SetMusicLvl (float musicLvl)
-    {
-        MasterMix.SetFloat("Music", Mathf.Log10(musicLvl) * 20);
-    }
-    public void SetSFXLevel(float sfxlevel)
-    {
-        MasterMix.SetFloat("Sound Effects", Mathf.Log10(sfxlevel) * 20);
-    }
-    public void SetVoiceLevel(float voicelevel)
-    {
-        MasterMix.SetFloat("Voice", Mathf.Log10(voicelevel) * 20);
-    }
+    //public void MasterVolume(float masterLevel)
+    //{
+    //    MasterMix.SetFloat("Master", Mathf.Log10(masterLevel) * 20);
+    //}
+    //
+    //public void SetMusicLvl (float musicLvl)
+    //{
+    //    MasterMix.SetFloat("Music", Mathf.Log10(musicLvl) * 20);
+    //}
+    //public void SetSFXLevel(float sfxlevel)
+    //{
+    //    MasterMix.SetFloat("Sound Effects", Mathf.Log10(sfxlevel) * 20);
+    //}
+    //public void SetVoiceLevel(float voicelevel)
+    //{
+    //    MasterMix.SetFloat("Voice", Mathf.Log10(voicelevel) * 20);
+    //}
 }
