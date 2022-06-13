@@ -16,7 +16,16 @@ public class AcornCount : MonoBehaviour
 
     private void Update()
     {
-        acorntext.text = PlayerPrefs.GetInt("Acorns").ToString();
-        goldacorntext.text = PlayerPrefs.GetInt("GoldenAcorns").ToString();
+        if(PlayerPrefs.GetInt("Acorns") > 99)
+        {
+            acorntext.text = "99";
+        }
+        else acorntext.text = PlayerPrefs.GetInt("Acorns").ToString();
+
+        if (PlayerPrefs.GetInt("GoldenAcorns") > 99)
+        {
+            goldacorntext.text = "99";
+        }
+        else goldacorntext.text = PlayerPrefs.GetInt("GoldenAcorns").ToString();
     }
 }
