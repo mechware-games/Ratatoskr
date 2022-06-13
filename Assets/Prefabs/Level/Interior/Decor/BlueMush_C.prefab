@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3424524802700676214}
   - component: {fileID: 604234845239769276}
   - component: {fileID: 7571091941077508904}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BlueMush_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
