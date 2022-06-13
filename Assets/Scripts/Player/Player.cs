@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float rate = 3f;
 
     [SerializeField] private GameObject acornCanvas;
+    [SerializeField] private GameObject deathCanvas;
     [SerializeField] private GameObject deathMask;
     [SerializeField] private Movement movementController;
     public bool restarting = false;
@@ -31,7 +32,7 @@ public class Player : MonoBehaviour
         fenrir = GameObject.Find("Fenrir");
         deathSound = GetComponent<AudioSource>();
         anim.Rebind();
-        movementController = GameObject.Find("Ratatoskr").GetComponent<Movement>();
+        movementController = GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>();
     }
 
     private void Update()
@@ -88,6 +89,7 @@ public class Player : MonoBehaviour
 
     IEnumerator DeathLoop()
     {
+        deathCanvas.SetActive(true);
         SetHasDied(true);
         deathSound.Play();
         yield return new WaitForSecondsRealtime(1f);
@@ -100,7 +102,7 @@ public class Player : MonoBehaviour
         SetHasDied(false);
         yield return new WaitForSeconds(0.3f);
         movementController.RevivePlayer();
-
+        deathCanvas.SetActive(false);
         yield return null;
     }
 
