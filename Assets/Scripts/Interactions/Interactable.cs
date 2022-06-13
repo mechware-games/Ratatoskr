@@ -8,6 +8,9 @@ public class Interactable : MonoBehaviour
     public SphereCollider range;
     public bool inRange;
 
+    public GameObject interactionPrompt;
+    public GameObject interactionCanvas;
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
@@ -28,6 +31,16 @@ public class Interactable : MonoBehaviour
     {
         range.radius = radius;
         GetInput();
+        if (inRange)
+        {
+            interactionCanvas.SetActive(true);
+            interactionPrompt.SetActive(true);
+        }
+        else
+        {
+            interactionCanvas.SetActive(false);
+            interactionPrompt.SetActive(false);
+        }
     }
 
     public void GetInput()
@@ -63,5 +76,4 @@ public class Interactable : MonoBehaviour
             inRange = false;
         }
     }
-
 }

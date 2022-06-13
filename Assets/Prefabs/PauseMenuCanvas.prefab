@@ -269,7 +269,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OptionsMenu: {fileID: 1673076275553495437}
   MainMenu: {fileID: 3310100970868544187}
-  PauseMenu: {fileID: 0}
+  PauseMenu: {fileID: 3310100971778686524}
   textureDropdown: {fileID: 795108231961098838}
   qualityDropdown: {fileID: 1673076276818259203}
   aaDropdown: {fileID: 0}
