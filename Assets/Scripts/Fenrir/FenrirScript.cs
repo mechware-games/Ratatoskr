@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class FenrirScript : MonoBehaviour
 {
@@ -277,17 +278,17 @@ public class FenrirScript : MonoBehaviour
         // I could then use the final strafe variable below to apply the resulting strafe vector using Fenrir's strafe vector
         // Vector3 finalStrafe = new Vector3(0,0,0); 
 
-        if (target.y > transform.position.y)
-		{
-            transform.position += _fenrirStrafeVector * Time.deltaTime;
-		}
+        //if (target.y > transform.position.y)
+		//{
+        //    transform.position += _fenrirStrafeVector * Time.deltaTime;
+		//}
     }
 
     // Gets direction vector that Fenrir will spawn from relative to the player
     // This function may be expanded on to allow the spawning of Fenrir to be more sofisticated
     private Vector3 GetSpawningDirection()
 	{
-        return new Vector3(Random.value, Random.value, Random.value).normalized;
+        return new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)).normalized;
     }
 
     // Uses the min spawning distances to offset Fenrir's spawn location and prevent him spawning on top of the player
@@ -313,6 +314,7 @@ public class FenrirScript : MonoBehaviour
 
     public void Despawn()
     {
+        transform.position = new Vector3(100000f, 100000f, 100000f);
         _chaseTimer = _chaseLength; 
         _currentState = State.Despawned;
         ToggleChildrenActive(false);
@@ -322,10 +324,11 @@ public class FenrirScript : MonoBehaviour
 
     public void Spawn()
 	{
+        SetSpawnLocation();
         currentSpeed = _baseSpeed;
         _pauseTimer = _pauseLength;
         _currentState = State.Waiting;
-        SetActive(true);
+        SetActive(true);    
         ToggleChildrenActive(true);
         GetComponent<SphereCollider>().enabled = true;
 
@@ -339,14 +342,14 @@ public class FenrirScript : MonoBehaviour
 		{
             _LastDistanceFromPlayer = _minFenrirSpawnRange;
 		}
-        SetSpawnLocation();
-	}
+        
+
+    }
 
     void SetSpawnLocation()
 	{
-        Vector3 spawningVector = GetSpawningDirection() * _LastDistanceFromPlayer;
-
-        transform.position = _player.position + spawningVector + new Vector3(0,5,0);
+        Vector3 spawningVector = Random.insideUnitSphere * 100f;
+        transform.position = _player.position + spawningVector;
     }
 
 	private void OnTriggerEnter(Collider other)

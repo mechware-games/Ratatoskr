@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1790130378760816839}
-  - component: {fileID: 3420494418344642402}
   - component: {fileID: 2595994846973096129}
   - component: {fileID: 447841217915290475}
   - component: {fileID: 7037075774149310908}
@@ -38,17 +37,10 @@ Transform:
   - {fileID: 3256455407908239237}
   - {fileID: 1225791449303603705}
   - {fileID: 106167301830232063}
+  - {fileID: 4931574250122239434}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &3420494418344642402
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1413007358780297853}
-  m_Mesh: {fileID: -5495902117074765545, guid: de39b418d007b334ea1477676ad10124, type: 3}
 --- !u!135 &2595994846973096129
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -77,6 +69,9 @@ MonoBehaviour:
   radius: 25
   range: {fileID: 0}
   inRange: 0
+  interactionPrompt: {fileID: 0}
+  interactionCanvas: {fileID: 0}
+  pause: {fileID: 0}
   aoeRadius: 40
   aoeBaseRadius: 1
   aoeGrowth: 20
@@ -91,7 +86,7 @@ MeshCollider:
   m_GameObject: {fileID: 1413007358780297853}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
@@ -489,6 +484,61 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5629678069336694381}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5495902117074765545, guid: de39b418d007b334ea1477676ad10124, type: 3}
+--- !u!1 &5976254935590623276
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4931574250122239434}
+  - component: {fileID: 5538367279214184125}
+  - component: {fileID: 5494919082066022231}
+  m_Layer: 3
+  m_Name: RuneStone_Fenrir_Slow (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4931574250122239434
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5976254935590623276}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1790130378760816839}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &5538367279214184125
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5976254935590623276}
+  m_Mesh: {fileID: -5495902117074765545, guid: de39b418d007b334ea1477676ad10124, type: 3}
+--- !u!64 &5494919082066022231
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5976254935590623276}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1

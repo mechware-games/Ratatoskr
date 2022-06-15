@@ -706,6 +706,16 @@ PrefabInstance:
       propertyPath: m_PresetInfoIsWorld
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3007706943841122908, guid: 4aa0f621b65de2a4a85d25653e52ae8b,
+        type: 3}
+      propertyPath: blueCost
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3007706943841122908, guid: 4aa0f621b65de2a4a85d25653e52ae8b,
+        type: 3}
+      propertyPath: goldCost
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3040501287498146586, guid: 4aa0f621b65de2a4a85d25653e52ae8b,
         type: 3}
       propertyPath: m_RootOrder

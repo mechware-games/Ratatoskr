@@ -5,7 +5,7 @@ using UnityEngine;
 public class CheckPointManager : MonoBehaviour
 {
     [SerializeField]
-    [Range(5f, 20f)]
+    [Range(5f, 30f)]
     private float _checkpointResetTimerLength = 10;
 
     [SerializeField]

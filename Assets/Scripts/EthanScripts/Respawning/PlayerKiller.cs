@@ -6,6 +6,9 @@ public class PlayerKiller : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        FindObjectOfType<Player>().Death();
+        if (other.CompareTag("Player"))
+        {
+            FindObjectOfType<Player>().Death();
+        }
     }
 }
